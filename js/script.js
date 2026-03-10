@@ -47,7 +47,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // --- Scroll-triggered Fade-in Animations ---
     const fadeElements = document.querySelectorAll(
-        '.about__content, .expect__card, .logistics__card, .support__content, .gallery__item'
+        '.about__content, .expect__card, .logistics__card, .support__content, .gallery__item, .join__card, .contact__content'
     );
 
     fadeElements.forEach(el => el.classList.add('fade-in'));
@@ -67,8 +67,8 @@ document.addEventListener('DOMContentLoaded', () => {
     fadeElements.forEach(el => observer.observe(el));
 
     // --- Staggered card animations ---
-    document.querySelectorAll('.expect__cards, .logistics__cards').forEach(container => {
-        const cards = container.querySelectorAll('.expect__card, .logistics__card');
+    document.querySelectorAll('.expect__cards, .logistics__cards, .join__cards').forEach(container => {
+        const cards = container.querySelectorAll('.expect__card, .logistics__card, .join__card');
         const cardObserver = new IntersectionObserver(
             (entries) => {
                 entries.forEach(entry => {
@@ -84,4 +84,39 @@ document.addEventListener('DOMContentLoaded', () => {
         );
         cardObserver.observe(container);
     });
+
+    // --- Email Signup Form ---
+    const emailForm = document.getElementById('emailSignupForm');
+    if (emailForm) {
+        emailForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const email = emailForm.querySelector('.join__email-input').value;
+            const btn = emailForm.querySelector('.join__email-submit');
+            const originalText = btn.textContent;
+            btn.textContent = 'Thank you!';
+            btn.disabled = true;
+            emailForm.querySelector('.join__email-input').value = '';
+            setTimeout(() => {
+                btn.textContent = originalText;
+                btn.disabled = false;
+            }, 3000);
+        });
+    }
+
+    // --- Contact Form ---
+    const contactForm = document.getElementById('contactForm');
+    if (contactForm) {
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const btn = contactForm.querySelector('.contact__form-submit');
+            const originalText = btn.textContent;
+            btn.textContent = 'Sent!';
+            btn.disabled = true;
+            contactForm.reset();
+            setTimeout(() => {
+                btn.textContent = originalText;
+                btn.disabled = false;
+            }, 3000);
+        });
+    }
 });

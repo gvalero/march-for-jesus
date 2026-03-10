@@ -25,8 +25,10 @@
                 <li><a href="#hero" class="nav__link">Home</a></li>
                 <li><a href="#gallery" class="nav__link">Gallery</a></li>
                 <li><a href="#about" class="nav__link">About</a></li>
+                <li><a href="#join" class="nav__link">Join Us</a></li>
                 <li><a href="#expect" class="nav__link">What to Expect</a></li>
                 <li><a href="#logistics" class="nav__link">Logistics</a></li>
+                <li><a href="#contact" class="nav__link">Contact</a></li>
                 <li><a href="#support" class="nav__link">Support</a></li>
             </ul>
         </div>
@@ -52,7 +54,7 @@
                     </div>
                 </div>
                 <p class="hero__subtitle">Saturday 16th May 2026</p>
-                <a href="#about" class="hero__cta">Learn More</a>
+                <a href="#join" class="hero__cta">Join the March</a>
             </div>
         </div>
     </section>
@@ -98,6 +100,55 @@
                 </div>
                 <div class="about__image-wrapper">
                     <img src="images/about-placeholder.svg" alt="About March for Jesus" class="about__image">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Join the March (Signup Section) -->
+    <section class="join" id="join">
+        <div class="container">
+            <h2 class="section-title">Join the March</h2>
+            <p class="section-subtitle">Get involved and be part of this historic day</p>
+            <div class="join__cards">
+                <div class="join__card">
+                    <div class="join__card-icon">
+                        <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="32" cy="20" r="10" stroke="currentColor" stroke-width="2"/>
+                            <path d="M16 52C16 42 23 34 32 34C41 34 48 42 48 52" stroke="currentColor" stroke-width="2" fill="none"/>
+                            <path d="M44 18L50 12M50 12L56 18M50 12V28" stroke="currentColor" stroke-width="2"/>
+                        </svg>
+                    </div>
+                    <h3 class="join__card-title">Become a Steward</h3>
+                    <p class="join__card-text">Help us make the march safe and organised. Stewards play a vital role in ensuring everyone has a great experience on the day.</p>
+                    <a href="#contact" class="join__card-btn">Register as Steward</a>
+                </div>
+                <div class="join__card">
+                    <div class="join__card-icon">
+                        <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect x="12" y="12" width="40" height="40" rx="10" stroke="currentColor" stroke-width="2"/>
+                            <path d="M38 26C38 26 36 32 32 32C28 32 26 26 26 26" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+                            <circle cx="32" cy="38" r="2" fill="currentColor"/>
+                            <path d="M22 20L20 16M42 20L44 16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                        </svg>
+                    </div>
+                    <h3 class="join__card-title">Join WhatsApp Group</h3>
+                    <p class="join__card-text">Stay connected with the march community. Get updates, share prayer requests, and coordinate with fellow marchers.</p>
+                    <a href="#" class="join__card-btn join__card-btn--whatsapp" target="_blank" rel="noopener noreferrer">Join WhatsApp</a>
+                </div>
+                <div class="join__card">
+                    <div class="join__card-icon">
+                        <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect x="8" y="16" width="48" height="32" rx="4" stroke="currentColor" stroke-width="2"/>
+                            <path d="M8 20L32 36L56 20" stroke="currentColor" stroke-width="2" fill="none"/>
+                        </svg>
+                    </div>
+                    <h3 class="join__card-title">Sign Up for Updates</h3>
+                    <p class="join__card-text">Be the first to hear about march details, route announcements, and event-day logistics straight to your inbox.</p>
+                    <form class="join__email-form" id="emailSignupForm">
+                        <input type="email" class="join__email-input" placeholder="Your email" required aria-label="Email address">
+                        <button type="submit" class="join__email-submit">Sign Up</button>
+                    </form>
                 </div>
             </div>
         </div>
@@ -196,6 +247,56 @@
         </div>
     </section>
 
+    <!-- Contact Us -->
+    <section class="contact" id="contact">
+        <div class="contact__bg">
+            <img src="images/contact-bg-placeholder.svg" alt="" aria-hidden="true">
+        </div>
+        <div class="contact__overlay"></div>
+        <div class="container">
+            <h2 class="section-title">Contact Us</h2>
+            <p class="section-subtitle">We'd love to hear from you</p>
+            <div class="contact__content">
+                <div class="contact__info">
+                    <h3 class="contact__info-heading">Get in Touch</h3>
+                    <p class="contact__info-text">Have questions about the march, want to volunteer as a steward, or just want to say hello? Reach out to us anytime.</p>
+                    <a href="mailto:information@marchforjesus.co.uk" class="contact__email-link">
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect x="2" y="4" width="20" height="16" rx="3" stroke="currentColor" stroke-width="1.5"/>
+                            <path d="M2 7L12 13L22 7" stroke="currentColor" stroke-width="1.5"/>
+                        </svg>
+                        information@marchforjesus.co.uk
+                    </a>
+                </div>
+                <form class="contact__form" id="contactForm">
+                    <div class="contact__form-row">
+                        <div class="contact__form-group">
+                            <label class="contact__form-label" for="firstName">First Name</label>
+                            <input type="text" id="firstName" class="contact__form-input" required>
+                        </div>
+                        <div class="contact__form-group">
+                            <label class="contact__form-label" for="lastName">Last Name</label>
+                            <input type="text" id="lastName" class="contact__form-input" required>
+                        </div>
+                    </div>
+                    <div class="contact__form-group">
+                        <label class="contact__form-label" for="contactEmail">Email</label>
+                        <input type="email" id="contactEmail" class="contact__form-input" required>
+                    </div>
+                    <div class="contact__form-group">
+                        <label class="contact__form-label" for="phone">Phone Number</label>
+                        <input type="tel" id="phone" class="contact__form-input">
+                    </div>
+                    <div class="contact__form-group">
+                        <label class="contact__form-label" for="message">Your Message</label>
+                        <textarea id="message" class="contact__form-textarea" required></textarea>
+                    </div>
+                    <button type="submit" class="contact__form-submit">Send</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
     <!-- Support / Donations -->
     <section class="support" id="support">
         <div class="container">
@@ -242,8 +343,10 @@
                 <div class="footer__links">
                     <a href="#hero">Home</a>
                     <a href="#about">About</a>
+                    <a href="#join">Join Us</a>
                     <a href="#expect">What to Expect</a>
                     <a href="#logistics">Logistics</a>
+                    <a href="#contact">Contact</a>
                     <a href="#support">Support</a>
                 </div>
             </div>

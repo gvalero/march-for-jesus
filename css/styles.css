@@ -5,9 +5,12 @@
 
 /* --- CSS Custom Properties --- */
 :root {
-    --color-brown: #3D2B1F;
-    --color-brown-light: #5C4033;
-    --color-brown-dark: #2A1D14;
+    --color-brown: #5B1E31;
+    --color-brown-light: #7A3050;
+    --color-brown-dark: #3D1420;
+    --color-purple: #6B3FA0;
+    --color-purple-light: #8B5FC0;
+    --color-purple-dark: #5A2D8C;
     --color-cream: #F5E6C8;
     --color-cream-light: #FFF8ED;
     --color-gold: #C9A84C;
@@ -112,7 +115,7 @@ a {
     left: 0;
     right: 0;
     height: var(--nav-height);
-    background: rgba(61, 43, 31, 0.95);
+    background: rgba(91, 30, 49, 0.95);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
     z-index: 1000;
@@ -236,9 +239,9 @@ a {
     inset: 0;
     background: linear-gradient(
         180deg,
-        rgba(42, 29, 20, 0.7) 0%,
-        rgba(42, 29, 20, 0.5) 40%,
-        rgba(42, 29, 20, 0.7) 100%
+        rgba(61, 20, 32, 0.75) 0%,
+        rgba(61, 20, 32, 0.5) 40%,
+        rgba(61, 20, 32, 0.75) 100%
     );
     z-index: 1;
     display: flex;
@@ -404,6 +407,332 @@ a {
     width: 100%;
     height: 400px;
     object-fit: cover;
+}
+
+/* ===================================
+   JOIN THE MARCH (Signup Section)
+   =================================== */
+.join {
+    padding: var(--section-padding) 0;
+    background: var(--color-purple);
+    position: relative;
+    overflow: hidden;
+}
+
+.join::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -25%;
+    width: 150%;
+    height: 200%;
+    background: radial-gradient(ellipse at center, rgba(255,255,255,0.04) 0%, transparent 70%);
+    pointer-events: none;
+}
+
+.join .section-title {
+    color: var(--color-cream);
+}
+
+.join .section-subtitle {
+    color: var(--color-cream-light);
+    opacity: 0.85;
+}
+
+.join__cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+    position: relative;
+    z-index: 1;
+}
+
+.join__card {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    border-radius: var(--border-radius);
+    padding: 48px 32px;
+    text-align: center;
+    backdrop-filter: blur(4px);
+    transition: transform var(--transition-base), background var(--transition-base);
+}
+
+.join__card:hover {
+    transform: translateY(-8px);
+    background: rgba(255, 255, 255, 0.16);
+}
+
+.join__card-icon {
+    width: 64px;
+    height: 64px;
+    margin: 0 auto 24px;
+    color: var(--color-gold);
+}
+
+.join__card-title {
+    font-family: var(--font-heading);
+    font-size: 1.5rem;
+    color: var(--color-cream);
+    margin-bottom: 12px;
+    letter-spacing: 0.04em;
+}
+
+.join__card-text {
+    font-size: 0.95rem;
+    color: var(--color-cream-light);
+    opacity: 0.85;
+    line-height: 1.7;
+    margin-bottom: 28px;
+}
+
+.join__card-btn {
+    display: inline-block;
+    padding: 12px 32px;
+    border: 2px solid var(--color-gold);
+    color: var(--color-cream);
+    font-family: var(--font-heading);
+    font-size: 0.95rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    border-radius: var(--border-radius);
+    transition: all var(--transition-base);
+    cursor: pointer;
+    background: transparent;
+}
+
+.join__card-btn:hover {
+    background: var(--color-gold);
+    color: var(--color-purple-dark);
+}
+
+.join__card-btn--whatsapp {
+    border-color: #25D366;
+    color: #25D366;
+}
+
+.join__card-btn--whatsapp:hover {
+    background: #25D366;
+    color: var(--color-white);
+}
+
+/* Email signup inline form inside a join card */
+.join__email-form {
+    display: flex;
+    gap: 8px;
+    max-width: 320px;
+    margin: 0 auto;
+}
+
+.join__email-input {
+    flex: 1;
+    padding: 12px 16px;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-radius: var(--border-radius);
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--color-cream);
+    font-family: var(--font-body);
+    font-size: 0.9rem;
+    outline: none;
+    transition: border-color var(--transition-base);
+}
+
+.join__email-input::placeholder {
+    color: rgba(245, 230, 200, 0.5);
+}
+
+.join__email-input:focus {
+    border-color: var(--color-gold);
+}
+
+.join__email-submit {
+    padding: 12px 20px;
+    background: var(--color-gold);
+    color: var(--color-purple-dark);
+    border: none;
+    border-radius: var(--border-radius);
+    font-family: var(--font-heading);
+    font-size: 0.9rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    cursor: pointer;
+    transition: all var(--transition-base);
+    white-space: nowrap;
+}
+
+.join__email-submit:hover {
+    background: var(--color-gold-light);
+    transform: translateY(-1px);
+}
+
+/* ===================================
+   CONTACT US
+   =================================== */
+.contact {
+    padding: var(--section-padding) 0;
+    position: relative;
+    background: var(--color-off-white);
+    overflow: hidden;
+}
+
+.contact__bg {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+}
+
+.contact__bg img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: grayscale(100%) brightness(0.4);
+}
+
+.contact__overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(61, 20, 32, 0.75);
+    z-index: 1;
+}
+
+.contact .container {
+    position: relative;
+    z-index: 2;
+}
+
+.contact .section-title {
+    color: var(--color-cream);
+}
+
+.contact .section-subtitle {
+    color: var(--color-cream-light);
+    opacity: 0.8;
+}
+
+.contact__content {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    gap: 48px;
+    align-items: start;
+}
+
+.contact__info {
+    background: var(--color-white);
+    border-radius: var(--border-radius);
+    padding: 40px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+}
+
+.contact__info-heading {
+    font-family: var(--font-heading);
+    font-size: 1.3rem;
+    color: var(--color-brown);
+    margin-bottom: 16px;
+    letter-spacing: 0.04em;
+}
+
+.contact__info-text {
+    font-size: 0.95rem;
+    color: var(--color-gray);
+    line-height: 1.7;
+    margin-bottom: 24px;
+}
+
+.contact__email-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--color-purple);
+    font-weight: 500;
+    font-size: 1rem;
+    transition: color var(--transition-base);
+}
+
+.contact__email-link:hover {
+    color: var(--color-purple-dark);
+}
+
+.contact__email-link svg {
+    width: 20px;
+    height: 20px;
+}
+
+.contact__form {
+    background: var(--color-white);
+    border-radius: var(--border-radius);
+    padding: 40px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+}
+
+.contact__form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-bottom: 16px;
+}
+
+.contact__form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin-bottom: 16px;
+}
+
+.contact__form-row .contact__form-group {
+    margin-bottom: 0;
+}
+
+.contact__form-label {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--color-dark);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+}
+
+.contact__form-input,
+.contact__form-textarea {
+    padding: 12px 16px;
+    border: 1px solid var(--color-gray-light);
+    border-radius: var(--border-radius);
+    font-family: var(--font-body);
+    font-size: 0.95rem;
+    color: var(--color-dark);
+    outline: none;
+    transition: border-color var(--transition-base), box-shadow var(--transition-base);
+    background: var(--color-white);
+}
+
+.contact__form-input:focus,
+.contact__form-textarea:focus {
+    border-color: var(--color-purple);
+    box-shadow: 0 0 0 3px rgba(107, 63, 160, 0.12);
+}
+
+.contact__form-textarea {
+    resize: vertical;
+    min-height: 120px;
+}
+
+.contact__form-submit {
+    display: inline-block;
+    padding: 14px 40px;
+    background: var(--color-brown);
+    color: var(--color-cream);
+    border: none;
+    border-radius: var(--border-radius);
+    font-family: var(--font-heading);
+    font-size: 1rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all var(--transition-base);
+    margin-top: 8px;
+}
+
+.contact__form-submit:hover {
+    background: var(--color-brown-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 16px rgba(91, 30, 49, 0.3);
 }
 
 /* ===================================
@@ -702,6 +1031,18 @@ a {
         margin: 0 auto;
     }
 
+    .join__cards {
+        grid-template-columns: 1fr;
+        gap: 24px;
+        max-width: 500px;
+        margin: 0 auto;
+    }
+
+    .contact__content {
+        grid-template-columns: 1fr;
+        gap: 32px;
+    }
+
     .support__content {
         grid-template-columns: 1fr;
         gap: 32px;
@@ -812,6 +1153,14 @@ a {
     .footer__links {
         flex-wrap: wrap;
         justify-content: center;
+    }
+
+    .contact__form-row {
+        grid-template-columns: 1fr;
+    }
+
+    .join__email-form {
+        flex-direction: column;
     }
 }
 
