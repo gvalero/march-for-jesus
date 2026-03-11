@@ -11,11 +11,38 @@ document.addEventListener('DOMContentLoaded', () => {
         navMenu.classList.toggle('open');
     });
 
-    // Close menu when a link is clicked
-    navMenu.querySelectorAll('.nav__link').forEach(link => {
+    // --- Dropdown Menus (mobile tap to expand) ---
+    const dropdownItems = document.querySelectorAll('.nav__item--dropdown');
+    const isMobile = () => window.innerWidth <= 768;
+
+    dropdownItems.forEach(item => {
+        const link = item.querySelector('.nav__link');
+        link.addEventListener('click', (e) => {
+            if (isMobile()) {
+                e.preventDefault();
+                const wasOpen = item.classList.contains('open');
+                dropdownItems.forEach(d => d.classList.remove('open'));
+                if (!wasOpen) item.classList.add('open');
+            }
+        });
+    });
+
+    // Close menu when a dropdown link is clicked
+    navMenu.querySelectorAll('.nav__dropdown-link').forEach(link => {
         link.addEventListener('click', () => {
             navToggle.classList.remove('open');
             navMenu.classList.remove('open');
+            dropdownItems.forEach(d => d.classList.remove('open'));
+        });
+    });
+
+    // Close menu when a top-level link is clicked (desktop)
+    navMenu.querySelectorAll('.nav__link').forEach(link => {
+        link.addEventListener('click', () => {
+            if (!isMobile()) {
+                navToggle.classList.remove('open');
+                navMenu.classList.remove('open');
+            }
         });
     });
 
@@ -45,9 +72,38 @@ document.addEventListener('DOMContentLoaded', () => {
     window.addEventListener('scroll', setActiveLink, { passive: true });
     setActiveLink();
 
+    // --- Countdown Timer ---
+    const marchDate = new Date('2026-05-16T10:00:00').getTime();
+
+    function updateCountdown() {
+        const now = new Date().getTime();
+        const diff = marchDate - now;
+
+        if (diff <= 0) {
+            document.getElementById('countdownDays').textContent = '0';
+            document.getElementById('countdownHours').textContent = '00';
+            document.getElementById('countdownMinutes').textContent = '00';
+            document.getElementById('countdownSeconds').textContent = '00';
+            return;
+        }
+
+        const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+        document.getElementById('countdownDays').textContent = days;
+        document.getElementById('countdownHours').textContent = String(hours).padStart(2, '0');
+        document.getElementById('countdownMinutes').textContent = String(minutes).padStart(2, '0');
+        document.getElementById('countdownSeconds').textContent = String(seconds).padStart(2, '0');
+    }
+
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
+
     // --- Scroll-triggered Fade-in Animations ---
     const fadeElements = document.querySelectorAll(
-        '.about__content, .expect__card, .logistics__card, .support__content, .gallery__item, .join__card, .contact__content'
+        '.about__content, .logistics__card, .support__content, .gallery__item, .join__card, .contact__content'
     );
 
     fadeElements.forEach(el => el.classList.add('fade-in'));
@@ -67,8 +123,8 @@ document.addEventListener('DOMContentLoaded', () => {
     fadeElements.forEach(el => observer.observe(el));
 
     // --- Staggered card animations ---
-    document.querySelectorAll('.expect__cards, .logistics__cards, .join__cards').forEach(container => {
-        const cards = container.querySelectorAll('.expect__card, .logistics__card, .join__card');
+    document.querySelectorAll('.logistics__cards, .join__cards').forEach(container => {
+        const cards = container.querySelectorAll('.logistics__card, .join__card');
         const cardObserver = new IntersectionObserver(
             (entries) => {
                 entries.forEach(entry => {
@@ -90,12 +146,12 @@ document.addEventListener('DOMContentLoaded', () => {
     if (emailForm) {
         emailForm.addEventListener('submit', (e) => {
             e.preventDefault();
-            const email = emailForm.querySelector('.join__email-input').value;
-            const btn = emailForm.querySelector('.join__email-submit');
+            const input = emailForm.querySelector('.contact__signup-input');
+            const btn = emailForm.querySelector('.contact__signup-btn');
             const originalText = btn.textContent;
             btn.textContent = 'Thank you!';
             btn.disabled = true;
-            emailForm.querySelector('.join__email-input').value = '';
+            input.value = '';
             setTimeout(() => {
                 btn.textContent = originalText;
                 btn.disabled = false;
