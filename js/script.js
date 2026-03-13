@@ -144,14 +144,43 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- Email Signup Form ---
     const emailForm = document.getElementById('emailSignupForm');
     if (emailForm) {
-        emailForm.addEventListener('submit', (e) => {
+        emailForm.addEventListener('submit', async (e) => {
             e.preventDefault();
-            const input = emailForm.querySelector('.contact__signup-input');
             const btn = emailForm.querySelector('.contact__signup-btn');
             const originalText = btn.textContent;
-            btn.textContent = 'Thank you!';
+            btn.textContent = 'Sending...';
             btn.disabled = true;
-            input.value = '';
+
+            const formData = {
+                email: emailForm.querySelector('[name="email"]').value,
+                name: emailForm.querySelector('[name="name"]').value,
+                last_name: emailForm.querySelector('[name="last_name"]').value,
+                phone: emailForm.querySelector('[name="phone"]')?.value || '',
+                church: emailForm.querySelector('[name="church"]')?.value || '',
+                form_type: 'website_signup'
+            };
+
+            try {
+                const response = await fetch('https://mfj-mailerlite-proxy.valerogian.workers.dev', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(formData)
+                });
+
+                if (response.ok) {
+                    gtag('event', 'generate_lead', {
+                        event_category: 'signup',
+                        event_label: 'email_signup'
+                    });
+                    btn.textContent = 'Thank you!';
+                    emailForm.reset();
+                } else {
+                    btn.textContent = 'Error — try again';
+                }
+            } catch (err) {
+                btn.textContent = 'Error — try again';
+            }
+
             setTimeout(() => {
                 btn.textContent = originalText;
                 btn.disabled = false;
@@ -162,13 +191,42 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- Contact Form ---
     const contactForm = document.getElementById('contactForm');
     if (contactForm) {
-        contactForm.addEventListener('submit', (e) => {
+        contactForm.addEventListener('submit', async (e) => {
             e.preventDefault();
             const btn = contactForm.querySelector('.contact__form-submit');
             const originalText = btn.textContent;
-            btn.textContent = 'Sent!';
+            btn.textContent = 'Sending...';
             btn.disabled = true;
-            contactForm.reset();
+
+            const formData = {
+                email: document.getElementById('contactEmail').value,
+                name: document.getElementById('firstName').value,
+                last_name: document.getElementById('lastName').value,
+                phone: document.getElementById('phone')?.value || '',
+                form_type: 'contact_form'
+            };
+
+            try {
+                const response = await fetch('https://mfj-mailerlite-proxy.valerogian.workers.dev', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(formData)
+                });
+
+                if (response.ok) {
+                    gtag('event', 'contact', {
+                        event_category: 'engagement',
+                        event_label: 'contact_form'
+                    });
+                    btn.textContent = 'Sent!';
+                    contactForm.reset();
+                } else {
+                    btn.textContent = 'Error — try again';
+                }
+            } catch (err) {
+                btn.textContent = 'Error — try again';
+            }
+
             setTimeout(() => {
                 btn.textContent = originalText;
                 btn.disabled = false;

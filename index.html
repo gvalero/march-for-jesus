@@ -1,11 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-B08WPFHX9Q"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-B08WPFHX9Q');
+    </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="March for Jesus Belfast — Saturday 16th May 2026. A family-friendly, non-political march celebrating Jesus through the streets of Belfast.">
     <meta name="keywords" content="March for Jesus, Belfast, Christian march, worship, prayer, May 2026">
+    <meta property="og:title" content="March for Jesus Belfast — 16th May 2026">
+    <meta property="og:description" content="A family-friendly, non-political march celebrating Jesus through the streets of Belfast. Join us on Saturday 16th May 2026.">
+    <meta property="og:image" content="https://marchforjesus.co.uk/images/hero.jpg">
+    <meta property="og:url" content="https://marchforjesus.co.uk">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="March for Jesus Belfast — 16th May 2026">
+    <meta name="twitter:description" content="A family-friendly, non-political march celebrating Jesus through the streets of Belfast. Join us on Saturday 16th May 2026.">
+    <meta name="twitter:image" content="https://marchforjesus.co.uk/images/hero.jpg">
+    <link rel="canonical" href="https://marchforjesus.co.uk">
     <title>March for Jesus Belfast — 16th May 2026</title>
+    <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="images/favicon-180.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=League+Gothic&family=Special+Elite&display=swap" rel="stylesheet">
@@ -15,7 +35,7 @@
     <!-- Navigation -->
     <nav class="nav" id="nav">
         <div class="nav__container">
-            <a href="#" class="nav__logo">March for Jesus</a>
+            <a href="#" class="nav__logo"><img src="images/logo.png" alt="March for Jesus" class="nav__logo-img"></a>
             <button class="nav__toggle" id="navToggle" aria-label="Toggle navigation">
                 <span class="nav__toggle-bar"></span>
                 <span class="nav__toggle-bar"></span>
@@ -72,7 +92,7 @@
         <div class="hero__overlay">
             <div class="hero__content">
                 <div class="hero__badge">
-                    <span class="hero__badge-text">March for Jesus</span>
+                    <img src="images/logo.png" alt="March for Jesus" class="hero__logo">
                 </div>
                 <div class="hero__date-block">
                     <div class="hero__date-box">
@@ -293,7 +313,15 @@
                         <h4 class="contact__signup-heading">Sign Up for Updates</h4>
                         <p class="contact__signup-text">Be the first to hear about march details, route announcements, and event-day logistics.</p>
                         <form class="contact__signup-form" id="emailSignupForm">
-                            <input type="email" class="contact__signup-input" placeholder="Your email address" required aria-label="Email address">
+                            <div class="contact__signup-row">
+                                <input type="text" name="name" class="contact__signup-input" placeholder="First Name" required aria-label="First Name">
+                                <input type="text" name="last_name" class="contact__signup-input" placeholder="Last Name" required aria-label="Last Name">
+                            </div>
+                            <input type="email" name="email" class="contact__signup-input" placeholder="Email Address" required aria-label="Email Address">
+                            <div class="contact__signup-row">
+                                <input type="tel" name="phone" class="contact__signup-input" placeholder="Phone (optional)" aria-label="Phone Number">
+                                <input type="text" name="church" class="contact__signup-input" placeholder="Church (optional)" aria-label="Church">
+                            </div>
                             <button type="submit" class="contact__signup-btn">Sign Up</button>
                         </form>
                     </div>
@@ -384,7 +412,7 @@
         <div class="container">
             <div class="footer__content">
                 <div class="footer__brand">
-                    <h3 class="footer__logo">March for Jesus</h3>
+                    <img src="images/logo.png" alt="March for Jesus" class="footer__logo-img">
                     <p class="footer__tagline">Belfast — 16th May 2026</p>
                 </div>
                 <div class="footer__social">

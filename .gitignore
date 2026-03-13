@@ -1,0 +1,15 @@
+# Dependencies
+node_modules/
+worker/node_modules/
+worker/package.json
+worker/package-lock.json
+
+# Temp files
+~$*
+*.tmp
+
+# Design reference files (not for production)
+Logo/
+MFJ Sitemap/
+Sample Images/
+integration requests.docx

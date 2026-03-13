@@ -1,6 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="800" height="600" viewBox="0 0 800 600">
-  <rect width="800" height="600" fill="#3D2B1F"/>
-  <rect x="300" y="200" width="200" height="200" rx="100" fill="none" stroke="#F5E6C8" stroke-width="2" opacity="0.3"/>
-  <text x="400" y="310" font-family="Georgia, serif" font-size="20" fill="#F5E6C8" text-anchor="middle" opacity="0.6">Photo 6</text>
-  <text x="400" y="340" font-family="sans-serif" font-size="12" fill="#C9A84C" text-anchor="middle" opacity="0.4">March for Jesus crowd</text>
-</svg>

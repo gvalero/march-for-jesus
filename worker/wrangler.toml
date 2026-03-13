@@ -1,0 +1,6 @@
+name = "mfj-mailerlite-proxy"
+main = "mailerlite-proxy.js"
+compatibility_date = "2024-01-01"
+
+[vars]
+# MAILERLITE_API_KEY is set as a secret, not here
