@@ -144,6 +144,7 @@ a {
 .nav__logo-img {
     height: 48px;
     width: auto;
+    filter: brightness(0) invert(1);
 }
 
 .nav__menu {
@@ -1149,6 +1150,7 @@ a {
 .footer__logo-img {
     height: 60px;
     width: auto;
+    filter: brightness(0) invert(1);
 }
 
 .footer__tagline {
