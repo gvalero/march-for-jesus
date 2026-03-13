@@ -932,15 +932,4 @@ background:#8a0023;
   }
 }
 
-.logo-img {
-    height: 40px;
-    width: auto;
-    filter: brightness(0) invert(1);
-}
-
-.footer-logo-img {
-    height: 60px;
-    width: auto;
-    filter: brightness(0) invert(1);
-    margin-bottom: 12px;
-}
+/* logo classes removed — using text-based logo */
