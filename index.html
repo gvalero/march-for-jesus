@@ -2,6 +2,27 @@
 <html lang="en">
 <head>
 
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-B08WPFHX9Q"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-B08WPFHX9Q');
+</script>
+<meta name="description" content="March for Jesus Belfast — Saturday 16th May 2026. A family-friendly, non-political march celebrating Jesus through the streets of Belfast.">
+<meta name="keywords" content="March for Jesus, Belfast, Christian march, worship, prayer, May 2026">
+<meta property="og:title" content="March for Jesus Belfast — 16th May 2026">
+<meta property="og:description" content="A family-friendly, non-political march celebrating Jesus through the streets of Belfast. Join us on Saturday 16th May 2026.">
+<meta property="og:image" content="https://marchforjesus.co.uk/images/mfj/home.jpg">
+<meta property="og:url" content="https://marchforjesus.co.uk/">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="March for Jesus Belfast — 16th May 2026">
+<meta name="twitter:description" content="A family-friendly, non-political march celebrating Jesus through the streets of Belfast. Join us on Saturday 16th May 2026.">
+<meta name="twitter:image" content="https://marchforjesus.co.uk/images/mfj/home.jpg">
+<meta name="format-detection" content="telephone=no">
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -14,6 +35,9 @@
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=League+Gothic&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;600&family=Space+Mono&display=swap" rel="stylesheet">
+
+<link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32.png">
+<link rel="apple-touch-icon" sizes="180x180" href="images/favicon-180.png">
 
 </head>
 
@@ -330,6 +354,8 @@ Christ in the heart of Belfast.
 
 </div>
 
+<button class="gallery-toggle-btn" id="galleryToggle">Show More</button>
+
 </section>
 
 <!-- SIGN UP -->
@@ -456,7 +482,7 @@ Christian Voice Ireland</p>
 AIBKIE2DXXX</p>
 
 <p><strong>IBAN</strong><br>
-IE71 AIBK 9312 3365 2800 88</p>
+<span style="text-decoration:none;color:inherit;">IE71 AIBK 9312 3365 2800 88</span></p>
 
 </div>
 
@@ -499,16 +525,16 @@ Donate via PayPal
 				and important event-day announcements.
 			</p>
 
-			<form class="updates-form">
+			<form class="updates-form" id="emailSignupForm">
 				<div class="updates-row">
-					<input type="text" name="first-name" placeholder="First Name" required>
-					<input type="text" name="last-name" placeholder="Last Name" required>
+					<input type="text" name="name" placeholder="First Name" required>
+					<input type="text" name="last_name" placeholder="Last Name" required>
 				</div>
 
 				<input type="email" name="email" placeholder="Email Address" required>
 
 				<div class="updates-row">
-					<input type="text" name="phone" placeholder="Phone (optional)">
+					<input type="tel" name="phone" placeholder="Phone (optional)">
 					<input type="text" name="church" placeholder="Church (optional)">
 				</div>
 
