@@ -192,7 +192,10 @@ if (emailForm) {
             name: emailForm.querySelector('[name="name"]').value,
             last_name: emailForm.querySelector('[name="last_name"]').value,
             phone: (emailForm.querySelector('[name="phone"]') || {}).value || '',
+            county: (emailForm.querySelector('[name="county"]') || {}).value || '',
             church: (emailForm.querySelector('[name="church"]') || {}).value || '',
+            attended_before: (emailForm.querySelector('[name="attended_before"]:checked') || {}).value || '',
+            marketing_consent: emailForm.querySelector('[name="consent"]').checked ? 'Yes' : 'No',
             form_type: 'website_signup'
         };
 
