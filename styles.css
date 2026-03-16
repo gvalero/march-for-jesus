@@ -870,6 +870,18 @@ color:#4D0921;
   text-transform: uppercase;
 }
 
+.parking-permit-link {
+  display: inline-block;
+  margin-top: 8px;
+  color: #4D0921;
+  font-weight: 600;
+  text-decoration: underline;
+}
+
+.parking-permit-link:hover {
+  color: #6b1133;
+}
+
 /* Footer */
 .footer {
   background: #4D0921;
