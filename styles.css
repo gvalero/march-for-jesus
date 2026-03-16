@@ -802,7 +802,7 @@ color:#4D0921;
   gap: 14px;
 }
 
-.contact-signup-section .updates-form input {
+.contact-signup-section .updates-form input:not([type="checkbox"]):not([type="radio"]) {
   width: 100%;
   padding: 16px 18px;
   border: 1.5px solid rgba(77, 9, 33, 0.22);
@@ -814,7 +814,7 @@ color:#4D0921;
   transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.2s ease;
 }
 
-.contact-signup-section .updates-form input::placeholder {
+.contact-signup-section .updates-form input:not([type="checkbox"]):not([type="radio"])::placeholder {
   color: rgba(47, 42, 42, 0.65);
 }
 
@@ -883,9 +883,16 @@ color:#4D0921;
 .form-consent input[type="checkbox"] {
   margin-top: 3px;
   flex-shrink: 0;
+  width: 18px;
+  height: 18px;
 }
 
-.contact-signup-section .updates-form input:focus {
+.form-consent span {
+  flex: 1;
+  min-width: 0;
+}
+
+.contact-signup-section .updates-form input:not([type="checkbox"]):not([type="radio"]):focus {
   border-color: #4D0921;
   box-shadow: 0 0 0 4px rgba(77, 9, 33, 0.08);
 }
