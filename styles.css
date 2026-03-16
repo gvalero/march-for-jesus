@@ -224,14 +224,14 @@ color:#4D0921;
   margin: 24px auto 0;
   padding: 14px 36px;
   width: fit-content;
-  background: #e8decc;
-  color: #4D0921;
+  background: #4D0921;
+  color: #fff;
   font-family: 'Space Mono', monospace;
   font-size: 1rem;
   font-weight: 600;
   text-decoration: none;
   letter-spacing: 1.5px;
-  border: 2px solid #e8decc;
+  border: 2px solid #4D0921;
   transition: all .3s ease;
 }
 
@@ -466,8 +466,8 @@ color:#4D0921;
 .signup-steps {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 24px;
-  margin-top: 40px;
+  gap: 12px;
+  margin-top: 32px;
   counter-reset: step;
 }
 
@@ -480,6 +480,9 @@ color:#4D0921;
   overflow: hidden;
   transition: transform .2s ease, box-shadow .2s ease;
   position: relative;
+  border-radius: 12px;
+  box-shadow: 0 4px 24px rgba(77,9,33,0.08);
+  min-height: 420px;
 }
 
 .signup-step:hover {
@@ -509,29 +512,54 @@ color:#4D0921;
   align-items: center;
   flex: 1;
   padding: 24px 20px;
+  justify-content: space-between;
+  gap: 6px;
+}
+
+.signup-step img,
+.step-icon {
+  width: 100%;
+  height: 260px;
 }
 
 .signup-step img {
-  width: 100%;
-  height: 180px;
+  display: block;
   object-fit: cover;
-  margin: -24px -20px 20px;
-  width: calc(100% + 40px);
+  object-position: center;
+}
+
+.signup-steps .signup-step:nth-child(3) img {
+  object-position: center 70%;
 }
 
 .step-icon {
-  font-size: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 92px;
   color: #25D366;
-  margin-bottom: 16px;
-  padding-top: 16px;
+  margin-bottom: 24px;
+  padding-top: 0;
+}
+
+.signup-steps .signup-step:nth-child(2) .step-content {
+  padding-top: 24px;
+  justify-content: flex-start;
 }
 
 .signup-step h3 {
   font-family: 'Oswald', sans-serif;
   font-size: 1.1rem;
   font-weight: 600;
-  margin-bottom: 10px;
+  margin-bottom: 0;
   color: #2a2a2a;
+  min-height: 60px;
+  text-align: center;
+  letter-spacing: 0.5px;
+}
+
+.signup-steps .signup-step:not(:nth-child(2)) h3 {
+  margin-top: 18px;
 }
 
 .signup-step p {
@@ -540,6 +568,8 @@ color:#4D0921;
   color: #666;
   line-height: 1.5;
   flex: 1;
+  margin: 0 0 8px 0;
+  text-align: center;
 }
 
 .signup-btn {
@@ -548,12 +578,14 @@ color:#4D0921;
   color: white;
   border: none;
   padding: 10px 24px;
-  margin-top: 16px;
+  margin-top: 4px;
   font-family: 'Space Mono', monospace;
   font-size: 0.85rem;
   font-weight: 600;
   cursor: pointer;
   transition: background .3s ease;
+  border-radius: 24px;
+  box-shadow: 0 2px 8px rgba(77,9,33,0.08);
 }
 
 .signup-btn:hover {
@@ -842,6 +874,70 @@ color:#4D0921;
   transform: translateY(-1px);
 }
 
+.contact-signup-section .updates-form select {
+  width: 100%;
+  padding: 16px 18px;
+  border: 1.5px solid rgba(77, 9, 33, 0.22);
+  background: #fff;
+  color: #2f2a2a;
+  font-family: 'Space Mono', monospace;
+  font-size: 0.98rem;
+  outline: none;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.contact-signup-section .updates-form select:focus {
+  border-color: #4D0921;
+  box-shadow: 0 0 0 4px rgba(77, 9, 33, 0.08);
+}
+
+.contact-signup-section .form-label {
+  margin: 6px 0 10px;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.95rem;
+  color: #2f2a2a;
+  line-height: 1.5;
+}
+
+.contact-signup-section .updates-radio-group {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.contact-signup-section .radio-option {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: 'Inter', sans-serif;
+  color: #2f2a2a;
+}
+
+.contact-signup-section .radio-option input[type="radio"] {
+  width: 18px;
+  height: 18px;
+  accent-color: #4D0921;
+}
+
+.contact-signup-section .updates-checkbox {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.95rem;
+  color: #2f2a2a;
+  line-height: 1.6;
+  margin-top: 4px;
+}
+
+.contact-signup-section .updates-checkbox input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  margin-top: 4px;
+  accent-color: #4D0921;
+  flex-shrink: 0;
+}
+
 .contact-signup-section .form-note {
   margin-top: 14px;
   font-size: 0.95rem;
@@ -896,8 +992,21 @@ color:#4D0921;
 }
 
 .footer h2 {
-  font-size: 100px;
+  font-size: 58px;
   font-family: 'Bebas Neue';
+}
+
+.footer-brand {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.footer-logo {
+  width: 170px;
+  height: 170px;
+  object-fit: contain;
+  flex-shrink: 0;
 }
 
 .footer a {
@@ -1111,7 +1220,17 @@ color:#4D0921;
   }
 
   .footer h2 {
-    font-size: 42px;
+    font-size: 30px;
+  }
+
+  .footer-brand {
+    justify-content: center;
+    gap: 12px;
+  }
+
+  .footer-logo {
+    width: 104px;
+    height: 104px;
   }
 
   .social-links a {
