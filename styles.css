@@ -834,7 +834,7 @@ color:#4D0921;
   gap: 14px;
 }
 
-.contact-signup-section .updates-form input {
+.contact-signup-section .updates-form input:not([type="checkbox"]):not([type="radio"]) {
   width: 100%;
   padding: 16px 18px;
   border: 1.5px solid rgba(77, 9, 33, 0.22);
@@ -846,11 +846,85 @@ color:#4D0921;
   transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.2s ease;
 }
 
-.contact-signup-section .updates-form input::placeholder {
+.contact-signup-section .updates-form input:not([type="checkbox"]):not([type="radio"])::placeholder {
   color: rgba(47, 42, 42, 0.65);
 }
 
-.contact-signup-section .updates-form input:focus {
+.contact-signup-section .updates-form select {
+  width: 100%;
+  padding: 16px 18px;
+  border: 1.5px solid rgba(77, 9, 33, 0.22);
+  background: #fff;
+  color: #2f2a2a;
+  font-family: 'Space Mono', monospace;
+  font-size: 0.98rem;
+  outline: none;
+  cursor: pointer;
+  appearance: auto;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.contact-signup-section .updates-form select:invalid {
+  color: rgba(47, 42, 42, 0.65);
+}
+
+.contact-signup-section .updates-form select:focus {
+  border-color: #4D0921;
+  box-shadow: 0 0 0 2px rgba(77, 9, 33, 0.10);
+}
+
+.form-radio-group {
+  text-align: left;
+}
+
+.form-radio-label {
+  display: block;
+  font-family: 'Space Mono', monospace;
+  font-size: 0.9rem;
+  color: #2f2a2a;
+  margin-bottom: 8px;
+}
+
+.form-radio-options {
+  display: flex;
+  gap: 24px;
+}
+
+.form-radio-options label {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-family: 'Space Mono', monospace;
+  font-size: 0.9rem;
+  color: #2f2a2a;
+  cursor: pointer;
+}
+
+.form-consent {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  text-align: left;
+  font-family: 'Space Mono', monospace;
+  font-size: 0.82rem;
+  color: #555;
+  line-height: 1.5;
+  cursor: pointer;
+}
+
+.form-consent input[type="checkbox"] {
+  margin-top: 3px;
+  flex-shrink: 0;
+  width: 18px;
+  height: 18px;
+}
+
+.form-consent span {
+  flex: 1;
+  min-width: 0;
+}
+
+.contact-signup-section .updates-form input:not([type="checkbox"]):not([type="radio"]):focus {
   border-color: #4D0921;
   box-shadow: 0 0 0 4px rgba(77, 9, 33, 0.08);
 }
