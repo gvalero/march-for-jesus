@@ -592,6 +592,94 @@ color:#4D0921;
   background: #6b1133;
 }
 
+/* Launch Nights Section */
+.launch-nights {
+  background: #4D0921;
+  color: #F8EEE0;
+  text-align: center;
+}
+
+.launch-nights h2 {
+  font-size: 60px;
+  margin-bottom: 10px;
+}
+
+.launch-subtitle {
+  font-family: 'Inter', sans-serif;
+  font-size: 1.05rem;
+  color: rgba(248, 238, 224, 0.75);
+  margin-bottom: 10px;
+}
+
+.launch-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 28px;
+  margin-top: 40px;
+}
+
+.launch-card {
+  background: rgba(248, 238, 224, 0.08);
+  border: 1px solid rgba(248, 238, 224, 0.15);
+  padding: 32px 24px;
+  text-align: left;
+  transition: transform .2s ease, box-shadow .2s ease;
+}
+
+.launch-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+}
+
+.launch-county {
+  display: inline-block;
+  background: #e8decc;
+  color: #4D0921;
+  font-family: 'Space Mono', monospace;
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  padding: 6px 12px;
+  margin-bottom: 18px;
+}
+
+.launch-date,
+.launch-time {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.9rem;
+  margin-bottom: 4px;
+  color: rgba(248, 238, 224, 0.85);
+}
+
+.launch-date i,
+.launch-time i,
+.launch-address i {
+  width: 18px;
+  margin-right: 6px;
+}
+
+.launch-card h3 {
+  font-family: 'Oswald', sans-serif;
+  font-size: 1.3rem;
+  margin: 14px 0 6px;
+  color: #F8EEE0;
+}
+
+.launch-pastor {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.9rem;
+  color: rgba(248, 238, 224, 0.7);
+  margin-bottom: 12px;
+}
+
+.launch-address {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.85rem;
+  color: rgba(248, 238, 224, 0.65);
+  line-height: 1.5;
+}
+
 /* Schedule Section */
 .schedule {
   background: var(--burgundy);
@@ -1187,6 +1275,10 @@ color:#4D0921;
 
   .signup-steps {
     grid-template-columns: repeat(2, 1fr);
+  }
+
+  .launch-grid {
+    grid-template-columns: 1fr;
   }
 
   .footer h2 {
