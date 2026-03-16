@@ -167,6 +167,16 @@ document.addEventListener("DOMContentLoaded", function () {
 	}
 });
 
+// --- Gallery Show More/Less Toggle ---
+var galleryToggle = document.getElementById('galleryToggle');
+var galleryGrid = document.querySelector('.gallery-grid');
+if (galleryToggle && galleryGrid) {
+    galleryToggle.addEventListener('click', function() {
+        var expanded = galleryGrid.classList.toggle('gallery-expanded');
+        galleryToggle.textContent = expanded ? 'Show Less' : 'Show More';
+    });
+}
+
 // --- Email Signup Form (MailerLite via Cloudflare Worker) ---
 var emailForm = document.getElementById('emailSignupForm');
 if (emailForm) {

@@ -4,7 +4,8 @@
 const ALLOWED_ORIGINS = [
   'https://marchforjesus.co.uk',
   'https://www.marchforjesus.co.uk',
-  'https://gvalero.github.io'
+  'https://gvalero.github.io',
+  'http://localhost:8080'
 ];
 
 const MAILERLITE_GROUP_ID = '181638643685786861';
