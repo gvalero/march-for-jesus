@@ -37,7 +37,7 @@ export default {
 
     try {
       const data = await request.json();
-      const { email, name, last_name, phone, church, form_type } = data;
+      const { email, name, last_name, phone, county, church, attended_before, marketing_consent, form_type } = data;
 
       if (!email) {
         return new Response(JSON.stringify({ error: 'Email is required' }), {
@@ -57,7 +57,10 @@ export default {
       if (name) subscriberPayload.fields.name = name;
       if (last_name) subscriberPayload.fields.last_name = last_name;
       if (phone) subscriberPayload.fields.phone = phone;
+      if (county) subscriberPayload.fields.county = county;
       if (church) subscriberPayload.fields.church = church;
+      if (attended_before) subscriberPayload.fields.have_you_attended_mfj_dublin_or_belfast_before = attended_before;
+      if (marketing_consent) subscriberPayload.fields.marketing_consent = marketing_consent;
       if (form_type) subscriberPayload.fields.lead_source = form_type;
 
       // Call MailerLite API
