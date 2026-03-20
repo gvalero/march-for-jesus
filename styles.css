@@ -82,6 +82,7 @@ color:#4D0921;
   height: 130px;
   width: auto;
   object-fit: contain;
+  max-width: 180px;
 }
 
 .menu{
@@ -1216,6 +1217,11 @@ color:#4D0921;
 
 /* Responsive Design */
 @media (max-width: 900px) {
+  .logo img {
+    height: 90px;
+    max-width: 130px;
+  }
+
   .menu-toggle {
     display: block;
     margin-left: auto;
@@ -1303,6 +1309,18 @@ color:#4D0921;
     padding: 16px 20px;
   }
 
+  .logo img {
+    height: 70px;
+    max-width: 110px;
+  }
+
+  .footer-logo {
+    width: 160px;
+    height: 160px;
+    margin-left: 0;
+    margin-top: 0;
+  }
+
   .support {
     grid-template-columns: 1fr;
     gap: 50px;
@@ -1350,6 +1368,11 @@ color:#4D0921;
 }
 
 @media (max-width: 600px) {
+  .logo img {
+    height: 55px;
+    max-width: 90px;
+  }
+
   .hero h1 {
     font-size: 60px;
   }
