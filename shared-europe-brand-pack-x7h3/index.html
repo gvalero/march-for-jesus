@@ -322,9 +322,94 @@
     background: var(--burgundy);
   }
 
-  .logo-stage.burgundy img,
   .stacked-stage img {
     filter: brightness(0) saturate(100%) invert(96%) sepia(20%) saturate(403%) hue-rotate(313deg) brightness(102%) contrast(96%);
+  }
+
+  .constructed-lockup,
+  .constructed-city-lockup {
+    position: relative;
+    width: min(100%, 760px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .constructed-city-lockup {
+    width: min(100%, 860px);
+  }
+
+  .globe-mark {
+    position: relative;
+    width: min(52vw, 320px);
+    aspect-ratio: 1 / 1;
+    border-radius: 50%;
+    border: 2px solid rgba(60, 51, 51, 0.44);
+    overflow: hidden;
+    background:
+      linear-gradient(90deg, transparent 23%, rgba(60, 51, 51, 0.22) 24%, transparent 25%, transparent 49%, rgba(60, 51, 51, 0.24) 50%, transparent 51%, transparent 75%, rgba(60, 51, 51, 0.22) 76%, transparent 77%),
+      linear-gradient(0deg, transparent 23%, rgba(60, 51, 51, 0.22) 24%, transparent 25%, transparent 49%, rgba(60, 51, 51, 0.24) 50%, transparent 51%, transparent 75%, rgba(60, 51, 51, 0.22) 76%, transparent 77%);
+  }
+
+  .globe-mark::before,
+  .globe-mark::after {
+    content: "";
+    position: absolute;
+    inset: 12% 0;
+    border-radius: 50%;
+    border: 1.5px solid rgba(60, 51, 51, 0.26);
+    transform: scaleX(0.48);
+  }
+
+  .globe-mark::after {
+    inset: 0 12%;
+    transform: scaleY(0.48);
+  }
+
+  .plate-wordmark {
+    position: absolute;
+    z-index: 2;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: clamp(240px, 42vw, 430px);
+    padding: 18px 28px 14px;
+    border-radius: 14px;
+    background: rgba(77, 9, 33, 0.9);
+    color: var(--cream);
+    font-family: "League Gothic", sans-serif;
+    font-size: clamp(2.3rem, 4.8vw, 4.8rem);
+    line-height: 0.9;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+    text-align: center;
+  }
+
+  .city-wordmark {
+    position: absolute;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    right: 3%;
+    width: min(62%, 560px);
+  }
+
+  .city-wordmark .plate-wordmark {
+    position: static;
+    min-width: 0;
+    width: 100%;
+  }
+
+  .city-wordmark .city-tail {
+    display: inline-block;
+    margin-top: 6px;
+    color: var(--burgundy);
+    font-family: "League Gothic", sans-serif;
+    font-size: clamp(3.6rem, 7vw, 6.8rem);
+    line-height: 0.9;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
   }
 
   .logo-caption h3,
@@ -507,6 +592,11 @@
       transform: scale(0.78);
       transform-origin: top left;
     }
+
+    .city-wordmark {
+      right: 1%;
+      width: min(64%, 520px);
+    }
   }
 
   @media (max-width: 680px) {
@@ -531,6 +621,14 @@
       left: 10px;
       top: 24px;
       transform: scale(0.5);
+    }
+
+    .globe-mark {
+      width: min(64vw, 240px);
+    }
+
+    .city-wordmark {
+      width: min(66%, 360px);
     }
   }
 </style>
@@ -600,11 +698,14 @@
         <div class="grid-2">
           <article class="card logo-card">
             <div class="logo-stage cream-frame">
-              <img src="../images/mfjlogo1.png" alt="Approved March for Jesus primary lockup">
+              <div class="constructed-lockup" aria-label="Representative full lockup treatment">
+                <div class="globe-mark" aria-hidden="true"></div>
+                <div class="plate-wordmark">March for Jesus</div>
+              </div>
             </div>
             <div class="logo-caption">
               <h3>Primary lockup</h3>
-              <p>This is the main public-facing mark. It should be used for official presentations, guidance pages, headers and other formal applications where the full March for Jesus identity needs to be seen clearly.</p>
+              <p>This section now uses a built representative treatment instead of the previously reused image asset. It reflects the approved structure: globe, burgundy plate and the full March for Jesus wording.</p>
             </div>
           </article>
           <article class="card logo-card">
@@ -637,7 +738,13 @@
             <span>S</span>
             <span>T</span>
           </div>
-          <img src="../images/mfjlogo1.png" alt="Recommended Belfast city application">
+          <div class="constructed-city-lockup" aria-label="Representative Belfast city application">
+            <div class="globe-mark" aria-hidden="true"></div>
+            <div class="city-wordmark">
+              <div class="plate-wordmark">March for Jesus</div>
+              <div class="city-tail">Belfast</div>
+            </div>
+          </div>
         </div>
         <div class="city-guidance">
           <div class="mini-card">
