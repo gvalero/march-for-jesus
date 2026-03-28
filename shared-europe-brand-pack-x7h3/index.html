@@ -16,18 +16,15 @@
 <style>
   :root {
     --burgundy: #4D0921;
-    --cream: #ebe2cd;
-    --plum: #80455f;
-    --charcoal: #3c3333;
-    --paper: #f6f1e8;
-    --ink: #171313;
-    --white: #ffffff;
-    --line: rgba(77, 9, 33, 0.1);
-    --shadow: 0 28px 60px rgba(34, 18, 22, 0.12);
-    --radius-lg: 28px;
-    --radius-md: 18px;
-    --radius-sm: 12px;
-    --max-width: 1180px;
+    --cream: #EBE2CD;
+    --plum: #80455F;
+    --charcoal: #3C3333;
+    --paper: #F7F2E9;
+    --ink: #1A1616;
+    --white: #FFFFFF;
+    --line: rgba(77, 9, 33, 0.12);
+    --shadow: 0 22px 48px rgba(35, 19, 24, 0.1);
+    --max: 1180px;
   }
 
   * {
@@ -41,11 +38,33 @@
   body {
     margin: 0;
     font-family: "Space Mono", monospace;
-    background:
-      radial-gradient(circle at top left, rgba(128, 69, 95, 0.09), transparent 30%),
-      linear-gradient(180deg, #faf7f1 0%, var(--paper) 100%);
     color: var(--ink);
+    background:
+      radial-gradient(circle at top left, rgba(128, 69, 95, 0.08), transparent 30%),
+      linear-gradient(180deg, #FCFAF6 0%, var(--paper) 100%);
     line-height: 1.65;
+  }
+
+  img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+  }
+
+  a {
+    color: inherit;
+  }
+
+  .shell {
+    width: min(calc(100% - 32px), var(--max));
+    margin: 0 auto;
+  }
+
+  .eyebrow {
+    font-size: 0.82rem;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    color: var(--plum);
   }
 
   .topbar {
@@ -56,66 +75,50 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    gap: 16px;
+    gap: 14px;
     padding: 14px 18px;
-    border: 1px solid var(--line);
     border-radius: 18px;
-    background: rgba(255, 255, 255, 0.74);
-    box-shadow: 0 10px 24px rgba(34, 18, 22, 0.04);
+    border: 1px solid var(--line);
+    background: rgba(255, 255, 255, 0.8);
+  }
+
+  .topbar-title,
+  h1,
+  h2,
+  h3,
+  .toc-link,
+  .download-link {
+    font-family: "League Gothic", sans-serif;
+    font-weight: 400;
+    letter-spacing: 0.03em;
   }
 
   .topbar-title {
-    font-family: "League Gothic", sans-serif;
     font-size: 1.9rem;
-    letter-spacing: 0.04em;
-    text-transform: uppercase;
     color: var(--burgundy);
+    text-transform: uppercase;
     line-height: 1;
   }
 
   .topbar-note {
-    font-size: 0.86rem;
-    color: rgba(23, 19, 19, 0.68);
+    font-size: 0.82rem;
     text-transform: uppercase;
     letter-spacing: 0.08em;
-  }
-
-  img {
-    display: block;
-    max-width: 100%;
-  }
-
-  a {
-    color: inherit;
-  }
-
-  .page-shell {
-    width: min(calc(100% - 32px), var(--max-width));
-    margin: 0 auto;
-  }
-
-  .eyebrow,
-  .section-label {
-    font-size: 0.9rem;
-    text-transform: uppercase;
-    letter-spacing: 0.18em;
-    color: var(--plum);
+    color: rgba(26, 22, 22, 0.65);
   }
 
   .hero {
-    padding: 18px 0 36px;
+    padding: 18px 0 28px;
   }
 
   .hero-card {
     position: relative;
     overflow: hidden;
-    border-radius: 36px;
-    padding: 36px;
-    min-height: 500px;
-    background:
-      linear-gradient(135deg, rgba(77, 9, 33, 0.98) 0%, rgba(104, 41, 66, 0.95) 54%, rgba(188, 164, 140, 0.88) 170%);
-    box-shadow: var(--shadow);
+    border-radius: 34px;
+    padding: 34px;
+    background: linear-gradient(135deg, rgba(77, 9, 33, 0.98) 0%, rgba(109, 45, 70, 0.94) 54%, rgba(201, 177, 150, 0.88) 170%);
     color: var(--cream);
+    box-shadow: var(--shadow);
   }
 
   .hero-card::before,
@@ -123,92 +126,80 @@
     content: "";
     position: absolute;
     border-radius: 999px;
-    border: 1px solid rgba(255, 255, 255, 0.15);
+    border: 1px solid rgba(255, 255, 255, 0.14);
     pointer-events: none;
   }
 
   .hero-card::before {
-    width: 460px;
-    height: 460px;
-    right: -130px;
-    top: -140px;
+    width: 420px;
+    height: 420px;
+    top: -150px;
+    right: -120px;
   }
 
   .hero-card::after {
-    width: 320px;
-    height: 320px;
-    left: -120px;
-    bottom: -120px;
+    width: 280px;
+    height: 280px;
+    left: -100px;
+    bottom: -110px;
   }
 
   .hero-grid {
     position: relative;
     z-index: 1;
     display: grid;
-    grid-template-columns: 1.25fr 0.9fr;
-    gap: 28px;
+    grid-template-columns: 1.15fr 0.85fr;
+    gap: 24px;
     align-items: end;
   }
 
-  .hero-copy h1,
-  .section-heading,
-  .logo-example-wordmark,
-  .swatch strong,
-  .resource-card h3,
-  .contact-box h3 {
-    font-family: "League Gothic", sans-serif;
-    font-weight: 400;
-    letter-spacing: 0.03em;
-  }
-
-  .hero-copy h1 {
-    margin: 12px 0 16px;
-    font-size: clamp(4rem, 10vw, 8rem);
-    line-height: 0.92;
+  h1 {
+    margin: 14px 0 18px;
+    font-size: clamp(4rem, 9vw, 7.5rem);
+    line-height: 0.9;
     text-transform: uppercase;
   }
 
   .hero-copy p {
     max-width: 58ch;
-    margin: 0 0 18px;
-    font-size: 1rem;
-    color: rgba(251, 240, 227, 0.94);
+    margin: 0 0 16px;
+    color: rgba(251, 240, 227, 0.95);
   }
 
   .hero-actions {
     display: flex;
     flex-wrap: wrap;
     gap: 12px;
-    margin-top: 22px;
+    margin-top: 18px;
   }
 
-  .hero-note {
+  .hero-pill,
+  .toc-link {
     display: inline-flex;
     align-items: center;
-    gap: 10px;
+    justify-content: center;
     padding: 11px 16px;
     border-radius: 999px;
-    background: rgba(251, 240, 227, 0.12);
-    border: 1px solid rgba(251, 240, 227, 0.18);
-    color: var(--cream);
     text-decoration: none;
   }
 
-  .hero-note strong {
-    color: var(--white);
+  .hero-pill {
+    background: rgba(255, 255, 255, 0.12);
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    color: var(--cream);
   }
 
   .hero-panel {
-    background: rgba(16, 10, 12, 0.22);
-    border: 1px solid rgba(251, 240, 227, 0.14);
-    border-radius: 26px;
+    border-radius: 24px;
     padding: 24px;
+    background: rgba(20, 12, 15, 0.24);
+    border: 1px solid rgba(255, 255, 255, 0.15);
     backdrop-filter: blur(10px);
   }
 
   .hero-panel h2 {
-    margin: 0 0 14px;
-    font-size: 2.4rem;
+    margin: 0 0 12px;
+    font-size: 2.3rem;
     line-height: 0.95;
     text-transform: uppercase;
   }
@@ -222,20 +213,20 @@
     margin-top: 10px;
   }
 
-  .hero-panel li {
-    color: rgba(251, 240, 227, 0.92);
+  .toc {
+    padding: 0 0 28px;
   }
 
-  .toc {
-    padding: 0 0 30px;
+  .toc-frame,
+  .section-frame {
+    border-radius: 26px;
+    border: 1px solid var(--line);
+    background: rgba(255, 255, 255, 0.78);
+    box-shadow: 0 14px 32px rgba(35, 19, 24, 0.04);
   }
 
   .toc-frame {
-    padding: 24px 26px;
-    border-radius: 24px;
-    border: 1px solid var(--line);
-    background: rgba(255, 255, 255, 0.78);
-    box-shadow: 0 14px 30px rgba(34, 18, 22, 0.04);
+    padding: 24px;
   }
 
   .toc-links {
@@ -245,101 +236,174 @@
     margin-top: 14px;
   }
 
-  .toc-link,
-  .download-link {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-    padding: 11px 16px;
-    border-radius: 999px;
-    border: 1px solid rgba(77, 9, 33, 0.16);
+  .toc-link {
     background: var(--white);
+    border: 1px solid var(--line);
     color: var(--burgundy);
-    text-decoration: none;
-    font-weight: 700;
+    font-size: 1.15rem;
+    text-transform: uppercase;
   }
 
-  .download-link {
-    background: var(--burgundy);
-    color: var(--cream);
-    border-color: var(--burgundy);
-    box-shadow: 0 12px 24px rgba(77, 9, 33, 0.16);
-  }
-
-  .download-link:hover,
-  .download-link:focus-visible {
-    background: #6a1834;
-    border-color: #6a1834;
-    color: var(--white);
-  }
-
-  .content-section {
-    padding: 26px 0;
+  .section {
+    padding: 0 0 28px;
   }
 
   .section-frame {
-    background: rgba(255, 255, 255, 0.72);
-    border: 1px solid var(--line);
-    border-radius: var(--radius-lg);
-    box-shadow: 0 16px 35px rgba(34, 18, 22, 0.05);
     padding: 30px;
   }
 
-  .section-heading {
-    margin: 10px 0 16px;
-    font-size: clamp(2.6rem, 6vw, 4.8rem);
+  h2 {
+    margin: 10px 0 14px;
+    font-size: clamp(2.8rem, 6vw, 4.8rem);
     line-height: 0.92;
     color: var(--burgundy);
     text-transform: uppercase;
   }
 
   .section-intro {
-    max-width: 70ch;
-    margin: 0 0 24px;
-    color: rgba(23, 19, 19, 0.84);
+    max-width: 72ch;
+    margin: 0 0 22px;
+    color: rgba(26, 22, 22, 0.84);
   }
 
-  .section-summary {
-    margin-top: 16px;
+  .section-note {
+    margin: 0 0 22px;
     padding: 18px 20px;
     border-left: 4px solid var(--plum);
     border-radius: 0 16px 16px 0;
     background: rgba(128, 69, 95, 0.06);
-    color: rgba(23, 19, 19, 0.84);
+    color: rgba(26, 22, 22, 0.82);
   }
 
-  .principles-grid,
-  .palette-grid,
-  .logos-grid,
-  .resource-grid,
-  .contact-grid {
+  .grid-2,
+  .grid-3,
+  .downloads-grid,
+  .support-grid {
     display: grid;
     gap: 18px;
   }
 
-  .principles-grid {
+  .grid-2 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .grid-3,
+  .downloads-grid {
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 
-  .principle-card,
-  .resource-card,
-  .contact-box {
-    border-radius: var(--radius-md);
-    padding: 22px;
-    background: var(--white);
+  .card {
+    border-radius: 22px;
     border: 1px solid var(--line);
+    background: var(--white);
+    padding: 22px;
   }
 
-  .principle-card strong,
-  .type-card strong,
-  .resource-card p strong,
-  .contact-box strong {
+  .logo-card {
+    padding: 18px;
+  }
+
+  .logo-stage {
+    border-radius: 20px;
+    padding: 22px;
+    background: var(--cream);
+    min-height: 340px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .logo-stage.cream-frame {
+    border: 18px solid rgba(235, 226, 205, 0.92);
+    background: #f6efe1;
+  }
+
+  .logo-stage.burgundy {
+    background: var(--burgundy);
+  }
+
+  .logo-stage.burgundy img,
+  .stacked-stage img {
+    filter: brightness(0) saturate(100%) invert(96%) sepia(20%) saturate(403%) hue-rotate(313deg) brightness(102%) contrast(96%);
+  }
+
+  .logo-caption h3,
+  .download-card h3,
+  .support-card h3,
+  .swatch strong {
+    margin: 18px 0 10px;
+    font-size: 2rem;
+    line-height: 0.95;
     color: var(--burgundy);
+    text-transform: uppercase;
   }
 
-  .palette-grid {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+  .city-stage {
+    position: relative;
+    border-radius: 24px;
+    min-height: 420px;
+    padding: 36px 34px;
+    border: 18px solid rgba(235, 226, 205, 0.92);
+    background: #f6efe1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .city-stage img {
+    width: min(100%, 720px);
+  }
+
+  .city-arc {
+    position: absolute;
+    left: 34px;
+    top: 88px;
+    width: 310px;
+    height: 220px;
+  }
+
+  .city-arc span {
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    transform-origin: 0 170px;
+    font-family: "League Gothic", sans-serif;
+    font-size: 2.6rem;
+    line-height: 1;
+    color: var(--burgundy);
+    letter-spacing: 0.12em;
+  }
+
+  .city-arc span:nth-child(1) { transform: rotate(-66deg); }
+  .city-arc span:nth-child(2) { transform: rotate(-52deg); }
+  .city-arc span:nth-child(3) { transform: rotate(-38deg); }
+  .city-arc span:nth-child(4) { transform: rotate(-24deg); }
+  .city-arc span:nth-child(5) { transform: rotate(-10deg); }
+  .city-arc span:nth-child(6) { transform: rotate(4deg); }
+  .city-arc span:nth-child(7) { transform: rotate(18deg); }
+
+  .stacked-stage {
+    border-radius: 20px;
+    min-height: 250px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 26px;
+    background: var(--burgundy);
+  }
+
+  .city-guidance {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+    margin-top: 18px;
+  }
+
+  .mini-card {
+    border-radius: 18px;
+    border: 1px solid var(--line);
+    background: var(--white);
+    padding: 18px;
   }
 
   .swatch {
@@ -350,7 +414,7 @@
   }
 
   .swatch-sample {
-    min-height: 170px;
+    min-height: 165px;
   }
 
   .swatch-copy {
@@ -359,379 +423,114 @@
 
   .swatch strong {
     display: block;
-    font-size: 2rem;
-    line-height: 1;
-    text-transform: uppercase;
-    color: var(--burgundy);
-    margin-bottom: 10px;
+    margin-top: 0;
   }
 
-  .type-grid,
-  .city-grid {
-    display: grid;
-    gap: 18px;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-
-  .type-card,
-  .city-card {
+  .download-card,
+  .support-card {
     border-radius: 20px;
-    padding: 24px;
+    border: 1px solid var(--line);
     background: var(--white);
-    border: 1px solid var(--line);
+    padding: 22px;
   }
 
-  .display-preview {
-    font-family: "League Gothic", sans-serif;
-    font-size: clamp(3rem, 8vw, 5.5rem);
-    line-height: 0.9;
-    text-transform: uppercase;
+  .download-card p strong,
+  .support-card p strong,
+  .mini-card strong {
     color: var(--burgundy);
   }
 
-  .body-preview {
-    font-size: 1.05rem;
-    line-height: 1.8;
-  }
-
-  .logos-grid {
-    grid-template-columns: 1.05fr 0.95fr;
-    align-items: stretch;
-  }
-
-  .logo-card,
-  .logo-guidance {
-    border-radius: 24px;
-    padding: 24px;
-    background: linear-gradient(180deg, rgba(77, 9, 33, 0.03), rgba(128, 69, 95, 0.08));
-    border: 1px solid var(--line);
-  }
-
-  .logo-showcase {
-    display: grid;
-    gap: 18px;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-
-  .logo-sample {
-    border-radius: 18px;
-    padding: 16px;
-    min-height: 240px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-  .logo-sample.dark {
-    background: #080607;
-  }
-
-  .logo-sample.light {
-    background: var(--cream);
-  }
-
-  .city-lockup {
-    border-radius: 18px;
-    padding: 24px;
-    background:
-      linear-gradient(180deg, rgba(235, 226, 205, 0.8), rgba(255, 255, 255, 0.9)),
-      var(--white);
-    border: 1px solid var(--line);
-  }
-
-  .logo-example-wordmark {
-    display: inline-block;
-    padding: 14px 20px 10px;
-    border-radius: 16px;
-    background: var(--burgundy);
-    color: var(--cream);
-    font-size: clamp(2.5rem, 5vw, 4.2rem);
-    line-height: 0.9;
-    text-transform: uppercase;
-  }
-
-  .logo-example-city {
-    margin-top: 10px;
-    font-size: 1rem;
-    text-transform: uppercase;
-    letter-spacing: 0.34em;
-    color: var(--charcoal);
-  }
-
-  .city-grid {
-    margin-top: 20px;
-  }
-
-  .city-card strong {
-    display: block;
-    margin-bottom: 10px;
-  }
-
-  .resource-grid {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-  }
-
-  .resource-card h3,
-  .contact-box h3 {
-    margin: 0 0 12px;
-    font-size: 2.1rem;
-    line-height: 0.95;
-    text-transform: uppercase;
-    color: var(--burgundy);
-  }
-
-  .resource-tag {
-    display: inline-block;
-    margin-bottom: 12px;
-    padding: 6px 10px;
-    border-radius: 999px;
-    background: rgba(128, 69, 95, 0.12);
-    color: var(--plum);
-    font-size: 0.78rem;
-    text-transform: uppercase;
-    letter-spacing: 0.12em;
-  }
-
-  .resource-list {
+  .download-list {
     margin: 0;
     padding-left: 18px;
   }
 
-  .resource-list li + li {
+  .download-list li + li {
     margin-top: 8px;
   }
 
-  .logo-overview {
-    display: grid;
-    gap: 18px;
-  }
-
-  .logo-primary-card,
-  .logo-variants-card,
-  .logo-city-card {
-    border-radius: 24px;
-    padding: 24px;
-    border: 1px solid var(--line);
-    background: var(--white);
-  }
-
-  .logo-primary-layout {
-    display: grid;
-    grid-template-columns: 1.2fr 0.8fr;
-    gap: 18px;
-    align-items: center;
-  }
-
-  .logo-primary-visual {
-    position: relative;
-    min-height: 360px;
-    border-radius: 24px;
-    overflow: hidden;
-    background: var(--cream);
-    display: flex;
+  .download-link {
+    display: inline-flex;
     align-items: center;
     justify-content: center;
-    padding: 24px;
-  }
-
-  .logo-primary-visual img {
-    width: min(100%, 860px);
-    height: auto;
-  }
-
-  .city-arc {
-    position: absolute;
-    left: 34px;
-    top: 30px;
-    width: 230px;
-    height: 170px;
-    pointer-events: none;
-  }
-
-  .city-arc span {
-    position: absolute;
-    left: 50%;
-    bottom: 0;
-    transform-origin: 0 130px;
-    font-family: "League Gothic", sans-serif;
-    font-size: 2.2rem;
-    color: var(--burgundy);
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-  }
-
-  .city-arc span:nth-child(1) { transform: rotate(-66deg); }
-  .city-arc span:nth-child(2) { transform: rotate(-50deg); }
-  .city-arc span:nth-child(3) { transform: rotate(-34deg); }
-  .city-arc span:nth-child(4) { transform: rotate(-18deg); }
-  .city-arc span:nth-child(5) { transform: rotate(-2deg); }
-  .city-arc span:nth-child(6) { transform: rotate(14deg); }
-  .city-arc span:nth-child(7) { transform: rotate(30deg); }
-
-  .logo-primary-copy h3,
-  .logo-variants-card h3,
-  .logo-city-card h3 {
-    margin: 0 0 10px;
-    font-family: "League Gothic", sans-serif;
-    font-size: 2.6rem;
-    line-height: 0.95;
-    letter-spacing: 0.03em;
-    text-transform: uppercase;
-    color: var(--burgundy);
-  }
-
-  .logo-primary-copy p,
-  .logo-city-card p {
-    margin: 0 0 12px;
-  }
-
-  .variants-grid {
-    display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 16px;
-    margin-top: 18px;
-  }
-
-  .variant {
-    border-radius: 20px;
-    overflow: hidden;
-    border: 1px solid var(--line);
-    background: var(--white);
-  }
-
-  .variant-visual {
-    min-height: 210px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 18px;
-  }
-
-  .variant-visual.dark {
-    background: var(--burgundy);
-  }
-
-  .variant-visual.cream {
-    background: var(--cream);
-  }
-
-  .variant-visual.image-bg {
-    background: #ede3d0;
-  }
-
-  .variant-visual.soft-plum {
-    background: linear-gradient(180deg, #efe5df, #dcc7d1);
-  }
-
-  .variant-copy {
-    padding: 16px 18px 18px;
-  }
-
-  .variant-copy strong {
-    display: block;
-    color: var(--burgundy);
-    margin-bottom: 8px;
-  }
-
-  .city-examples {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 16px;
-    margin-top: 18px;
-  }
-
-  .city-example {
-    padding: 18px;
-    border-radius: 18px;
-    border: 1px solid var(--line);
-    background: linear-gradient(180deg, rgba(235, 226, 205, 0.72), rgba(255, 255, 255, 0.9));
-  }
-
-  .city-example .city-name {
-    margin-top: 10px;
-    font-size: 0.95rem;
-    text-transform: uppercase;
-    letter-spacing: 0.32em;
-    color: var(--charcoal);
-  }
-
-  .city-example .logo-example-wordmark {
-    font-size: clamp(2.9rem, 4vw, 4.6rem);
-  }
-
-  .download-actions {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
     margin-top: 14px;
+    padding: 12px 18px;
+    border-radius: 999px;
+    background: var(--burgundy);
+    border: 1px solid var(--burgundy);
+    color: var(--cream);
+    text-decoration: none;
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    box-shadow: 0 12px 24px rgba(77, 9, 33, 0.16);
   }
 
-  .contact-grid {
+  .download-link:hover,
+  .download-link:focus-visible {
+    background: #6a1834;
+    border-color: #6a1834;
+    color: var(--white);
+  }
+
+  .support-grid {
     grid-template-columns: 1.1fr 0.9fr;
-  }
-
-  .contact-box {
-    background: linear-gradient(180deg, rgba(77, 9, 33, 0.04), rgba(235, 226, 205, 0.56));
-  }
-
-  .contact-box a {
-    color: var(--burgundy);
-    font-weight: 700;
-    text-decoration-thickness: 2px;
-    text-underline-offset: 3px;
   }
 
   .footer-note {
     padding: 0 0 44px;
-    color: rgba(23, 19, 19, 0.68);
+    color: rgba(26, 22, 22, 0.66);
     font-size: 0.92rem;
   }
 
-  .footer-note .page-shell {
+  .footer-note .shell {
     border-top: 1px solid var(--line);
     padding-top: 20px;
   }
 
   @media (max-width: 980px) {
     .hero-grid,
-    .principles-grid,
-    .palette-grid,
-    .type-grid,
-    .logos-grid,
-    .resource-grid,
-    .contact-grid,
-    .logo-primary-layout,
-    .variants-grid,
-    .city-examples {
+    .grid-2,
+    .grid-3,
+    .downloads-grid,
+    .support-grid,
+    .city-guidance {
       grid-template-columns: 1fr;
     }
 
-    .logo-showcase {
-      grid-template-columns: 1fr;
+    .city-stage {
+      min-height: 360px;
+    }
+
+    .city-arc {
+      left: 20px;
+      top: 48px;
+      transform: scale(0.78);
+      transform-origin: top left;
     }
   }
 
-  @media (max-width: 640px) {
+  @media (max-width: 680px) {
     .topbar-inner {
-      align-items: flex-start;
       flex-direction: column;
-    }
-
-    .hero {
-      padding-top: 14px;
+      align-items: flex-start;
     }
 
     .hero-card,
-    .section-frame {
+    .section-frame,
+    .toc-frame {
       padding: 22px;
     }
 
-    .hero-card {
-      min-height: auto;
+    .city-stage {
+      padding: 20px;
+      border-width: 12px;
+      min-height: 280px;
     }
 
-    .city-grid {
-      grid-template-columns: 1fr;
+    .city-arc {
+      left: 10px;
+      top: 24px;
+      transform: scale(0.5);
     }
   }
 </style>
@@ -739,10 +538,10 @@
 <body>
 <main>
   <section class="topbar">
-    <div class="page-shell">
+    <div class="shell">
       <div class="topbar-inner">
         <div>
-          <div class="topbar-note">Private internal resource</div>
+          <div class="eyebrow">Private internal resource</div>
           <div class="topbar-title">March for Jesus Europe</div>
         </div>
         <div class="topbar-note">Share directly with organisers and partner teams</div>
@@ -751,29 +550,25 @@
   </section>
 
   <section class="hero">
-    <div class="page-shell">
+    <div class="shell">
       <div class="hero-card">
         <div class="hero-grid">
           <div class="hero-copy">
-            <div class="eyebrow">Private Resource Hub</div>
-            <h1>Brand &amp; Resource Guide</h1>
-            <p>This page has been prepared as a professional, shareable reference for March for Jesus organisers across Europe. It combines the current Belfast brand direction with a practical documentation set that other cities can adapt for local delivery.</p>
-            <p>The goal is not uniformity for its own sake, but clarity, trust and recognisability. A more consistent presentation across Europe would make the movement feel stronger, more established and easier to understand at a glance.</p>
+            <div class="eyebrow">Brand &amp; Resource Guide</div>
+            <h1>March for Jesus Europe</h1>
+            <p>This page is intended as a private reference for March for Jesus organisers across Europe. It brings together the approved brand direction, the city naming recommendation and the Belfast planning documents that other cities can adapt locally.</p>
+            <p>The central aim is consistency. If marches across Europe stay close to the same visual language, the movement will feel more established, more recognisable and more clearly connected from city to city.</p>
             <div class="hero-actions">
-              <a class="hero-note" href="mailto:information@marchforjesus.co.uk">
-                <span>Questions or file requests</span>
-                <strong>information@marchforjesus.co.uk</strong>
-              </a>
+              <a class="hero-pill" href="mailto:information@marchforjesus.co.uk">Questions or file requests: information@marchforjesus.co.uk</a>
             </div>
           </div>
           <aside class="hero-panel">
-            <div class="section-label">Included in this guide</div>
-            <h2>Brand system and operational templates</h2>
+            <h2>What this guide covers</h2>
             <ul>
-              <li>Brand principles, colour palette and typography direction.</li>
-              <li>Recommended logo structure for adding city names consistently.</li>
-              <li>Operational documents based on the Belfast planning pack.</li>
-              <li>A direct contact point for questions and editable asset access.</li>
+              <li>The approved logo direction for public-facing use.</li>
+              <li>The recommended way to add city names to the mark.</li>
+              <li>The core brand palette and typography direction.</li>
+              <li>The Belfast planning documents available for download.</li>
             </ul>
           </aside>
         </div>
@@ -782,59 +577,102 @@
   </section>
 
   <section class="toc">
-    <div class="page-shell">
+    <div class="shell">
       <div class="toc-frame">
-        <div class="section-label">Quick Navigation</div>
+        <div class="eyebrow">Quick navigation</div>
         <div class="toc-links">
-          <a class="toc-link" href="#consistency">Why consistency matters</a>
-          <a class="toc-link" href="#palette">Colour palette</a>
-          <a class="toc-link" href="#typography">Typography</a>
-          <a class="toc-link" href="#logos">Logo system</a>
+          <a class="toc-link" href="#brand">Brand direction</a>
+          <a class="toc-link" href="#city">City naming</a>
+          <a class="toc-link" href="#palette">Palette</a>
           <a class="toc-link" href="#downloads">Downloads</a>
-          <a class="toc-link" href="#contact-support">Questions and access</a>
+          <a class="toc-link" href="#support">Questions and access</a>
         </div>
       </div>
     </div>
   </section>
 
-  <section class="content-section" id="consistency">
-    <div class="page-shell">
+  <section class="section" id="brand">
+    <div class="shell">
       <div class="section-frame">
-        <div class="section-label">Shared Direction</div>
-        <h2 class="section-heading">Why consistency matters</h2>
-        <p class="section-intro">A recognisable Europe-wide identity helps each local march feel connected to a wider movement. When logos, colours, fonts and naming conventions stay aligned, the public sees one mission expressed in many cities rather than unrelated local campaigns.</p>
-        <div class="section-summary">The recommendation is simple: adapt locally, but stay visibly connected. Consistency will strengthen credibility, help materials travel well across borders and make the movement easier for churches, councils, media and the public to recognise.</div>
-        <div class="principles-grid">
-          <article class="principle-card">
-            <strong>One family, many cities</strong>
-            <p>Local marches should feel rooted in their own place while clearly belonging to the same March for Jesus movement.</p>
+        <div class="eyebrow">Approved direction</div>
+        <h2>Brand direction</h2>
+        <p class="section-intro">This section focuses only on the approved direction rather than the earlier internal exploration. The full March for Jesus lockup is the lead identity, while the stacked MFJ mark is the secondary version for tighter spaces and supporting applications.</p>
+        <div class="grid-2">
+          <article class="card logo-card">
+            <div class="logo-stage cream-frame">
+              <img src="../images/mfjlogo1.png" alt="Approved March for Jesus primary lockup">
+            </div>
+            <div class="logo-caption">
+              <h3>Primary lockup</h3>
+              <p>This is the main public-facing mark. It should be used for official presentations, guidance pages, headers and other formal applications where the full March for Jesus identity needs to be seen clearly.</p>
+            </div>
           </article>
-          <article class="principle-card">
-            <strong>Keep the style simple</strong>
-            <p>Use the core palette, strong headline typography and uncluttered layouts so materials stay bold and easy to recognise.</p>
-          </article>
-          <article class="principle-card">
-            <strong>Adapt, do not redesign</strong>
-            <p>The recommendation is to localise the existing system rather than creating a new logo language for every city.</p>
+          <article class="card logo-card">
+            <div class="stacked-stage">
+              <img src="../images/Stacked logo.png" alt="Stacked MFJ secondary mark">
+            </div>
+            <div class="logo-caption">
+              <h3>Secondary stacked mark</h3>
+              <p>This is the compact MFJ version for profile imagery, supporting brand blocks, social avatars and other tighter placements where the full lockup would be too wide.</p>
+            </div>
           </article>
         </div>
       </div>
     </div>
   </section>
 
-  <section class="content-section" id="palette">
-    <div class="page-shell">
+  <section class="section" id="city">
+    <div class="shell">
       <div class="section-frame">
-        <div class="section-label">Brand Guidelines</div>
-        <h2 class="section-heading">Colour palette</h2>
-        <p class="section-intro">The current direction centres on burgundy, cream and plum, supported by black, white and a dark charcoal. Together they create a visual identity that feels grounded, established and distinctive across print, digital and event environments.</p>
-        <div class="palette-grid">
+        <div class="eyebrow">City naming recommendation</div>
+        <h2>Add the city, keep the identity</h2>
+        <p class="section-intro">The recommendation for other Marches for Jesus across Europe is to keep the same brand structure and add the city name in a consistent supporting position. This is the clearest way to strengthen one shared identity across many cities.</p>
+        <div class="city-stage">
+          <div class="city-arc" aria-hidden="true">
+            <span>B</span>
+            <span>E</span>
+            <span>L</span>
+            <span>F</span>
+            <span>A</span>
+            <span>S</span>
+            <span>T</span>
+          </div>
+          <img src="../images/mfjlogo1.png" alt="Recommended Belfast city application">
+        </div>
+        <div class="city-guidance">
+          <div class="mini-card">
+            <strong>Suggested use</strong>
+            <p>Keep the March for Jesus mark as the main brand expression. Add the city name as a supporting location element rather than replacing or redesigning the mark.</p>
+          </div>
+          <div class="mini-card">
+            <strong>Why it matters</strong>
+            <p>If teams across Europe stay close to the same branding style, the movement will feel more unified, more recognisable and more credible to the public.</p>
+          </div>
+          <div class="mini-card">
+            <strong>Examples</strong>
+            <p>March for Jesus Belfast, March for Jesus Dublin, March for Jesus Paris and March for Jesus Madrid can all follow the same family of branding.</p>
+          </div>
+          <div class="mini-card">
+            <strong>Recommendation</strong>
+            <p>Avoid creating unrelated local colour systems or entirely new wordmarks unless there is a very strong agreed reason to do so.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="palette">
+    <div class="shell">
+      <div class="section-frame">
+        <div class="eyebrow">Core palette</div>
+        <h2>Colour palette</h2>
+        <p class="section-intro">The approved brand direction centres on burgundy and cream, supported by plum, charcoal, black and white. These colours give the identity warmth, consistency and strong contrast across digital and print applications.</p>
+        <div class="grid-3">
           <article class="swatch">
             <div class="swatch-sample" style="background:#4D0921;"></div>
             <div class="swatch-copy">
               <strong>Burgundy</strong>
               <p><code>#4D0921</code></p>
-              <p>Primary brand anchor for buttons, title blocks, callouts and logo backplates.</p>
             </div>
           </article>
           <article class="swatch">
@@ -842,7 +680,6 @@
             <div class="swatch-copy">
               <strong>Cream</strong>
               <p><code>#EBE2CD</code></p>
-              <p>Warm neutral for backgrounds, text reversal and lighter applications.</p>
             </div>
           </article>
           <article class="swatch">
@@ -850,7 +687,6 @@
             <div class="swatch-copy">
               <strong>Plum</strong>
               <p><code>#80455F</code></p>
-              <p>Secondary accent for supporting panels, dividers and softer emphasis.</p>
             </div>
           </article>
           <article class="swatch">
@@ -858,7 +694,6 @@
             <div class="swatch-copy">
               <strong>Black</strong>
               <p><code>#000000</code></p>
-              <p>Use sparingly for contrast, photography overlays and monochrome logo versions.</p>
             </div>
           </article>
           <article class="swatch">
@@ -866,7 +701,6 @@
             <div class="swatch-copy">
               <strong>White</strong>
               <p><code>#FFFFFF</code></p>
-              <p>Useful for clean space, reversed text and presentation layouts.</p>
             </div>
           </article>
           <article class="swatch">
@@ -874,7 +708,6 @@
             <div class="swatch-copy">
               <strong>Charcoal</strong>
               <p><code>#3C3333</code></p>
-              <p>Preferred dark neutral for body text, outlines and supporting copy.</p>
             </div>
           </article>
         </div>
@@ -882,227 +715,87 @@
     </div>
   </section>
 
-  <section class="content-section" id="typography">
-    <div class="page-shell">
+  <section class="section" id="downloads">
+    <div class="shell">
       <div class="section-frame">
-        <div class="section-label">Brand Guidelines</div>
-        <h2 class="section-heading">Typography</h2>
-        <p class="section-intro">The Belfast reference uses a condensed headline style paired with a typewriter-inspired body font. That pairing gives the brand both strength and character while keeping practical information clear.</p>
-        <div class="type-grid">
-          <article class="type-card">
-            <strong>Headline recommendation</strong>
-            <p class="display-preview">March For Jesus</p>
-            <p>Use <strong>League Gothic</strong> or a very similar condensed headline face for titles, hero moments, signage and key campaign statements.</p>
-          </article>
-          <article class="type-card">
-            <strong>Body copy recommendation</strong>
-            <p class="body-preview">March for Jesus brings churches and Christians together in worship, prayer and public witness. Supporting copy should feel direct, legible and practical.</p>
-            <p>The reference file calls for <strong>Lumios Typewriter New</strong>. Where that is not available online, use a close monospaced alternative while preserving the same tone and hierarchy.</p>
-          </article>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="content-section" id="logos">
-    <div class="page-shell">
-      <div class="section-frame">
-        <div class="section-label">Logo Guidance</div>
-        <h2 class="section-heading">Approved logo system</h2>
-        <p class="section-intro">The examples below reflect the approved March for Jesus identity: the full March for Jesus lockup as the lead mark, colour iterations as supporting variants, the stacked MFJ mark as the secondary lockup, and the city naming treatment shown in the later Canva examples.</p>
-        <div class="logo-overview">
-          <div class="logo-primary-card">
-            <div class="logo-primary-layout">
-              <div class="logo-primary-visual">
-                <div class="city-arc" aria-hidden="true">
-                  <span>B</span>
-                  <span>E</span>
-                  <span>L</span>
-                  <span>F</span>
-                  <span>A</span>
-                  <span>S</span>
-                  <span>T</span>
-                </div>
-                <img src="../images/mfjlogo1.png" alt="March for Jesus primary logo on cream background">
-              </div>
-              <div class="logo-primary-copy">
-                <h3>Primary lockup</h3>
-                <p>The full March for Jesus logo should remain the lead expression of the identity, with the city name added in a consistent supporting position rather than creating a separate local brand.</p>
-                <p>The Belfast example shown here is intended to reflect the approved city application style from the later Canva slides, without exposing the earlier internal design exploration.</p>
-              </div>
-            </div>
-          </div>
-
-          <div class="logo-variants-card">
-            <h3>Approved supporting variants</h3>
-            <p>These supporting treatments correspond to the approved brand family shown in Canva: colour iterations for the main mark and the stacked MFJ version for tighter spaces.</p>
-            <div class="variants-grid">
-              <div class="variant">
-                <div class="variant-visual cream">
-                  <img src="../images/mfjlogo1.png" alt="Full March for Jesus logo on cream">
-                </div>
-                <div class="variant-copy">
-                  <strong>Primary full lockup</strong>
-                  <p>Use for formal presentations, guideline pages and light-background applications.</p>
-                </div>
-              </div>
-              <div class="variant">
-                <div class="variant-visual dark">
-                  <img src="../images/Stacked logo.png" alt="Stacked MFJ mark on burgundy">
-                </div>
-                <div class="variant-copy">
-                  <strong>Stacked MFJ on burgundy</strong>
-                  <p>One of the stronger secondary applications for profile use, badges and tighter spaces.</p>
-                </div>
-              </div>
-              <div class="variant">
-                <div class="variant-visual soft-plum">
-                  <img src="../images/Stacked logo.png" alt="Stacked MFJ mark on light variant background">
-                </div>
-                <div class="variant-copy">
-                  <strong>Stacked MFJ colour iteration</strong>
-                  <p>Shows how the secondary mark can live across approved palette variations while staying recognisably MFJ.</p>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="logo-city-card">
-            <h3>Recommended city application</h3>
-            <p>The recommendation for other marches across Europe is to keep the same branding style and add the city name in a clear, repeatable way. The more closely teams stay aligned to the same structure, the stronger the Europe-wide identity will become.</p>
-            <div class="city-examples">
-              <div class="city-example">
-                <div class="logo-example-wordmark">March For Jesus</div>
-                <div class="city-name">Belfast</div>
-              </div>
-              <div class="city-example">
-                <div class="logo-example-wordmark">March For Jesus</div>
-                <div class="city-name">Dublin</div>
-              </div>
-            </div>
-            <div class="city-grid">
-              <div class="city-card">
-                <strong>Suggested structure</strong>
-                <p>Keep <em>March for Jesus</em> as the main brand expression. Add the city name underneath or alongside as a supporting location line, not as a replacement brand.</p>
-              </div>
-              <div class="city-card">
-                <strong>What this achieves</strong>
-                <p>It keeps communication connected across borders, builds recognition faster and avoids fragmented local branding.</p>
-              </div>
-              <div class="city-card">
-                <strong>Examples</strong>
-                <p>March for Jesus Belfast, March for Jesus Dublin, March for Jesus Paris and March for Jesus Madrid.</p>
-              </div>
-              <div class="city-card">
-                <strong>Recommendation</strong>
-                <p>Avoid introducing unrelated colour systems, icons or wordmarks for each city unless there is a strong agreed reason to do so.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="content-section" id="downloads">
-    <div class="page-shell">
-      <div class="section-frame">
-        <div class="section-label">Shared Documentation</div>
-        <h2 class="section-heading">Planning pack for other cities</h2>
-        <p class="section-intro">Alongside the brand guidance, this hub also points organisers to the key operational documents used in Belfast. These can be adapted locally by other Marches for Jesus across Europe as working templates.</p>
-        <div class="section-summary">These documents should be treated as a strong operational starting point rather than a final legal or regulatory pack. Each city should review and amend them in line with local permissions, venue requirements, health and safety expectations and route conditions.</div>
-        <div class="resource-grid">
-          <article class="resource-card">
-            <div class="resource-tag">Core planning</div>
+        <div class="eyebrow">Shared documentation</div>
+        <h2>Downloads</h2>
+        <p class="section-intro">The files below come directly from the Belfast planning pack and are available here as downloadable working documents for other March for Jesus teams across Europe.</p>
+        <div class="section-note">These files should be adapted to local requirements. Each city should review them in line with local permissions, route planning, health and safety requirements and venue expectations.</div>
+        <div class="downloads-grid">
+          <article class="download-card">
             <h3>General risk assessment</h3>
             <p><strong>File:</strong> MFJ Belfast General Risk Assessment.docx</p>
-            <ul class="resource-list">
-              <li>General planning risk framework.</li>
-              <li>Useful before city-specific route detail is added.</li>
+            <ul class="download-list">
+              <li>General event-wide planning framework.</li>
+              <li>Useful before route-specific detail is added.</li>
             </ul>
-            <div class="download-actions">
-              <a class="download-link" href="downloads/MFJ Belfast General Risk Assessment.docx" download>Download file</a>
-            </div>
+            <a class="download-link" href="downloads/MFJ Belfast General Risk Assessment.docx" download>Download file</a>
           </article>
-          <article class="resource-card">
-            <div class="resource-tag">Volunteers</div>
+          <article class="download-card">
             <h3>Marshals guidelines</h3>
             <p><strong>File:</strong> MFJ Belfast Marshals Guidelines.docx</p>
-            <ul class="resource-list">
-              <li>Stewarding and safety responsibilities.</li>
-              <li>On-the-day conduct for volunteer marshals.</li>
+            <ul class="download-list">
+              <li>Volunteer stewarding responsibilities.</li>
+              <li>On-the-day safety guidance.</li>
             </ul>
-            <div class="download-actions">
-              <a class="download-link" href="downloads/MFJ Belfast Marshals Guidelines.docx" download>Download file</a>
-            </div>
+            <a class="download-link" href="downloads/MFJ Belfast Marshals Guidelines.docx" download>Download file</a>
           </article>
-          <article class="resource-card">
-            <div class="resource-tag">Operations</div>
+          <article class="download-card">
             <h3>Master event plan</h3>
             <p><strong>File:</strong> MFJ Belfast Master Event Plan.docx</p>
-            <ul class="resource-list">
-              <li>Overall event coordination document.</li>
-              <li>Timing, roles, approvals and infrastructure planning.</li>
+            <ul class="download-list">
+              <li>Overall timing, roles and delivery planning.</li>
+              <li>Useful as the main coordination document.</li>
             </ul>
-            <div class="download-actions">
-              <a class="download-link" href="downloads/MFJ Belfast Master Event Plan.docx" download>Download file</a>
-            </div>
+            <a class="download-link" href="downloads/MFJ Belfast Master Event Plan.docx" download>Download file</a>
           </article>
-          <article class="resource-card">
-            <div class="resource-tag">Venue specific</div>
+          <article class="download-card">
             <h3>City Hall risk assessment</h3>
             <p><strong>File:</strong> MFJ Belfast Risk Assessment (City Hall).xlsx</p>
-            <ul class="resource-list">
-              <li>Venue-specific operational assessment.</li>
-              <li>Useful for council-facing planning conversations.</li>
+            <ul class="download-list">
+              <li>Venue-specific planning and control measures.</li>
+              <li>Useful for council-facing conversations.</li>
             </ul>
-            <div class="download-actions">
-              <a class="download-link" href="downloads/MFJ Belfast Risk Asessment (City Hall).xlsx" download>Download file</a>
-            </div>
+            <a class="download-link" href="downloads/MFJ Belfast Risk Asessment (City Hall).xlsx" download>Download file</a>
           </article>
-          <article class="resource-card">
-            <div class="resource-tag">Route specific</div>
+          <article class="download-card">
             <h3>Event route risk assessment</h3>
             <p><strong>File:</strong> MFJ Belfast Risk Assessment (Event Route).xlsx</p>
-            <ul class="resource-list">
-              <li>Route-level planning for procession movement.</li>
-              <li>Crossing points, traffic interfaces and public safety controls.</li>
+            <ul class="download-list">
+              <li>Route-level planning and movement controls.</li>
+              <li>Useful for crossings, stewarding and public safety.</li>
             </ul>
-            <div class="download-actions">
-              <a class="download-link" href="downloads/MFJ Belfast Risk Asessment (Event Route).xlsx" download>Download file</a>
-            </div>
+            <a class="download-link" href="downloads/MFJ Belfast Risk Asessment (Event Route).xlsx" download>Download file</a>
           </article>
-          <article class="resource-card">
-            <div class="resource-tag">Production</div>
+          <article class="download-card">
             <h3>Stage plan</h3>
             <p><strong>File:</strong> MFJ Belfast Stage Plan.docx</p>
-            <ul class="resource-list">
+            <ul class="download-list">
               <li>Stage layout and production logistics.</li>
-              <li>Equipment placement and platform management.</li>
+              <li>Useful for platform and equipment planning.</li>
             </ul>
-            <div class="download-actions">
-              <a class="download-link" href="downloads/MFJ Belfast Stage Plan.docx" download>Download file</a>
-            </div>
+            <a class="download-link" href="downloads/MFJ Belfast Stage Plan.docx" download>Download file</a>
           </article>
         </div>
       </div>
     </div>
   </section>
 
-  <section class="content-section" id="contact-support">
-    <div class="page-shell">
+  <section class="section" id="support">
+    <div class="shell">
       <div class="section-frame">
-        <div class="section-label">Support</div>
-        <h2 class="section-heading">Questions and access</h2>
-        <div class="contact-grid">
-          <article class="contact-box">
+        <div class="eyebrow">Questions and access</div>
+        <h2>Questions and access</h2>
+        <div class="support-grid">
+          <article class="support-card">
             <h3>Need the editable files?</h3>
-            <p>If a local March for Jesus team would like the working files, templates or support adapting these resources for their own city, please get in touch by email.</p>
+            <p>If a local March for Jesus team would like the working assets or has questions about either the brand guidance or the documentation, please get in touch by email.</p>
             <p><strong>Email:</strong> <a href="mailto:information@marchforjesus.co.uk">information@marchforjesus.co.uk</a></p>
           </article>
-          <article class="contact-box">
-            <h3>Suggested use</h3>
-            <p>Use this guide as a shared foundation, then tailor the operational documents to your city, permissions process and local event requirements while keeping the visual identity as aligned as possible.</p>
+          <article class="support-card">
+            <h3>How to use this pack</h3>
+            <p>Use this guide as a shared foundation, then tailor the operational documents to your city while keeping the visual identity as aligned as possible with the approved March for Jesus brand direction.</p>
           </article>
         </div>
       </div>
@@ -1110,7 +803,7 @@
   </section>
 
   <section class="footer-note">
-    <div class="page-shell">
+    <div class="shell">
       <p>This page is intended for direct sharing rather than public navigation. Please circulate it only with relevant organisers, local leadership teams and approved delivery partners.</p>
     </div>
   </section>
