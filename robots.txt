@@ -1,0 +1,2 @@
+User-agent: *
+Disallow: /shared-europe-brand-pack-x7h3/
