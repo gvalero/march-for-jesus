@@ -689,6 +689,71 @@ color:#4D0921;
   line-height: 1.5;
 }
 
+/* Posters Section */
+.posters-section {
+  background: #f4efe6;
+  text-align: center;
+}
+
+.posters-section h2 {
+  font-size: 60px;
+  color: #4D0921;
+}
+
+.posters-subtitle {
+  font-family: 'Inter', sans-serif;
+  color: #555;
+  margin-bottom: 40px;
+}
+
+.posters-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 30px;
+}
+
+.poster-card {
+  background: white;
+  padding: 16px;
+  border-radius: 8px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.poster-card img {
+  width: 100%;
+  border-radius: 6px;
+}
+
+.poster-actions {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  margin-top: 16px;
+}
+
+/* Outline button */
+.btn-outline {
+  border: 2px solid #4D0921;
+  color: #4D0921;
+  padding: 10px 24px;
+  text-decoration: none;
+  font-family: 'Space Mono', monospace;
+  font-weight: 600;
+  transition: all .3s ease;
+}
+
+.btn-outline:hover {
+  background: #4D0921;
+  color: white;
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .posters-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
 /* Schedule Section */
 .schedule {
   background: var(--burgundy);
