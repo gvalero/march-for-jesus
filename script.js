@@ -44,7 +44,25 @@ document.addEventListener("DOMContentLoaded", function () {
 
 	const menuToggle = document.querySelector(".menu-toggle");
 	const menu = document.querySelector(".menu");
+	const nav = document.querySelector(".nav");
+	const backToTop = document.querySelector(".back-to-top");
 	const submenuParents = document.querySelectorAll(".menu .has-submenu > a");
+
+	if (nav || backToTop) {
+		window.addEventListener("scroll", function () {
+			if (nav && window.scrollY > 50) {
+				nav.classList.add("scrolled");
+			} else if (nav) {
+				nav.classList.remove("scrolled");
+			}
+
+			if (backToTop && window.scrollY > 250) {
+				backToTop.classList.add("show");
+			} else if (backToTop) {
+				backToTop.classList.remove("show");
+			}
+		});
+	}
 
 	if (menuToggle && menu) {
 		submenuParents.forEach(function (toggle) {
@@ -163,6 +181,32 @@ document.addEventListener("DOMContentLoaded", function () {
 
 		document.querySelectorAll(".animate").forEach(function (el) {
 			sectionObserver.observe(el);
+		});
+	}
+
+	const scheduleItems = document.querySelectorAll(".schedule-grid > div");
+	if (scheduleItems.length) {
+		scheduleItems.forEach(function (item) {
+			item.setAttribute("tabindex", "0");
+			item.setAttribute("role", "button");
+			item.setAttribute("aria-pressed", "false");
+
+			function activateItem() {
+				scheduleItems.forEach(function (other) {
+					other.classList.remove("is-active");
+					other.setAttribute("aria-pressed", "false");
+				});
+				item.classList.add("is-active");
+				item.setAttribute("aria-pressed", "true");
+			}
+
+			item.addEventListener("click", activateItem);
+			item.addEventListener("keydown", function (event) {
+				if (event.key === "Enter" || event.key === " ") {
+					event.preventDefault();
+					activateItem();
+				}
+			});
 		});
 	}
 });
