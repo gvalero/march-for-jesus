@@ -1,0 +1,35 @@
+User-agent: *
+Disallow: /shared-europe-brand-pack-x7h3/
+Disallow: /screenshots/
+Disallow: /worker/
+Disallow: /node_modules/
+
+Sitemap: https://marchforjesus.co.uk/sitemap.xml
+
+# AI Crawlers — explicitly allowed
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Amazonbot
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: Bytespider
+Allow: /
+
+User-agent: cohere-ai
+Allow: /

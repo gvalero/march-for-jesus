@@ -250,7 +250,14 @@ if (emailForm) {
         }).then(function(response) {
             if (response.ok) {
                 if (typeof gtag === 'function') {
-                    gtag('event', 'generate_lead', { event_category: 'signup', event_label: 'email_signup' });
+                    gtag('event', 'form_submission', {
+                        form_id: 'email_signup',
+                        form_name: 'Email Signup',
+                        form_destination: 'mailerlite'
+                    });
+                    gtag('event', 'generate_lead', {
+                        method: 'email_signup'
+                    });
                 }
                 btn.textContent = 'Thank you!';
                 emailForm.reset();
@@ -293,7 +300,14 @@ if (contactForm) {
         }).then(function(response) {
             if (response.ok) {
                 if (typeof gtag === 'function') {
-                    gtag('event', 'contact', { event_category: 'engagement', event_label: 'contact_form' });
+                    gtag('event', 'form_submission', {
+                        form_id: 'contact_form',
+                        form_name: 'Contact Form',
+                        form_destination: 'mailerlite'
+                    });
+                    gtag('event', 'generate_lead', {
+                        method: 'contact_form'
+                    });
                 }
                 btn.textContent = 'Sent!';
                 contactForm.reset();
