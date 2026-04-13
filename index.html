@@ -298,6 +298,10 @@
 <a href="#support">Support</a>
 </li>
 
+<li>
+<a href="shop.html">Shop</a>
+</li>
+
 <li class="dropdown has-submenu">
 <a href="#contact">Contact</a>
 <ul class="dropdown-menu">
@@ -485,13 +489,13 @@ Christ in the heart of Belfast.
 </a>
 
 <a class="launch-card" href="https://maps.google.com/?q=BT48+7AJ" target="_blank" rel="noopener noreferrer">
-  <div class="launch-county">County Londonderry</div>
+  <div class="launch-county">County Derry/Londonderry</div>
   <div class="launch-date"><i class="fa-regular fa-calendar"></i> Sunday 26th April</div>
   <div class="launch-time"><i class="fa-regular fa-clock"></i> 7.30pm</div>
   <h3>Island Church</h3>
   <p class="launch-address">
     <i class="fa-solid fa-location-dot"></i>
-    BT48 7AJ
+    Strand Rd, Londonderry, BT48 7AJ
   </p>
 </a>
 
@@ -1071,6 +1075,19 @@ on your windshield on the event day.
 <a href="#top" class="back-to-top">↑</a>
 
 <script src="script.js"></script>
+
+<script>
+// Auto-refresh page when user returns to the tab after being away
+document.addEventListener("visibilitychange", function () {
+  if (!document.hidden) {
+    // Page becomes visible - user has returned to the tab
+    // Refresh after a short delay to ensure smooth transition
+    setTimeout(function () {
+      location.reload();
+    }, 500);
+  }
+});
+</script>
 
 </body>
 </html>
