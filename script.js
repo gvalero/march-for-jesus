@@ -221,6 +221,92 @@ if (galleryToggle && galleryGrid) {
     });
 }
 
+// --- Gallery Lightbox ---
+var galleryLinks = document.querySelectorAll('.gallery-grid a');
+var galleryLightbox = document.getElementById('galleryLightbox');
+var galleryLightboxImage = document.getElementById('galleryLightboxImage');
+var galleryLightboxClose = document.getElementById('galleryLightboxClose');
+var galleryLightboxPrev = document.getElementById('galleryLightboxPrev');
+var galleryLightboxNext = document.getElementById('galleryLightboxNext');
+var galleryCurrentIndex = 0;
+
+if (galleryLinks.length && galleryLightbox && galleryLightboxImage) {
+	function updateGalleryLightboxImage(index) {
+		var total = galleryLinks.length;
+		galleryCurrentIndex = (index + total) % total;
+		var link = galleryLinks[galleryCurrentIndex];
+		var source = link.getAttribute('href');
+		var image = link.querySelector('img');
+		var alt = image ? (image.getAttribute('alt') || '') : '';
+		galleryLightboxImage.setAttribute('src', source);
+		galleryLightboxImage.setAttribute('alt', alt);
+	}
+
+	function openGalleryLightbox(index) {
+		updateGalleryLightboxImage(index);
+		galleryLightbox.classList.add('open');
+		document.body.style.overflow = 'hidden';
+	}
+
+	function closeGalleryLightbox() {
+		galleryLightbox.classList.remove('open');
+		document.body.style.overflow = '';
+	}
+
+	function showPreviousGalleryImage() {
+		updateGalleryLightboxImage(galleryCurrentIndex - 1);
+	}
+
+	function showNextGalleryImage() {
+		updateGalleryLightboxImage(galleryCurrentIndex + 1);
+	}
+
+	galleryLinks.forEach(function(link, index) {
+		link.addEventListener('click', function(event) {
+			event.preventDefault();
+			openGalleryLightbox(index);
+		});
+	});
+
+	if (galleryLightboxClose) {
+		galleryLightboxClose.addEventListener('click', closeGalleryLightbox);
+	}
+
+	if (galleryLightboxPrev) {
+		galleryLightboxPrev.addEventListener('click', function(event) {
+			event.stopPropagation();
+			showPreviousGalleryImage();
+		});
+	}
+
+	if (galleryLightboxNext) {
+		galleryLightboxNext.addEventListener('click', function(event) {
+			event.stopPropagation();
+			showNextGalleryImage();
+		});
+	}
+
+	galleryLightbox.addEventListener('click', function(event) {
+		if (event.target === galleryLightbox) {
+			closeGalleryLightbox();
+		}
+	});
+
+	document.addEventListener('keydown', function(event) {
+		if (!galleryLightbox.classList.contains('open')) {
+			return;
+		}
+
+		if (event.key === 'Escape') {
+			closeGalleryLightbox();
+		} else if (event.key === 'ArrowLeft') {
+			showPreviousGalleryImage();
+		} else if (event.key === 'ArrowRight') {
+			showNextGalleryImage();
+		}
+	});
+}
+
 // --- Email Signup Form (MailerLite via Cloudflare Worker) ---
 var emailForm = document.getElementById('emailSignupForm');
 if (emailForm) {
