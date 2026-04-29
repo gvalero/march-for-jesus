@@ -145,8 +145,8 @@
   cursor: pointer;
 }
 
-.shop-primary-link span,
-.shop-checkout-btn span {
+.shop-primary-link__sheen,
+.shop-checkout-btn__sheen {
   position: absolute;
   inset: 0;
   background: #ffffff;
@@ -160,8 +160,8 @@
   transform: translateY(-1px) scale(1.03);
 }
 
-.shop-primary-link:hover span,
-.shop-checkout-btn:hover:not(:disabled) span {
+.shop-primary-link:hover .shop-primary-link__sheen,
+.shop-checkout-btn:hover:not(:disabled) .shop-checkout-btn__sheen {
   transform: translateX(0);
 }
 
@@ -180,6 +180,24 @@
 .shop-primary-link *,
 .shop-checkout-btn,
 .shop-checkout-btn * {
+  z-index: 1;
+}
+
+.shop-checkout-btn__sheen {
+  z-index: 0;
+}
+
+.shop-checkout-btn__label {
+  position: relative;
+  z-index: 1;
+}
+
+.shop-primary-link__sheen {
+  z-index: 0;
+}
+
+.shop-primary-link__label {
+  position: relative;
   z-index: 1;
 }
 
@@ -643,16 +661,23 @@
   font-size: 0.76rem;
 }
 
-.shop-mobile-bar a {
+.shop-mobile-bar button {
   color: #4D0921;
   background: #F5ECD7;
+  border: 0;
   border-radius: 999px;
+  cursor: pointer;
   font-family: 'Space Mono', monospace;
   font-size: 0.75rem;
   font-weight: 800;
   padding: 10px 12px;
   text-decoration: none;
   text-transform: uppercase;
+}
+
+.shop-mobile-bar button:disabled {
+  cursor: wait;
+  opacity: 0.72;
 }
 
 .shop-success {

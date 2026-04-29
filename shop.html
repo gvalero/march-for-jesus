@@ -19,6 +19,8 @@
 <meta property="og:type" content="website">
 <title>Merchandise Pre-orders | March for Jesus Belfast</title>
 <link rel="canonical" href="https://marchforjesus.co.uk/shop.html">
+<link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32.png">
+<link rel="apple-touch-icon" sizes="180x180" href="images/favicon-180.png">
 <link rel="stylesheet" href="styles.css">
 <link rel="stylesheet" href="shop.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer">
@@ -89,7 +91,7 @@
 <h1>Pre-order the kit. <span>Wear the message.</span></h1>
 <p class="shop-hero__intro">Limited stock is available across sizes and colours. Choose yours now, pay securely online, and collect it at Ormeau Park on the day.</p>
 <div class="shop-hero__actions">
-<a class="shop-primary-link" href="#products"><span></span>Start your order</a>
+<a class="shop-primary-link" href="#products"><span class="shop-primary-link__sheen" aria-hidden="true"></span><span class="shop-primary-link__label">Start your order</span></a>
 <a class="shop-secondary-link" href="#how-it-works">How collection works</a>
 </div>
 <dl class="shop-hero__stats">
@@ -182,7 +184,7 @@
 <label class="shop-email-label" for="customerEmail">Email for your order confirmation</label>
 <input id="customerEmail" class="shop-email-input" type="email" autocomplete="email" placeholder="name@example.com">
 
-<button id="checkoutButton" class="shop-checkout-btn" type="button" disabled><span></span>Continue to secure checkout</button>
+<button id="checkoutButton" class="shop-checkout-btn" type="button" disabled><span class="shop-checkout-btn__sheen" aria-hidden="true"></span><span class="shop-checkout-btn__label">Continue to secure checkout</span></button>
 <p class="shop-cart__note">Stock is reserved for 30 minutes once checkout starts.</p>
 </aside>
 </div>
@@ -194,7 +196,7 @@
 <span id="mobileCartCount">0 items</span>
 <strong id="mobileCartTotal">&pound;0</strong>
 </div>
-<a href="#products">View cart</a>
+<button id="mobileCheckoutButton" type="button">Checkout now</button>
 </div>
 
 <footer class="footer">

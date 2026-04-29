@@ -18,6 +18,14 @@
   const mobileCartBar = document.getElementById('mobileCartBar');
   const mobileCartCount = document.getElementById('mobileCartCount');
   const mobileCartTotal = document.getElementById('mobileCartTotal');
+  const mobileCheckoutButton = document.getElementById('mobileCheckoutButton');
+  const checkoutButtonLabel = 'Continue to secure checkout';
+  const mobileCheckoutButtonLabel = 'Checkout now';
+  const checkoutLoadingLabel = 'Preparing checkout...';
+
+  if (!checkoutButton || !mobileCheckoutButton) {
+    throw new Error('Shop checkout controls are missing from the page.');
+  }
 
   function formatGbp(amount) {
     return new Intl.NumberFormat('en-GB', {
@@ -41,6 +49,15 @@
       shopAlert.hidden = true;
       shopAlert.textContent = '';
     }
+  }
+
+  function setCheckoutButtonLabel(label) {
+    const labelNode = checkoutButton.querySelector('.shop-checkout-btn__label');
+    labelNode.textContent = label;
+  }
+
+  function setMobileCheckoutButtonLabel(label) {
+    mobileCheckoutButton.textContent = label;
   }
 
   function flattenVariants() {
@@ -193,11 +210,14 @@
     cartItemCount.textContent = String(totals.quantity);
     cartTotal.textContent = formatGbp(totals.amount);
     checkoutButton.disabled = totals.quantity === 0 || state.isCheckingOut;
+    setCheckoutButtonLabel(state.isCheckingOut ? checkoutLoadingLabel : checkoutButtonLabel);
 
     if (mobileCartBar && mobileCartCount && mobileCartTotal) {
       mobileCartBar.hidden = totals.quantity === 0;
       mobileCartCount.textContent = totals.quantity === 1 ? '1 item' : totals.quantity + ' items';
       mobileCartTotal.textContent = formatGbp(totals.amount);
+      mobileCheckoutButton.disabled = totals.quantity === 0 || state.isCheckingOut;
+      setMobileCheckoutButtonLabel(state.isCheckingOut ? checkoutLoadingLabel : mobileCheckoutButtonLabel);
     }
 
     if (totals.quantity === 0) {
@@ -281,7 +301,9 @@
 
     state.isCheckingOut = true;
     checkoutButton.disabled = true;
-    checkoutButton.textContent = 'Preparing secure checkout...';
+    setCheckoutButtonLabel(checkoutLoadingLabel);
+    mobileCheckoutButton.disabled = true;
+    setMobileCheckoutButtonLabel(checkoutLoadingLabel);
     clearAlert();
 
     const items = Array.from(state.cart.values()).map(function (item) {
@@ -320,7 +342,10 @@
       window.location.href = data.checkoutUrl;
     } catch (error) {
       state.isCheckingOut = false;
-      checkoutButton.textContent = 'Continue to secure checkout';
+      checkoutButton.disabled = false;
+      setCheckoutButtonLabel(checkoutButtonLabel);
+      mobileCheckoutButton.disabled = false;
+      setMobileCheckoutButtonLabel(mobileCheckoutButtonLabel);
       renderCart();
       showAlert(error.message, 'error');
       await loadCatalog();
@@ -346,6 +371,7 @@
   });
 
   checkoutButton.addEventListener('click', checkout);
+  mobileCheckoutButton.addEventListener('click', checkout);
 
   const params = new URLSearchParams(window.location.search);
   if (params.get('checkout') === 'cancelled') {
