@@ -1,0 +1,759 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Shop | March for Jesus</title>
+<meta name="description" content="Order official March for Jesus merchandise and support the event.">
+<link rel="canonical" href="https://marchforjesus.co.uk/shop.html">
+<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="shop.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:ital,wght@0,300;0,400;0,500;0,600&family=League+Gothic&family=Oswald:wght@400;600&family=Space+Mono&display=swap" rel="stylesheet">
+<style>
+  html {
+    background: #4D0921;
+  }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    background: #4D0921;
+  }
+
+  h1, h2 {
+    font-family: 'Oswald', sans-serif;
+  }
+
+  
+
+  .back-to-top { background: #F5ECD7; color: #4D0921; }
+  .back-to-top:hover { background: #ecdec7; }
+
+  .shop-page-container {
+    display: block !important;
+    max-width: 1240px;
+    margin: 0 auto;
+  }
+
+  .shop-products-card {
+    margin-bottom: 42px;
+  }
+
+  .shop-heading-wrap p {
+    max-width: 760px;
+  }
+
+  .shop-heading-intro {
+    margin: 12px 0 0;
+    max-width: 760px;
+    font-size: 1rem;
+    line-height: 1.8;
+    color: rgba(42, 42, 42, 0.92);
+  }
+
+  .shop-heading-note {
+    margin: 12px 0 0;
+    display: inline-block;
+    padding: 10px 14px;
+    border-left: 4px solid #7c1530;
+    background: rgba(77, 9, 33, 0.06);
+    border-radius: 0 10px 10px 0;
+    font-size: 0.92rem;
+    font-weight: 700;
+    letter-spacing: 0.01em;
+    text-transform: uppercase;
+    color: #4D0921;
+  }
+
+  .checkout-section {
+    background: #F5ECD7;
+    padding: 100px 20px;
+  }
+
+  .checkout-container {
+    max-width: 1000px;
+    margin: auto;
+    text-align: center;
+  }
+
+  .checkout-section h2 {
+    font-size: clamp(2rem, 4vw, 2.8rem);
+    margin-bottom: 12px;
+    color: #4D0921;
+    line-height: 1.05;
+    letter-spacing: 1px;
+  }
+
+  .checkout-section > p {
+    max-width: 600px;
+    margin-bottom: 40px;
+    font-size: 1rem;
+    line-height: 1.8;
+    color: rgba(42, 42, 42, 0.9);
+  }
+
+  .typeform-wrapper {
+    margin-top: 30px;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.1);
+  }
+
+  .typeform-wrapper iframe {
+    width: 100%;
+    display: block;
+    border: none;
+  }
+
+  .checkout-helper-text {
+    margin-top: 14px;
+    font-size: 0.92rem;
+    color: rgba(42, 42, 42, 0.85);
+  }
+
+  .checkout-helper-text a {
+    color: #4D0921;
+    font-weight: 700;
+    text-decoration: underline;
+  }
+
+  @media (max-width: 991px) {
+    .checkout-section {
+      padding: 60px 20px;
+    }
+
+    .checkout-section h2 {
+      font-size: 2rem;
+    }
+
+    .typeform-wrapper iframe {
+      height: 600px !important;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .checkout-section {
+      padding: 40px 16px;
+    }
+
+    .checkout-container {
+      margin: 0 auto;
+      padding: 0;
+    }
+
+    .checkout-section h2 {
+      font-size: 1.6rem;
+      margin-bottom: 10px;
+    }
+
+    .checkout-section > p {
+      font-size: 0.95rem;
+      margin-bottom: 30px;
+    }
+
+    .typeform-wrapper iframe {
+      height: 500px !important;
+    }
+  }
+
+  @media (max-width: 991px) {
+    .shop-order-card {
+      padding: 30px 18px 20px;
+      border-radius: 16px;
+    }
+
+    .shop-order-meta {
+      grid-template-columns: 1fr;
+    }
+
+    .shop-order-actions {
+      justify-content: center;
+    }
+
+    .typeform-shell {
+      min-height: 680px;
+    }
+  }
+
+  .shop-hero-modern {
+    position: relative;
+    height: 80vh;
+    background: url('images/shopimage.png') center/cover no-repeat;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: #F5ECD7;
+  }
+
+  .hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(20, 5, 8, 0.6);
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    color: #F8EEE0;
+    max-width: 760px;
+  }
+
+  .hero-content h1 {
+    font-size: 84px;
+    margin-bottom: 16px;
+    color: #F8EEE0;
+    text-shadow: 3px 3px 0 #4D0921;
+    letter-spacing: 2px;
+    font-weight: 700;
+    line-height: 1.1;
+  }
+
+  .hero-content p {
+    font-size: 1.15rem;
+    line-height: 1.7;
+    margin-bottom: 26px;
+    font-weight: 500;
+  }
+
+  .hero-btn {
+    margin-top: 20px;
+    display: inline-block;
+    padding: 14px 28px;
+    background: #F5ECD7;
+    color: #4D0921;
+    border-radius: 999px;
+    font-weight: 600;
+    text-decoration: none;
+    letter-spacing: 0.5px;
+    transition: all 0.3s ease;
+    font-size: 0.95rem;
+    text-transform: uppercase;
+  }
+
+  .hero-btn:hover {
+    background: #F8EEE0;
+    transform: translateY(-2px);
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.2);
+  }
+
+  .shop-filter {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    margin-bottom: 28px;
+    padding: 18px 20px;
+    background: rgba(248, 238, 224, 0.5);
+    border-radius: 12px;
+    border: 1px solid rgba(77, 9, 33, 0.08);
+    flex-wrap: wrap;
+  }
+
+  .shop-filter-buttons {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+
+  .shop-filter span {
+    padding: 8px 16px;
+    background: #ffffff;
+    color: #4D0921;
+    border: 1.5px solid rgba(77, 9, 33, 0.2);
+    border-radius: 20px;
+    font-size: 0.93rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+
+  .shop-filter span:hover {
+    border-color: #4D0921;
+    background: #f5ecd7;
+  }
+
+  .shop-filter span.active {
+    background: #4D0921;
+    color: #F5ECD7;
+    border-color: #4D0921;
+  }
+
+  .shop-filter-sort {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-left: auto;
+  }
+
+  .shop-filter-sort label {
+    font-size: 0.93rem;
+    font-weight: 600;
+    color: #4D0921;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  .shop-filter select {
+    padding: 8px 14px;
+    background: #ffffff;
+    color: #4D0921;
+    border: 1.5px solid rgba(77, 9, 33, 0.2);
+    border-radius: 6px;
+    font-size: 0.93rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-family: 'Space Mono', monospace;
+  }
+
+  .shop-filter select:hover {
+    border-color: #4D0921;
+  }
+
+  .shop-filter select:focus {
+    outline: none;
+    border-color: #4D0921;
+    box-shadow: 0 0 0 3px rgba(77, 9, 33, 0.1);
+  }
+
+  @media (max-width: 768px) {
+    .shop-filter {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 14px;
+    }
+
+    .shop-filter-sort {
+      width: 100%;
+      margin-left: 0;
+    }
+
+    .shop-filter select {
+      width: 100%;
+    }
+  }
+
+</style>
+</head>
+<body id="top">
+
+<header class="nav">
+<div class="nav-inner">
+	<a href="index.html" class="logo"><img src="images/Stacked logo.png" alt="March for Jesus logo"></a>
+
+<button class="menu-toggle" aria-label="Toggle navigation" aria-expanded="false" aria-controls="main-menu">
+<span></span>
+<span></span>
+<span></span>
+</button>
+
+<nav class="menu" id="main-menu">
+<ul>
+<li class="dropdown has-submenu">
+<a href="index.html">Home</a>
+<ul class="dropdown-menu">
+<li><a href="index.html#about">About &amp; Video Promo</a></li>
+<li><a href="index.html#gallery">Gallery</a></li>
+</ul>
+</li>
+
+<li class="dropdown has-submenu">
+<a href="index.html#signup">Join Us</a>
+<ul class="dropdown-menu">
+<li><a href="index.html#signup">Sign Up</a></li>
+<li><a href="https://chat.whatsapp.com/G6m8cG5FMAm8tozPNGQFvW">WhatsApp Community</a></li>
+</ul>
+</li>
+
+<li class="dropdown has-submenu">
+<a href="index.html#route">Logistics</a>
+<ul class="dropdown-menu">
+<li><a href="index.html#schedule">Schedule</a></li>
+<li><a href="index.html#route">Route</a></li>
+<li><a href="index.html#events">Upcoming Events</a></li>
+<li><a href="index.html#posters">Posters</a></li>
+</ul>
+</li>
+
+<li><a href="index.html#support">Support</a></li>
+
+<li class="dropdown has-submenu">
+<a href="index.html#contact">Contact</a>
+<ul class="dropdown-menu">
+<li><a href="index.html#faq">FAQs</a></li>
+</ul>
+</li>
+
+<li><a href="shop.html">Shop</a></li>
+</ul>
+</nav>
+
+</div>
+</header>
+
+<section class="shop-hero-modern">
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <h1>MARCH FOR JESUS MERCHANDISE</h1>
+    <p>Wear the message. Represent the movement.</p>
+    <a href="#products" class="hero-btn">Shop Now</a>
+  </div>
+</section>
+
+<section class="shop-page-section">
+<div class="shop-page-container">
+
+<div class="shop-products-card">
+<div class="shop-heading-wrap">
+<span class="shop-badge">Merchandise</span>
+<h2 id="products">Choose Your Product</h2>
+<p class="shop-heading-intro">Browse the collection below, choose your item, then complete the order form further down the page.</p>
+<p class="shop-heading-note">Collection only at Ormeau Park on the day of the event.</p>
+</div>
+
+<div class="shop-filter">
+  <div class="shop-filter-buttons">
+    <span class="filter-btn active" data-filter="all">All Products</span>
+    <span class="filter-btn" data-filter="tshirts">T-Shirts</span>
+    <span class="filter-btn" data-filter="caps">Caps</span>
+  </div>
+  <div class="shop-filter-sort">
+    <label for="sort-select">Sort:</label>
+    <select id="sort-select">
+      <option value="default">Default</option>
+      <option value="price-low">Price Low → High</option>
+      <option value="price-high">Price High → Low</option>
+    </select>
+  </div>
+</div>
+
+<div class="shop-grid">
+<article class="shop-product-card active" data-product="MFJ Logo T-Shirt (Burgundy)" data-price="20" data-category="tshirts">
+<div class="shop-img-wrap"><img src="images/burgandymfjshirt1.png" alt="MFJ Logo T-Shirt Burgundy"><button class="shop-zoom-btn" aria-label="View larger image"><i class="fa-solid fa-magnifying-glass-plus"></i></button></div>
+<h3>MFJ Logo T-Shirt — Burgundy</h3>
+<p class="shop-price">£20 / €22</p>
+<p>MFJ logo tee in burgundy.</p>
+</article>
+
+<article class="shop-product-card" data-product="MFJ Logo T-Shirt (Cream)" data-price="20" data-category="tshirts">
+<div class="shop-img-wrap"><img src="images/creammfjshirt1.png" alt="MFJ Logo T-Shirt Cream"><button class="shop-zoom-btn" aria-label="View larger image"><i class="fa-solid fa-magnifying-glass-plus"></i></button></div>
+<h3>MFJ Logo T-Shirt — Cream</h3>
+<p class="shop-price">£20 / €22</p>
+<p>MFJ logo tee in cream.</p>
+</article>
+
+<article class="shop-product-card" data-product="Globe T-Shirt (Burgundy)" data-price="30" data-category="tshirts">
+<div class="shop-img-wrap"><img src="images/burgandyglobeshirt1.png" alt="Globe T-Shirt Burgundy"><button class="shop-zoom-btn" aria-label="View larger image"><i class="fa-solid fa-magnifying-glass-plus"></i></button></div>
+<h3>Globe T-Shirt — Burgundy</h3>
+<p class="shop-price">£30 / €35</p>
+<p>Oversized globe design tee in burgundy.</p>
+</article>
+
+<article class="shop-product-card" data-product="Globe T-Shirt (Cream)" data-price="30" data-category="tshirts">
+<div class="shop-img-wrap"><img src="images/creamglobeshirt1.png" alt="Globe T-Shirt Cream"><button class="shop-zoom-btn" aria-label="View larger image"><i class="fa-solid fa-magnifying-glass-plus"></i></button></div>
+<h3>Globe T-Shirt — Cream</h3>
+<p class="shop-price">£30 / €35</p>
+<p>Oversized globe design tee in cream.</p>
+</article>
+
+<article class="shop-product-card" data-product="Matthew 28:19 T-Shirt (Cream)" data-price="30" data-category="tshirts">
+<div class="shop-img-wrap"><img src="images/matthewshirt1.png" alt="Matthew 28:19 T-Shirt Cream"><button class="shop-zoom-btn" aria-label="View larger image"><i class="fa-solid fa-magnifying-glass-plus"></i></button></div>
+<h3>Matthew 28:19 T-Shirt — Cream</h3>
+<p class="shop-price">£30 / €35</p>
+<p>Oversized design tee in cream.</p>
+</article>
+
+<article class="shop-product-card" data-product="MFJ Cap (Burgundy)" data-price="20" data-category="caps">
+<div class="shop-img-wrap"><img src="images/burgandycap1.png" alt="MFJ Cap Burgundy"><button class="shop-zoom-btn" aria-label="View larger image"><i class="fa-solid fa-magnifying-glass-plus"></i></button></div>
+<h3>MFJ Cap — Burgundy</h3>
+<p class="shop-price">£20 / €22</p>
+<p>MFJ cap in burgundy. One size fits all.</p>
+</article>
+
+<article class="shop-product-card" data-product="MFJ Cap (Cream)" data-price="20" data-category="caps">
+<div class="shop-img-wrap"><img src="images/creamcap1.png" alt="MFJ Cap Cream"><button class="shop-zoom-btn" aria-label="View larger image"><i class="fa-solid fa-magnifying-glass-plus"></i></button></div>
+<h3>MFJ Cap — Cream</h3>
+<p class="shop-price">£20 / €22</p>
+<p>MFJ cap in cream. One size fits all.</p>
+</article>
+</div>
+</div>
+
+</div>
+</section>
+
+<section class="checkout-section" id="order-form">
+  <div class="checkout-container">
+    <h2>Complete Your Order</h2>
+    <p>Select your items above, then confirm your order below.</p>
+
+    <div class="typeform-wrapper">
+      <iframe 
+        src="https://form.typeform.com/to/ydSMLbHp?typeform-embed=embed-widget&typeform-medium=snippet"
+        width="100%" 
+        height="700" 
+        frameborder="0"
+        title="March For Jesus Merchandise Order Form"
+        allow="camera; microphone; autoplay; encrypted-media; fullscreen">
+      </iframe>
+    </div>
+    <p class="checkout-helper-text">If the form does not load well for you, <a href="https://form.typeform.com/to/ydSMLbHp" target="_blank" rel="noopener noreferrer">open the order form in a new tab</a>.</p>
+  </div>
+</section>
+
+<!-- Product Lightbox -->
+<div id="productLightbox" class="product-lightbox" role="dialog" aria-modal="true" aria-label="Product preview">
+  <div class="product-lightbox-inner">
+    <button class="product-lightbox-close" id="lightboxClose" aria-label="Close">&times;</button>
+    <div class="product-lightbox-img-wrap">
+      <img src="" alt="" id="lightboxImg">
+    </div>
+    <p id="lightboxTitle"></p>
+    <div class="product-lightbox-zoom">
+      <button id="lightboxZoomOut" aria-label="Zoom out">&#8722;</button>
+      <span id="lightboxZoomLevel">100%</span>
+      <button id="lightboxZoomIn" aria-label="Zoom in">&#43;</button>
+    </div>
+  </div>
+</div>
+
+<footer class="footer">
+<div class="footer-grid">
+<div class="footer-brand">
+<a href="index.html"><img src="images/Stacked logo.png" alt="March for Jesus logo" class="footer-logo"></a>
+</div>
+
+<div class="social-links">
+<a href="https://www.tiktok.com/@marchforjesusireland?_r=1&_t=ZN-94ZvzMDhaGk" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-tiktok"></i><span>Tiktok</span></a>
+<a href="https://www.facebook.com/share/1CZsf5bCWk/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-facebook-f"></i><span>Facebook</span></a>
+<a href="https://chat.whatsapp.com/G6m8cG5FMAm8tozPNGQFvW" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-whatsapp"></i><span>Whatsapp</span></a>
+<a href="https://www.instagram.com/marchforjesusireland?igsh=aHI0dGxtOTRkcDhj" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-instagram"></i><span>Instagram</span></a>
+</div>
+
+<div>
+<a href="index.html#route">Route</a>
+<a href="index.html#schedule">Schedule</a>
+<a href="index.html#support">Support</a>
+<a href="index.html#contact">Contact</a>
+</div>
+</div>
+</footer>
+
+<a href="#top" class="back-to-top">↑</a>
+
+<script src="script.js"></script>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  const productCards = document.querySelectorAll(".shop-product-card");
+  const orderSection = document.getElementById("order-form");
+  const lightbox = document.getElementById("productLightbox");
+  const lightboxImg = document.getElementById("lightboxImg");
+  const lightboxTitle = document.getElementById("lightboxTitle");
+  const lightboxClose = document.getElementById("lightboxClose");
+  const lightboxZoomIn = document.getElementById("lightboxZoomIn");
+  const lightboxZoomOut = document.getElementById("lightboxZoomOut");
+  const lightboxZoomLevel = document.getElementById("lightboxZoomLevel");
+  let zoomScale = 1;
+  let panX = 0;
+  let panY = 0;
+  let isDragging = false;
+  let dragStartX = 0;
+  let dragStartY = 0;
+  let dragStartPanX = 0;
+  let dragStartPanY = 0;
+  const ZOOM_STEP = 0.25;
+  const ZOOM_MIN = 0.5;
+  const ZOOM_MAX = 3;
+
+  function applyTransform() {
+    lightboxImg.style.transform = "scale(" + zoomScale + ") translate(" + (panX / zoomScale) + "px, " + (panY / zoomScale) + "px)";
+    lightboxZoomLevel.textContent = Math.round(zoomScale * 100) + "%";
+  }
+
+  function resetPan() {
+    panX = 0;
+    panY = 0;
+  }
+
+  function openLightbox(src, alt, title) {
+    lightboxImg.src = src;
+    lightboxImg.alt = alt;
+    lightboxTitle.textContent = title;
+    zoomScale = 1;
+    resetPan();
+    applyTransform();
+    lightbox.classList.add("open");
+    document.body.style.overflow = "hidden";
+  }
+
+  function closeLightbox() {
+    lightbox.classList.remove("open");
+    document.body.style.overflow = "";
+  }
+
+  lightboxImg.addEventListener("mousedown", function (e) {
+    isDragging = true;
+    dragStartX = e.clientX;
+    dragStartY = e.clientY;
+    dragStartPanX = panX;
+    dragStartPanY = panY;
+    lightboxImg.classList.add("dragging");
+    e.preventDefault();
+  });
+
+  document.addEventListener("mousemove", function (e) {
+    if (!isDragging) return;
+    panX = dragStartPanX + (e.clientX - dragStartX);
+    panY = dragStartPanY + (e.clientY - dragStartY);
+    applyTransform();
+  });
+
+  document.addEventListener("mouseup", function () {
+    isDragging = false;
+    lightboxImg.classList.remove("dragging");
+  });
+
+  lightboxImg.addEventListener("touchstart", function (e) {
+    if (e.touches.length === 1) {
+      isDragging = true;
+      dragStartX = e.touches[0].clientX;
+      dragStartY = e.touches[0].clientY;
+      dragStartPanX = panX;
+      dragStartPanY = panY;
+    }
+  }, { passive: true });
+
+  lightboxImg.addEventListener("touchmove", function (e) {
+    if (!isDragging || e.touches.length !== 1) return;
+    panX = dragStartPanX + (e.touches[0].clientX - dragStartX);
+    panY = dragStartPanY + (e.touches[0].clientY - dragStartY);
+    applyTransform();
+    e.preventDefault();
+  }, { passive: false });
+
+  lightboxImg.addEventListener("touchend", function () {
+    isDragging = false;
+  });
+
+  lightboxZoomIn.addEventListener("click", function () {
+    if (zoomScale < ZOOM_MAX) {
+      zoomScale = Math.min(ZOOM_MAX, zoomScale + ZOOM_STEP);
+      applyTransform();
+    }
+  });
+
+  lightboxZoomOut.addEventListener("click", function () {
+    if (zoomScale > ZOOM_MIN) {
+      zoomScale = Math.max(ZOOM_MIN, zoomScale - ZOOM_STEP);
+      applyTransform();
+    }
+  });
+
+  lightboxClose.addEventListener("click", closeLightbox);
+  lightbox.addEventListener("click", function (e) {
+    if (e.target === lightbox) closeLightbox();
+  });
+
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "Escape") closeLightbox();
+    if (e.key === "+" || e.key === "=") {
+      if (zoomScale < ZOOM_MAX) {
+        zoomScale = Math.min(ZOOM_MAX, zoomScale + ZOOM_STEP);
+        applyTransform();
+      }
+    }
+    if (e.key === "-") {
+      if (zoomScale > ZOOM_MIN) {
+        zoomScale = Math.max(ZOOM_MIN, zoomScale - ZOOM_STEP);
+        applyTransform();
+      }
+    }
+  });
+
+  productCards.forEach(function (card) {
+    card.addEventListener("click", function (e) {
+      if (e.target.closest(".shop-zoom-btn")) return;
+      productCards.forEach(function (item) {
+        item.classList.remove("active");
+      });
+      card.classList.add("active");
+      if (orderSection) {
+        orderSection.scrollIntoView({ behavior: "smooth", block: "start" });
+      }
+    });
+
+    const zoomBtn = card.querySelector(".shop-zoom-btn");
+    if (zoomBtn) {
+      zoomBtn.addEventListener("click", function (e) {
+        e.stopPropagation();
+        const img = card.querySelector("img");
+        openLightbox(img.src, img.alt, card.querySelector("h3").textContent);
+      });
+    }
+  });
+
+  // Filter functionality
+  const filterButtons = document.querySelectorAll(".filter-btn");
+  filterButtons.forEach(function (btn) {
+    btn.addEventListener("click", function () {
+      const filterValue = this.dataset.filter;
+      
+      // Update active button styling
+      filterButtons.forEach(function (b) {
+        b.classList.remove("active");
+      });
+      btn.classList.add("active");
+      
+      // Filter product cards
+      productCards.forEach(function (card) {
+        if (filterValue === "all" || card.dataset.category === filterValue) {
+          card.style.display = "";
+        } else {
+          card.style.display = "none";
+        }
+      });
+    });
+  });
+
+  // Sort functionality
+  const sortSelect = document.getElementById("sort-select");
+  const shopGrid = document.querySelector(".shop-grid");
+  
+  sortSelect.addEventListener("change", function () {
+    const sortValue = this.value;
+    const visibleCards = Array.from(productCards).filter(card => card.style.display !== "none");
+    
+    if (sortValue === "price-low") {
+      visibleCards.sort(function (a, b) {
+        return parseInt(a.dataset.price) - parseInt(b.dataset.price);
+      });
+    } else if (sortValue === "price-high") {
+      visibleCards.sort(function (a, b) {
+        return parseInt(b.dataset.price) - parseInt(a.dataset.price);
+      });
+    }
+    
+    // Reorder cards in the DOM
+    visibleCards.forEach(function (card) {
+      shopGrid.appendChild(card);
+    });
+  });
+});
+</script>
+
+<script>
+// Auto-refresh page when user returns to the tab after being away
+document.addEventListener("visibilitychange", function () {
+  if (!document.hidden) {
+    // Page becomes visible - user has returned to the tab
+    // Refresh after a short delay to ensure smooth transition
+    setTimeout(function () {
+      location.reload();
+    }, 500);
+  }
+});
+</script>
+
+</body>
+</html>
