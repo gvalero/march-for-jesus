@@ -1,0 +1,124 @@
+{
+  "type": "object",
+  "properties": {
+    "profile": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "source": {
+          "type": "string"
+        },
+        "site": {
+          "type": "string"
+        },
+        "microsoftTenant": {
+          "type": "string"
+        }
+      }
+    },
+    "order": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "reservation_id": {
+          "type": "string"
+        },
+        "stripe_checkout_session_id": {
+          "type": "string"
+        },
+        "stripe_payment_intent_id": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "customer_name": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "customer_email": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "amount_total": {
+          "type": "integer"
+        },
+        "currency": {
+          "type": "string"
+        },
+        "payment_status": {
+          "type": "string"
+        },
+        "collection_status": {
+          "type": "string"
+        },
+        "microsoft_sync_status": {
+          "type": "string"
+        },
+        "created_at": {
+          "type": "integer"
+        }
+      }
+    },
+    "lines": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "order_id": {
+            "type": "string"
+          },
+          "variant_id": {
+            "type": "string"
+          },
+          "product_name": {
+            "type": "string"
+          },
+          "colour": {
+            "type": "string"
+          },
+          "size": {
+            "type": "string"
+          },
+          "quantity": {
+            "type": "integer"
+          },
+          "unit_amount": {
+            "type": "integer"
+          },
+          "total_amount": {
+            "type": "integer"
+          }
+        }
+      }
+    },
+    "totals": {
+      "type": "object",
+      "properties": {
+        "itemCount": {
+          "type": "integer"
+        },
+        "amountTotal": {
+          "type": "integer"
+        },
+        "currency": {
+          "type": "string"
+        }
+      }
+    },
+    "milestonesCrossed": {
+      "type": "array",
+      "items": {
+        "type": "integer"
+      }
+    }
+  }
+}

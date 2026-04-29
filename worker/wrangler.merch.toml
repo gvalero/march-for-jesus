@@ -1,0 +1,31 @@
+name = "mfj-merch-orders"
+main = "merch-order-worker.js"
+compatibility_date = "2024-01-01"
+
+# Run this config only from the MFJ Belfast Cloudflare account/profile.
+# Do not deploy it from personal, church-general, or work Cloudflare profiles.
+
+[vars]
+SITE_URL = "https://marchforjesus.co.uk"
+PROFILE_NAME = "mfj-belfast-merch"
+MICROSOFT_PROFILE_NAME = "mfj-belfast-merch"
+MICROSOFT_TENANT_DOMAIN = "allnations.ie"
+MICROSOFT_GRAPH_TENANT_ID = "ccbeac7f-5f2b-4e2f-96fb-71bba535ccf3"
+MICROSOFT_GRAPH_SITE_ID = "allnationschurchdub.sharepoint.com,903073eb-ef59-4b83-98d5-9b60617b02d3,cea9f057-7036-4b9d-b068-5fbea158e064"
+MICROSOFT_GRAPH_LIST_ID = "ad2bcfae-77ca-47fb-b6a0-abb88bb4877c"
+# Keep test mode until explicit go-live approval.
+STRIPE_KEY_MODE = "test"
+
+[[d1_databases]]
+binding = "MERCH_DB"
+database_name = "mfj_merch_orders"
+database_id = "dcaaac7c-72da-46fa-a46a-553929bad39f"
+
+# Secrets required before deployment:
+# Use the MFJ Belfast Cloudflare account/profile only.
+# wrangler secret put STRIPE_SECRET_KEY --config wrangler.merch.toml
+# wrangler secret put STRIPE_WEBHOOK_SECRET --config wrangler.merch.toml
+# wrangler secret put MICROSOFT_GRAPH_CLIENT_ID --config wrangler.merch.toml
+# wrangler secret put MICROSOFT_GRAPH_CLIENT_SECRET --config wrangler.merch.toml
+# wrangler secret put POWER_AUTOMATE_WEBHOOK_URL --config wrangler.merch.toml
+# wrangler secret put ADMIN_API_TOKEN --config wrangler.merch.toml

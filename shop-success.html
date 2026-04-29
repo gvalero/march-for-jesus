@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex,nofollow">
+<title>Order received | March for Jesus Belfast</title>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-B08WPFHX9Q"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-B08WPFHX9Q');
+</script>
+<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="shop.css">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800&family=League+Gothic&family=Oswald:wght@400;600;700&family=Space+Mono&display=swap" rel="stylesheet">
+</head>
+<body class="shop-body shop-success-body">
+<main class="shop-success">
+<section class="shop-success-card">
+<p class="shop-kicker">Payment received</p>
+<h1>Thank you for your merch pre-order.</h1>
+<p>Your Stripe receipt will be emailed to you. Please keep it safe and bring it to the merch collection point at Ormeau Park on the day of March for Jesus Belfast.</p>
+<div class="shop-success-actions">
+<a class="shop-primary-link" href="index.html"><span></span>Back to home</a>
+<a class="shop-secondary-link" href="shop.html">Order more merch</a>
+</div>
+</section>
+</main>
+<script>
+var sessionId = new URLSearchParams(window.location.search).get('session_id');
+if (typeof gtag === 'function') {
+  gtag('event', 'purchase_complete', {
+    event_category: 'merch',
+    checkout_session_id: sessionId || ''
+  });
+}
+</script>
+</body>
+</html>
