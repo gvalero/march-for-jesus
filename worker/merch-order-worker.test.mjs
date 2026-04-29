@@ -4,6 +4,7 @@ import { listVariants } from './merch-catalog.js';
 import {
   ResponseError,
   buildSharePointOrderFields,
+  createStripeCheckoutSession,
   csvEscape,
   getMicrosoftGraphAccessToken,
   getStripeSecretKey,
@@ -76,6 +77,41 @@ test('Stripe key guard rejects profile/key mode mismatches', () => {
   assert.throws(
     () => getStripeSecretKey({ STRIPE_KEY_MODE: 'test', STRIPE_SECRET_KEY: 'sk_live_123' }),
     ResponseError
+  );
+});
+
+test('Stripe Checkout Session is configured for collection, not shipping', async (t) => {
+  const originalFetch = globalThis.fetch;
+  let requestBody;
+  t.after(() => {
+    globalThis.fetch = originalFetch;
+  });
+  globalThis.fetch = async (_url, options = {}) => {
+    requestBody = new URLSearchParams(options.body);
+    return new Response(JSON.stringify({
+      id: 'cs_test_collection',
+      url: 'https://checkout.stripe.com/c/pay/cs_test_collection'
+    }), {
+      status: 200,
+      headers: { 'Content-Type': 'application/json' }
+    });
+  };
+
+  await createStripeCheckoutSession({
+    STRIPE_KEY_MODE: 'test',
+    STRIPE_SECRET_KEY: 'sk_test_123',
+    SITE_URL: 'https://marchforjesus.co.uk'
+  }, 'reservation-1', [{
+    variant: listVariants()[0],
+    quantity: 1
+  }], 'customer@example.com');
+
+  assert.equal(requestBody.get('billing_address_collection'), 'auto');
+  assert.equal(requestBody.get('shipping_address_collection[allowed_countries][0]'), null);
+  assert.equal(requestBody.get('shipping_address_collection[allowed_countries][1]'), null);
+  assert.match(
+    requestBody.get('line_items[0][price_data][product_data][description]'),
+    /Collection at Ormeau Park/
   );
 });
 

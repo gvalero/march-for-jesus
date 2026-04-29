@@ -367,8 +367,6 @@ async function createStripeCheckoutSession(env, reservationId, lines, customerEm
   appendFormValue(params, 'expires_at', getUnixTime() + RESERVATION_TTL_SECONDS);
   appendFormValue(params, 'allow_promotion_codes', 'false');
   appendFormValue(params, 'billing_address_collection', 'auto');
-  appendFormValue(params, 'shipping_address_collection[allowed_countries][0]', 'GB');
-  appendFormValue(params, 'shipping_address_collection[allowed_countries][1]', 'IE');
 
   if (customerEmail) {
     appendFormValue(params, 'customer_email', customerEmail);
@@ -1127,6 +1125,7 @@ export {
   ResponseError,
   buildSharePointOrderFields,
   csvEscape,
+  createStripeCheckoutSession,
   getStripeSecretKey,
   getMicrosoftGraphAccessToken,
   isMicrosoftGraphSharePointConfigured,
