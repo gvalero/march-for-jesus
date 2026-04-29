@@ -107,6 +107,8 @@ test('Stripe Checkout Session is configured for collection, not shipping', async
   }], 'customer@example.com');
 
   assert.equal(requestBody.get('billing_address_collection'), 'auto');
+  assert.equal(requestBody.get('customer_email'), 'customer@example.com');
+  assert.equal(requestBody.get('payment_intent_data[receipt_email]'), 'customer@example.com');
   assert.equal(requestBody.get('shipping_address_collection[allowed_countries][0]'), null);
   assert.equal(requestBody.get('shipping_address_collection[allowed_countries][1]'), null);
   assert.match(

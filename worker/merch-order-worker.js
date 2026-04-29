@@ -370,6 +370,7 @@ async function createStripeCheckoutSession(env, reservationId, lines, customerEm
 
   if (customerEmail) {
     appendFormValue(params, 'customer_email', customerEmail);
+    appendFormValue(params, 'payment_intent_data[receipt_email]', customerEmail);
   }
 
   lines.forEach((line, index) => {
