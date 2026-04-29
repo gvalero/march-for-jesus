@@ -39,6 +39,9 @@
         "currency": { "type": "string" },
         "payment_status": { "type": "string" },
         "collection_status": { "type": "string" },
+        "confirmation_email_status": { "type": "string" },
+        "confirmation_email_error": { "type": ["string", "null"] },
+        "confirmation_email_sent_at": { "type": ["integer", "null"] },
         "microsoft_sync_status": { "type": "string" },
         "created_at": { "type": "integer" }
       },

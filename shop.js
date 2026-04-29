@@ -60,6 +60,22 @@
     mobileCheckoutButton.textContent = label;
   }
 
+  function getCustomerEmail() {
+    return customerEmail.value.trim();
+  }
+
+  function validateCustomerEmail() {
+    if (customerEmail.checkValidity()) {
+      return true;
+    }
+
+    showAlert('Enter your email address before continuing to checkout so we can send your order confirmation.', 'warning');
+    customerEmail.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    customerEmail.focus();
+    customerEmail.reportValidity();
+    return false;
+  }
+
   function flattenVariants() {
     return state.catalog.flatMap(function (product) {
       return product.sizes.map(function (size) {
@@ -299,6 +315,10 @@
       return;
     }
 
+    if (!validateCustomerEmail()) {
+      return;
+    }
+
     state.isCheckingOut = true;
     checkoutButton.disabled = true;
     setCheckoutButtonLabel(checkoutLoadingLabel);
@@ -329,7 +349,7 @@
           'Content-Type': 'application/json'
         },
         body: JSON.stringify({
-          customerEmail: customerEmail.value,
+          customerEmail: getCustomerEmail(),
           items: items
         })
       });

@@ -16,6 +16,16 @@ Open `index.html` in a browser. No build tools required.
 
 This site is deployed via GitHub Pages. Push to `main` and GitHub Pages will serve the site automatically.
 
+### Merch Worker deployment
+
+The merch checkout Worker uses Cloudflare D1 migrations. When a change includes files in `worker/migrations/`, apply the remote D1 migrations before deploying the Worker code:
+
+1. `cd worker`
+2. `wrangler d1 migrations apply mfj_merch_orders --remote --config wrangler.merch.toml`
+3. `wrangler deploy --config wrangler.merch.toml`
+
+For order confirmation emails, the Worker also requires Microsoft Graph mail permissions for `MERCH_CONFIRMATION_SENDER` (`information@marchforjesus.co.uk` by default).
+
 ### Custom Domain Setup
 
 To point `marchforjesus.co.uk` to GitHub Pages:

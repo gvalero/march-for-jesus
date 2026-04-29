@@ -20,6 +20,12 @@ const GRAPH_SHAREPOINT_KEYS = [
   'MICROSOFT_GRAPH_SITE_ID',
   'MICROSOFT_GRAPH_LIST_ID'
 ];
+const GRAPH_AUTH_KEYS = [
+  'MICROSOFT_GRAPH_TENANT_ID',
+  'MICROSOFT_GRAPH_CLIENT_ID',
+  'MICROSOFT_GRAPH_CLIENT_SECRET'
+];
+const DEFAULT_MERCH_CONFIRMATION_SENDER = 'information@marchforjesus.co.uk';
 const STRIPE_WEBHOOK_TOLERANCE_SECONDS = 5 * 60;
 
 function jsonResponse(body, status = 200, origin = '') {
@@ -125,6 +131,24 @@ function getMicrosoftTenant(env) {
   return env.MICROSOFT_TENANT_DOMAIN;
 }
 
+function getMicrosoftGraphAuthConfig(env) {
+  const presentKeys = GRAPH_AUTH_KEYS.filter((key) => env[key]);
+  if (presentKeys.length !== GRAPH_AUTH_KEYS.length) {
+    const missingKeys = GRAPH_AUTH_KEYS.filter((key) => !env[key]);
+    throw new ResponseError(`Incomplete Microsoft Graph auth configuration. Missing: ${missingKeys.join(', ')}.`, 500);
+  }
+
+  if (env.MICROSOFT_GRAPH_TENANT_ID !== EXPECTED_MICROSOFT_TENANT_ID) {
+    throw new ResponseError(`Microsoft Graph tenant ID mismatch. Expected ${EXPECTED_MICROSOFT_TENANT_ID}.`, 500);
+  }
+
+  return {
+    tenantId: env.MICROSOFT_GRAPH_TENANT_ID,
+    clientId: env.MICROSOFT_GRAPH_CLIENT_ID,
+    clientSecret: env.MICROSOFT_GRAPH_CLIENT_SECRET
+  };
+}
+
 function isMicrosoftGraphSharePointConfigured(env) {
   const presentKeys = GRAPH_SHAREPOINT_KEYS.filter((key) => env[key]);
   if (presentKeys.length === 0) {
@@ -144,16 +168,25 @@ function getMicrosoftGraphSharePointConfig(env) {
     return null;
   }
 
-  if (env.MICROSOFT_GRAPH_TENANT_ID !== EXPECTED_MICROSOFT_TENANT_ID) {
-    throw new ResponseError(`Microsoft Graph tenant ID mismatch. Expected ${EXPECTED_MICROSOFT_TENANT_ID}.`, 500);
+  const authConfig = getMicrosoftGraphAuthConfig(env);
+  return {
+    ...authConfig,
+    siteId: env.MICROSOFT_GRAPH_SITE_ID,
+    listId: env.MICROSOFT_GRAPH_LIST_ID
+  };
+}
+
+function getMicrosoftGraphMailConfig(env) {
+  const authConfig = getMicrosoftGraphAuthConfig(env);
+  const sender = String(env.MERCH_CONFIRMATION_SENDER || DEFAULT_MERCH_CONFIRMATION_SENDER).trim();
+
+  if (!isValidEmail(sender)) {
+    throw new ResponseError('MERCH_CONFIRMATION_SENDER must be a valid email address.', 500);
   }
 
   return {
-    tenantId: env.MICROSOFT_GRAPH_TENANT_ID,
-    clientId: env.MICROSOFT_GRAPH_CLIENT_ID,
-    clientSecret: env.MICROSOFT_GRAPH_CLIENT_SECRET,
-    siteId: env.MICROSOFT_GRAPH_SITE_ID,
-    listId: env.MICROSOFT_GRAPH_LIST_ID
+    ...authConfig,
+    sender
   };
 }
 
@@ -423,7 +456,7 @@ async function handleCheckout(request, env, origin) {
   const body = await request.json();
   const lines = normaliseLineItems(body.items);
   const customerEmail = body.customerEmail ? String(body.customerEmail).trim() : '';
-  if (customerEmail && !isValidEmail(customerEmail)) {
+  if (!customerEmail || !isValidEmail(customerEmail)) {
     throw new ResponseError('Enter a valid email address for your Stripe receipt.', 400);
   }
 
@@ -502,6 +535,140 @@ function verifyStripeTimestamp(timestamp, now) {
   }
 }
 
+function escapeHtml(value) {
+  return String(value ?? '').replace(/[&<>"']/g, (char) => ({
+    '&': '&amp;',
+    '<': '&lt;',
+    '>': '&gt;',
+    '"': '&quot;',
+    "'": '&#39;'
+  }[char]));
+}
+
+function formatCurrencyMinor(amount, currency) {
+  return new Intl.NumberFormat('en-GB', {
+    style: 'currency',
+    currency: String(currency || 'gbp').toUpperCase()
+  }).format(Number(amount || 0) / 100);
+}
+
+function buildOrderConfirmationEmail(payload) {
+  const order = payload.order;
+  const orderReference = String(order.id).slice(0, 8).toUpperCase();
+  const rows = (payload.lines || []).map((line) => `
+    <tr>
+      <td style="padding:12px;border-bottom:1px solid #eadfce;">
+        <strong>${escapeHtml(line.product_name)}</strong><br>
+        <span style="color:#6b5f55;">${escapeHtml(line.colour)} / ${escapeHtml(line.size)}</span>
+      </td>
+      <td style="padding:12px;border-bottom:1px solid #eadfce;text-align:center;">${escapeHtml(line.quantity)}</td>
+      <td style="padding:12px;border-bottom:1px solid #eadfce;text-align:right;">${escapeHtml(formatCurrencyMinor(line.total_amount, order.currency))}</td>
+    </tr>
+  `).join('');
+
+  return `
+    <div style="margin:0;padding:0;background:#f8eee0;color:#4d0921;font-family:Arial,sans-serif;">
+      <div style="max-width:680px;margin:0 auto;padding:32px 20px;">
+        <div style="background:#ffffff;border-radius:24px;padding:32px;border:1px solid #eadfce;">
+          <p style="margin:0 0 8px;text-transform:uppercase;letter-spacing:0.08em;font-size:12px;font-weight:700;">March for Jesus Belfast merch</p>
+          <h1 style="margin:0 0 16px;font-size:30px;line-height:1.1;">Your order is confirmed</h1>
+          <p style="margin:0 0 20px;color:#3d332d;">Thank you for your merch pre-order. Bring this email to the merch collection point at Ormeau Park on the day.</p>
+          <p style="margin:0 0 24px;"><strong>Order reference:</strong> ${escapeHtml(orderReference)}</p>
+          <table role="presentation" width="100%" cellspacing="0" cellpadding="0" style="border-collapse:collapse;margin:0 0 24px;">
+            <thead>
+              <tr>
+                <th align="left" style="padding:12px;border-bottom:2px solid #4d0921;">Item</th>
+                <th align="center" style="padding:12px;border-bottom:2px solid #4d0921;">Qty</th>
+                <th align="right" style="padding:12px;border-bottom:2px solid #4d0921;">Total</th>
+              </tr>
+            </thead>
+            <tbody>${rows}</tbody>
+          </table>
+          <p style="margin:0 0 24px;font-size:20px;"><strong>Total paid:</strong> ${escapeHtml(formatCurrencyMinor(order.amount_total, order.currency))}</p>
+          <p style="margin:0;color:#3d332d;">If you have any questions, reply to this email or contact information@marchforjesus.co.uk.</p>
+        </div>
+      </div>
+    </div>
+  `;
+}
+
+async function setOrderConfirmationEmailStatus(db, orderId, status, errorMessage = null) {
+  await db.prepare(`
+    UPDATE orders
+    SET confirmation_email_status = ?,
+        confirmation_email_error = ?,
+        confirmation_email_sent_at = CASE WHEN ? = 'sent' THEN ? ELSE confirmation_email_sent_at END
+    WHERE id = ?
+  `).bind(status, errorMessage ? errorMessage.slice(0, 500) : null, status, getUnixTime(), orderId).run();
+}
+
+async function sendOrderConfirmationEmail(db, env, orderId, payload) {
+  const order = payload.order;
+  if (order.confirmation_email_status === 'sent') {
+    return false;
+  }
+
+  if (!order.customer_email || !isValidEmail(order.customer_email)) {
+    await setOrderConfirmationEmailStatus(db, orderId, 'failed', 'Order has no valid customer email address.');
+    throw new Error('Order confirmation email could not be sent because the order has no valid customer email address.');
+  }
+
+  try {
+    const config = getMicrosoftGraphMailConfig(env);
+    const accessToken = await getMicrosoftGraphAccessToken(config);
+    const response = await fetch(`https://graph.microsoft.com/v1.0/users/${encodeURIComponent(config.sender)}/sendMail`, {
+      method: 'POST',
+      headers: {
+        'Authorization': `Bearer ${accessToken}`,
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        message: {
+          subject: 'Your March for Jesus Belfast merch order is confirmed',
+          body: {
+            contentType: 'HTML',
+            content: buildOrderConfirmationEmail(payload)
+          },
+          toRecipients: [{
+            emailAddress: {
+              address: order.customer_email
+            }
+          }],
+          replyTo: [{
+            emailAddress: {
+              address: config.sender
+            }
+          }]
+        },
+        saveToSentItems: true
+      })
+    });
+
+    if (!response.ok) {
+      const errorText = await response.text();
+      throw new Error(`Microsoft Graph sendMail failed: ${errorText.slice(0, 500)}`);
+    }
+
+    await setOrderConfirmationEmailStatus(db, orderId, 'sent');
+    return true;
+  } catch (error) {
+    const message = error.message || 'Microsoft Graph sendMail failed.';
+    await setOrderConfirmationEmailStatus(db, orderId, 'failed', message);
+    console.error('Order confirmation email failed:', message);
+    throw new Error(message);
+  }
+}
+
+async function getOrderIdByReservationId(db, reservationId) {
+  const existingOrder = await db.prepare(`
+    SELECT id
+    FROM orders
+    WHERE reservation_id = ?
+  `).bind(reservationId).first();
+
+  return existingOrder?.id || null;
+}
+
 async function markOrderPaid(db, env, session) {
   const reservationId = session.metadata?.reservation_id;
   if (!reservationId) {
@@ -518,99 +685,115 @@ async function markOrderPaid(db, env, session) {
     throw new ResponseError(`Reservation not found: ${reservationId}`, 404);
   }
 
+  let orderId;
+  let alreadyProcessed = false;
+
   if (reservation.status === 'paid') {
-    return { alreadyProcessed: true };
-  }
+    orderId = await getOrderIdByReservationId(db, reservationId);
+    if (!orderId) {
+      throw new ResponseError(`Paid reservation has no order: ${reservationId}`, 500);
+    }
+    alreadyProcessed = true;
+  } else {
+    if (reservation.status !== 'pending') {
+      throw new ResponseError(`Reservation is not payable: ${reservation.status}`, 409);
+    }
 
-  if (reservation.status !== 'pending') {
-    throw new ResponseError(`Reservation is not payable: ${reservation.status}`, 409);
-  }
+    const lines = await db.prepare(`
+      SELECT *
+      FROM reservation_lines
+      WHERE reservation_id = ?
+    `).bind(reservationId).all();
 
-  const lines = await db.prepare(`
-    SELECT *
-    FROM reservation_lines
-    WHERE reservation_id = ?
-  `).bind(reservationId).all();
-
-  const now = getUnixTime();
-  const orderId = crypto.randomUUID();
-  const customerDetails = session.customer_details || {};
-
-  await db.prepare(`
-    INSERT INTO orders (
-      id,
-      reservation_id,
-      stripe_checkout_session_id,
-      stripe_payment_intent_id,
-      customer_name,
-      customer_email,
-      amount_total,
-      currency,
-      payment_status,
-      created_at
-    )
-    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
-  `).bind(
-    orderId,
-    reservationId,
-    session.id,
-    session.payment_intent || null,
-    customerDetails.name || null,
-    customerDetails.email || session.customer_email || reservation.customer_email || null,
-    session.amount_total || reservation.amount_total,
-    session.currency || reservation.currency,
-    session.payment_status || 'paid',
-    now
-  ).run();
-
-  for (const line of lines.results || []) {
-    await db.prepare(`
-      UPDATE inventory
-      SET reserved_quantity = MAX(reserved_quantity - ?, 0),
-          sold_quantity = sold_quantity + ?,
-          updated_at = datetime('now')
-      WHERE variant_id = ?
-    `).bind(line.quantity, line.quantity, line.variant_id).run();
+    const now = getUnixTime();
+    orderId = crypto.randomUUID();
+    const customerDetails = session.customer_details || {};
+    const customerEmail = customerDetails.email || session.customer_email || reservation.customer_email || '';
+    if (!isValidEmail(customerEmail)) {
+      throw new ResponseError('Paid Stripe session did not include a valid customer email address.', 500);
+    }
 
     await db.prepare(`
-      INSERT INTO order_lines (
-        order_id,
-        variant_id,
-        product_name,
-        colour,
-        size,
-        quantity,
-        unit_amount,
-        total_amount
+      INSERT INTO orders (
+        id,
+        reservation_id,
+        stripe_checkout_session_id,
+        stripe_payment_intent_id,
+        customer_name,
+        customer_email,
+        amount_total,
+        currency,
+        payment_status,
+        created_at
       )
-      VALUES (?, ?, ?, ?, ?, ?, ?, ?)
+      VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
     `).bind(
       orderId,
-      line.variant_id,
-      line.product_name,
-      line.colour,
-      line.size,
-      line.quantity,
-      line.unit_amount,
-      line.unit_amount * line.quantity
+      reservationId,
+      session.id,
+      session.payment_intent || null,
+      customerDetails.name || null,
+      customerEmail,
+      session.amount_total || reservation.amount_total,
+      session.currency || reservation.currency,
+      session.payment_status || 'paid',
+      now
     ).run();
+
+    for (const line of lines.results || []) {
+      await db.prepare(`
+        UPDATE inventory
+        SET reserved_quantity = MAX(reserved_quantity - ?, 0),
+            sold_quantity = sold_quantity + ?,
+            updated_at = datetime('now')
+        WHERE variant_id = ?
+      `).bind(line.quantity, line.quantity, line.variant_id).run();
+
+      await db.prepare(`
+        INSERT INTO order_lines (
+          order_id,
+          variant_id,
+          product_name,
+          colour,
+          size,
+          quantity,
+          unit_amount,
+          total_amount
+        )
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?)
+      `).bind(
+        orderId,
+        line.variant_id,
+        line.product_name,
+        line.colour,
+        line.size,
+        line.quantity,
+        line.unit_amount,
+        line.unit_amount * line.quantity
+      ).run();
+    }
+
+    await db.prepare(`
+      UPDATE reservations
+      SET status = 'paid',
+          paid_at = ?
+      WHERE id = ?
+    `).bind(now, reservationId).run();
   }
 
-  await db.prepare(`
-    UPDATE reservations
-    SET status = 'paid',
-        paid_at = ?
-    WHERE id = ?
-  `).bind(now, reservationId).run();
+  let order = await getOrderPayload(db, orderId);
+  await sendOrderConfirmationEmail(db, env, orderId, order);
+  order = await getOrderPayload(db, orderId);
 
-  const order = await getOrderPayload(db, orderId);
-  const milestonesCrossed = await recordMilestones(db);
-  await sendMicrosoftHandoff(db, env, orderId, {
-    ...order,
-    milestonesCrossed
-  });
+  const milestonesCrossed = alreadyProcessed ? [] : await recordMilestones(db);
+  if (!['synced', 'partial_sync'].includes(order.order.microsoft_sync_status)) {
+    await sendMicrosoftHandoff(db, env, orderId, {
+      ...order,
+      milestonesCrossed
+    });
+  }
 
-  return { orderId, milestonesCrossed };
+  return { orderId, milestonesCrossed, alreadyProcessed };
 }
 
 async function getOrderPayload(db, orderId) {
@@ -986,6 +1169,7 @@ async function handleStripeWebhook(request, env, origin) {
     }
   }
 
+  // Record the event only after required side effects complete, so Stripe retries email failures.
   await db.prepare(`
     INSERT INTO webhook_events (id, type, processed_at)
     VALUES (?, ?, ?)
@@ -1024,6 +1208,9 @@ async function handleOrdersExport(request, env, origin) {
       orders.currency,
       orders.payment_status,
       orders.collection_status,
+      orders.confirmation_email_status,
+      orders.confirmation_email_error,
+      orders.confirmation_email_sent_at,
       orders.created_at,
       order_lines.variant_id,
       order_lines.product_name,
@@ -1047,6 +1234,9 @@ async function handleOrdersExport(request, env, origin) {
     'currency',
     'payment_status',
     'collection_status',
+    'confirmation_email_status',
+    'confirmation_email_error',
+    'confirmation_email_sent_at',
     'created_at',
     'variant_id',
     'product_name',
@@ -1124,9 +1314,11 @@ export default {
 
 export {
   ResponseError,
+  buildOrderConfirmationEmail,
   buildSharePointOrderFields,
   csvEscape,
   createStripeCheckoutSession,
+  getMicrosoftGraphMailConfig,
   getStripeSecretKey,
   getMicrosoftGraphAccessToken,
   isMicrosoftGraphSharePointConfigured,

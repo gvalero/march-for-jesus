@@ -16,6 +16,9 @@
     "currency": "gbp",
     "payment_status": "paid",
     "collection_status": "not_collected",
+    "confirmation_email_status": "sent",
+    "confirmation_email_error": null,
+    "confirmation_email_sent_at": 1770000010,
     "microsoft_sync_status": "pending",
     "created_at": 1770000000
   },
