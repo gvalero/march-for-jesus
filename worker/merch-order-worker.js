@@ -555,37 +555,61 @@ function formatCurrencyMinor(amount, currency) {
 function buildOrderConfirmationEmail(payload) {
   const order = payload.order;
   const orderReference = String(order.id).slice(0, 8).toUpperCase();
+  const customerName = order.customer_name ? ` ${escapeHtml(order.customer_name)}` : '';
+  const itemCount = Number(payload.totals?.itemCount || (payload.lines || []).reduce((sum, line) => sum + Number(line.quantity || 0), 0));
+  const totalPaid = formatCurrencyMinor(order.amount_total, order.currency);
   const rows = (payload.lines || []).map((line) => `
     <tr>
-      <td style="padding:12px;border-bottom:1px solid #eadfce;">
-        <strong>${escapeHtml(line.product_name)}</strong><br>
-        <span style="color:#6b5f55;">${escapeHtml(line.colour)} / ${escapeHtml(line.size)}</span>
+      <td style="padding:16px 0;border-bottom:1px solid #eadfce;">
+        <strong style="display:block;color:#4d0921;font-size:16px;line-height:1.35;">${escapeHtml(line.product_name)}</strong>
+        <span style="display:block;color:#6b5f55;font-size:14px;line-height:1.5;">${escapeHtml(line.colour)} / ${escapeHtml(line.size)}</span>
       </td>
-      <td style="padding:12px;border-bottom:1px solid #eadfce;text-align:center;">${escapeHtml(line.quantity)}</td>
-      <td style="padding:12px;border-bottom:1px solid #eadfce;text-align:right;">${escapeHtml(formatCurrencyMinor(line.total_amount, order.currency))}</td>
+      <td style="padding:16px 12px;border-bottom:1px solid #eadfce;text-align:center;color:#4d0921;font-weight:700;">${escapeHtml(line.quantity)}</td>
+      <td style="padding:16px 0;border-bottom:1px solid #eadfce;text-align:right;color:#4d0921;font-weight:700;">${escapeHtml(formatCurrencyMinor(line.total_amount, order.currency))}</td>
     </tr>
   `).join('');
 
   return `
-    <div style="margin:0;padding:0;background:#f8eee0;color:#4d0921;font-family:Arial,sans-serif;">
-      <div style="max-width:680px;margin:0 auto;padding:32px 20px;">
-        <div style="background:#ffffff;border-radius:24px;padding:32px;border:1px solid #eadfce;">
-          <p style="margin:0 0 8px;text-transform:uppercase;letter-spacing:0.08em;font-size:12px;font-weight:700;">March for Jesus Belfast merch</p>
-          <h1 style="margin:0 0 16px;font-size:30px;line-height:1.1;">Your order is confirmed</h1>
-          <p style="margin:0 0 20px;color:#3d332d;">Thank you for your merch pre-order. Bring this email to the merch collection point at Ormeau Park on the day.</p>
-          <p style="margin:0 0 24px;"><strong>Order reference:</strong> ${escapeHtml(orderReference)}</p>
+    <div style="display:none;max-height:0;overflow:hidden;opacity:0;color:transparent;">Your March for Jesus Belfast merch order is confirmed. Bring this email to collection at Ormeau Park.</div>
+    <div style="margin:0;padding:0;background:#f8eee0;color:#4d0921;font-family:Arial,Helvetica,sans-serif;">
+      <div style="max-width:680px;margin:0 auto;padding:28px 16px;">
+        <div style="background:#4d0921;border-radius:28px 28px 0 0;padding:32px 28px;text-align:center;">
+          <div style="display:inline-block;border:1px solid rgba(248,238,224,0.42);border-radius:999px;color:#f8eee0;font-size:12px;font-weight:700;letter-spacing:0.16em;padding:9px 14px;text-transform:uppercase;">March for Jesus Belfast</div>
+          <h1 style="margin:22px 0 8px;color:#f8eee0;font-size:38px;line-height:1.02;letter-spacing:0.02em;">Your order is confirmed</h1>
+          <p style="margin:0;color:#eadfce;font-size:16px;line-height:1.55;">Thanks${customerName} - your merch is reserved for collection at Ormeau Park.</p>
+        </div>
+        <div style="background:#ffffff;border:1px solid #eadfce;border-top:0;border-radius:0 0 28px 28px;padding:28px;">
           <table role="presentation" width="100%" cellspacing="0" cellpadding="0" style="border-collapse:collapse;margin:0 0 24px;">
-            <thead>
-              <tr>
-                <th align="left" style="padding:12px;border-bottom:2px solid #4d0921;">Item</th>
-                <th align="center" style="padding:12px;border-bottom:2px solid #4d0921;">Qty</th>
-                <th align="right" style="padding:12px;border-bottom:2px solid #4d0921;">Total</th>
-              </tr>
-            </thead>
-            <tbody>${rows}</tbody>
+            <tr>
+              <td style="background:#f8eee0;border-radius:18px;padding:18px;text-align:center;">
+                <span style="display:block;color:#6b5f55;font-size:11px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;">Order reference</span>
+                <strong style="display:block;color:#4d0921;font-size:26px;letter-spacing:0.08em;margin-top:6px;">${escapeHtml(orderReference)}</strong>
+              </td>
+              <td width="12"></td>
+              <td style="background:#f8eee0;border-radius:18px;padding:18px;text-align:center;">
+                <span style="display:block;color:#6b5f55;font-size:11px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;">Total paid</span>
+                <strong style="display:block;color:#4d0921;font-size:26px;margin-top:6px;">${escapeHtml(totalPaid)}</strong>
+              </td>
+            </tr>
           </table>
-          <p style="margin:0 0 24px;font-size:20px;"><strong>Total paid:</strong> ${escapeHtml(formatCurrencyMinor(order.amount_total, order.currency))}</p>
-          <p style="margin:0;color:#3d332d;">If you have any questions, reply to this email or contact information@marchforjesus.co.uk.</p>
+          <div style="border:1px solid #eadfce;border-radius:22px;padding:4px 18px 0;margin:0 0 24px;">
+            <table role="presentation" width="100%" cellspacing="0" cellpadding="0" style="border-collapse:collapse;">
+              <thead>
+                <tr>
+                  <th align="left" style="padding:14px 0;border-bottom:2px solid #4d0921;color:#4d0921;font-size:12px;letter-spacing:0.12em;text-transform:uppercase;">Item</th>
+                  <th align="center" style="padding:14px 12px;border-bottom:2px solid #4d0921;color:#4d0921;font-size:12px;letter-spacing:0.12em;text-transform:uppercase;">Qty</th>
+                  <th align="right" style="padding:14px 0;border-bottom:2px solid #4d0921;color:#4d0921;font-size:12px;letter-spacing:0.12em;text-transform:uppercase;">Total</th>
+                </tr>
+              </thead>
+              <tbody>${rows}</tbody>
+            </table>
+          </div>
+          <div style="background:#fff8ed;border-left:5px solid #4d0921;border-radius:18px;padding:18px 20px;margin:0 0 24px;">
+            <h2 style="margin:0 0 8px;color:#4d0921;font-size:18px;line-height:1.3;">Collection reminder</h2>
+            <p style="margin:0;color:#3d332d;font-size:15px;line-height:1.6;">Bring this email to the merch collection point at Ormeau Park on the day of March for Jesus Belfast. Your order contains ${escapeHtml(itemCount)} ${itemCount === 1 ? 'item' : 'items'}.</p>
+          </div>
+          <p style="margin:0 0 8px;color:#3d332d;font-size:15px;line-height:1.6;">If you have any questions, reply to this email or contact <a href="mailto:information@marchforjesus.co.uk" style="color:#4d0921;font-weight:700;">information@marchforjesus.co.uk</a>.</p>
+          <p style="margin:20px 0 0;color:#6b5f55;font-size:12px;line-height:1.5;">You are receiving this transactional email because a merch pre-order was placed through marchforjesus.co.uk.</p>
         </div>
       </div>
     </div>
@@ -1194,6 +1218,43 @@ async function handleStockSummary(env, origin) {
   return jsonResponse({ variants }, 200, origin);
 }
 
+async function handleOrderLookup(request, env, origin) {
+  const db = requireBinding(env, 'MERCH_DB');
+  const url = new URL(request.url);
+  const sessionId = (url.searchParams.get('session_id') || '').trim();
+
+  if (!sessionId || !/^cs_(test|live)_[A-Za-z0-9]{20,}$/.test(sessionId)) {
+    throw new ResponseError('Invalid session_id.', 400);
+  }
+
+  const row = await db.prepare(`
+    SELECT
+      id,
+      customer_email,
+      amount_total,
+      currency,
+      payment_status,
+      confirmation_email_status
+    FROM orders
+    WHERE stripe_checkout_session_id = ?
+    LIMIT 1
+  `).bind(sessionId).first();
+
+  if (!row) {
+    return jsonResponse({ status: 'pending' }, 200, origin);
+  }
+
+  return jsonResponse({
+    status: 'ready',
+    orderRef: String(row.id).slice(0, 8).toUpperCase(),
+    customerEmail: row.customer_email,
+    amountTotal: row.amount_total,
+    currency: row.currency,
+    paymentStatus: row.payment_status,
+    confirmationEmailStatus: row.confirmation_email_status
+  }, 200, origin);
+}
+
 async function handleOrdersExport(request, env, origin) {
   requireAdmin(request, env);
   const db = requireBinding(env, 'MERCH_DB');
@@ -1284,6 +1345,10 @@ export default {
 
       if (request.method === 'GET' && url.pathname === '/api/orders/export.csv') {
         return await handleOrdersExport(request, env, origin);
+      }
+
+      if (request.method === 'GET' && url.pathname === '/api/orders/lookup') {
+        return await handleOrderLookup(request, env, origin);
       }
 
       if (request.method === 'POST' && url.pathname === '/api/checkout') {

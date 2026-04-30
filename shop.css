@@ -117,6 +117,51 @@
   margin-top: 32px;
 }
 
+.shop-success-details {
+  margin-top: 28px;
+  padding: 22px 24px;
+  background: #f8eee0;
+  border: 1px solid #eadfce;
+  border-radius: 18px;
+  text-align: left;
+}
+
+.shop-success-details__row {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding-bottom: 14px;
+  border-bottom: 1px dashed #d8c9b1;
+}
+
+.shop-success-details__label {
+  color: #6b5f55;
+  font-family: 'Space Mono', monospace;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.shop-success-details__ref {
+  color: #4d0921;
+  font-family: 'Space Mono', monospace;
+  font-size: 1.6rem;
+  letter-spacing: 0.12em;
+}
+
+.shop-success-details__hint {
+  margin: 14px 0 0;
+  color: #4a3f37;
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+.shop-success-details__hint a {
+  color: #4d0921;
+  font-weight: 700;
+}
+
 .shop-primary-link,
 .shop-secondary-link,
 .shop-checkout-btn {
