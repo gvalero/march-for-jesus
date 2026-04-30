@@ -170,6 +170,45 @@ document.addEventListener("DOMContentLoaded", function () {
 		startCounters();
 	}
 
+	const zoomTriggers = document.querySelectorAll("[data-zoom-image]");
+	if (zoomTriggers.length) {
+		const modal = document.createElement("div");
+		modal.className = "image-zoom-modal";
+		modal.setAttribute("aria-hidden", "true");
+
+		const zoomedImage = document.createElement("img");
+		zoomedImage.alt = "";
+		modal.appendChild(zoomedImage);
+
+		document.body.appendChild(modal);
+
+		function closeZoomModal() {
+			modal.classList.remove("is-open");
+			modal.setAttribute("aria-hidden", "true");
+		}
+
+		zoomTriggers.forEach(function (trigger) {
+			trigger.addEventListener("click", function () {
+				zoomedImage.src = trigger.getAttribute("data-zoom-image") || "";
+				zoomedImage.alt = trigger.querySelector("img") ? trigger.querySelector("img").alt : "";
+				modal.classList.add("is-open");
+				modal.setAttribute("aria-hidden", "false");
+			});
+		});
+
+		modal.addEventListener("click", function (event) {
+			if (event.target === modal) {
+				closeZoomModal();
+			}
+		});
+
+		document.addEventListener("keydown", function (event) {
+			if (event.key === "Escape" && modal.classList.contains("is-open")) {
+				closeZoomModal();
+			}
+		});
+	}
+
 	if (typeof IntersectionObserver !== "undefined") {
 		var sectionObserver = new IntersectionObserver(function (entries) {
 			entries.forEach(function (entry) {
