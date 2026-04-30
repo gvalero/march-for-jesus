@@ -1548,6 +1548,21 @@ color:#4D0921;
   color: #6b1133;
 }
 
+.parking-rule {
+  display: block;
+  margin-top: 10px;
+  font-weight: 700;
+}
+
+.faq-parking-map {
+  width: 100%;
+  margin-top: 16px;
+  display: block;
+  border-radius: 10px;
+  border: 6px solid #e8decc;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}
+
 /* Footer */
 .footer {
   background: #4D0921;
