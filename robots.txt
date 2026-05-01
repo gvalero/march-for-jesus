@@ -3,33 +3,34 @@ Disallow: /shared-europe-brand-pack-x7h3/
 Disallow: /screenshots/
 Disallow: /worker/
 Disallow: /node_modules/
+Disallow: /pr-plan.html
 
 Sitemap: https://marchforjesus.co.uk/sitemap.xml
 
-# AI Crawlers — explicitly allowed
+# AI Crawlers — explicitly blocked from PR plan
 User-agent: GPTBot
-Allow: /
+Disallow: /pr-plan.html
 
 User-agent: ChatGPT-User
-Allow: /
+Disallow: /pr-plan.html
 
 User-agent: Google-Extended
-Allow: /
+Disallow: /pr-plan.html
 
 User-agent: ClaudeBot
-Allow: /
+Disallow: /pr-plan.html
 
 User-agent: PerplexityBot
-Allow: /
+Disallow: /pr-plan.html
 
 User-agent: Amazonbot
-Allow: /
+Disallow: /pr-plan.html
 
 User-agent: anthropic-ai
-Allow: /
+Disallow: /pr-plan.html
 
 User-agent: Bytespider
-Allow: /
+Disallow: /pr-plan.html
 
 User-agent: cohere-ai
-Allow: /
+Disallow: /pr-plan.html
