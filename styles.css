@@ -976,9 +976,82 @@ color:#4D0921;
   color: white;
 }
 
+/* Important Updates Section */
+.updates-section {
+  background: url('images/mfj/gallery1.jpg') center/cover no-repeat;
+  color: #F8EEE0;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.updates-section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(50, 8, 23, 0.82), rgba(77, 9, 33, 0.88));
+  z-index: 0;
+  pointer-events: none;
+}
+
+.updates-section > * {
+  position: relative;
+  z-index: 1;
+}
+
+.updates-section h2 {
+  font-size: 60px;
+  color: #F8EEE0;
+}
+
+.updates-subtitle {
+  font-family: 'Inter', sans-serif;
+  color: rgba(248, 238, 224, 0.75);
+  margin-bottom: 40px;
+}
+
+.updates-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 30px;
+}
+
+.update-card {
+  background: #fff;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  text-align: left;
+}
+
+.update-card img {
+  width: 100%;
+  display: block;
+}
+
+.update-content {
+  padding: 20px;
+}
+
+.update-content h3 {
+  margin-bottom: 10px;
+  color: #4D0921;
+  font-size: 28px;
+}
+
+.update-content p {
+  margin-bottom: 18px;
+  color: #5e5e5e;
+  line-height: 1.6;
+}
+
 /* Mobile */
 @media (max-width: 768px) {
   .posters-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .updates-grid {
     grid-template-columns: 1fr;
   }
 }
