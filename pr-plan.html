@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>PR Plan — March for Jesus Belfast 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700&family=League+Gothic&family=Oswald:wght@400;600&family=Space+Mono&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer">
+<style>
+  :root{
+    --burgundy:#4D0921;
+    --burgundy-light:#6b1133;
+    --beige:#e8decc;
+    --cream:#f4efe6;
+    --text:#2a2a2a;
+    --muted:#6b6b6b;
+    --gold:#c9a55c;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{
+    font-family:'Inter',sans-serif;
+    background:var(--cream);
+    color:var(--text);
+    line-height:1.55;
+    padding:32px 16px 80px;
+  }
+  .wrap{max-width:1080px;margin:0 auto}
+  header{
+    background:var(--burgundy);
+    color:var(--cream);
+    padding:40px 36px;
+    border-radius:8px;
+    margin-bottom:32px;
+    position:relative;
+    overflow:hidden;
+  }
+  header::after{
+    content:"";
+    position:absolute;right:-40px;top:-40px;
+    width:200px;height:200px;
+    background:var(--gold);opacity:.12;
+    border-radius:50%;
+  }
+  header .eyebrow{
+    font-family:'Bebas Neue',sans-serif;
+    letter-spacing:.18em;font-size:14px;
+    color:var(--gold);margin-bottom:8px;
+  }
+  header h1{
+    font-family:'Bebas Neue',sans-serif;
+    font-size:52px;letter-spacing:.02em;line-height:1;
+    margin-bottom:14px;
+  }
+  header p{font-size:17px;max-width:720px;opacity:.92}
+  .stat-row{
+    display:flex;gap:16px;flex-wrap:wrap;margin-top:24px;
+  }
+  .stat{
+    background:rgba(255,255,255,.08);
+    border:1px solid rgba(232,222,204,.25);
+    padding:12px 18px;border-radius:6px;
+  }
+  .stat strong{
+    font-family:'Bebas Neue',sans-serif;
+    font-size:24px;color:var(--gold);display:block;line-height:1;
+  }
+  .stat span{font-size:12px;letter-spacing:.1em;text-transform:uppercase;opacity:.85}
+
+  section{
+    background:#fff;
+    border-radius:8px;
+    padding:32px 36px;
+    margin-bottom:24px;
+    box-shadow:0 2px 8px rgba(77,9,33,.06);
+  }
+  h2{
+    font-family:'Bebas Neue',sans-serif;
+    font-size:32px;letter-spacing:.04em;
+    color:var(--burgundy);
+    margin-bottom:18px;
+    padding-bottom:10px;
+    border-bottom:2px solid var(--beige);
+  }
+  h3{
+    font-family:'Bebas Neue',sans-serif;
+    font-size:22px;letter-spacing:.05em;
+    color:var(--burgundy-light);margin:18px 0 8px;
+  }
+  p{margin-bottom:12px}
+  ul{margin:8px 0 12px 22px}
+  li{margin-bottom:6px}
+
+  /* Goals grid */
+  .goals{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:16px;margin-top:8px;
+  }
+  .goal{
+    background:var(--cream);
+    border-left:4px solid var(--burgundy);
+    padding:16px 18px;border-radius:4px;
+  }
+  .goal .num{
+    font-family:'Bebas Neue',sans-serif;
+    font-size:28px;color:var(--burgundy);line-height:1;
+  }
+  .goal .label{font-size:13px;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;margin-bottom:6px}
+
+  /* Channel cards */
+  .channels{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    gap:18px;
+  }
+  .channel{
+    border:1px solid var(--beige);
+    border-radius:8px;padding:20px;
+    background:var(--cream);
+  }
+  .channel .icon{
+    font-family:'Bebas Neue',sans-serif;
+    display:inline-block;
+    background:var(--burgundy);color:var(--cream);
+    padding:4px 12px;border-radius:3px;
+    font-size:14px;letter-spacing:.1em;margin-bottom:8px;
+  }
+  .channel h4{
+    font-family:'Bebas Neue',sans-serif;
+    font-size:22px;color:var(--burgundy);margin-bottom:4px;
+  }
+  .channel .handle{font-size:13px;color:var(--muted);margin-bottom:12px}
+  .channel .role{font-weight:600;margin-bottom:8px}
+  .channel ul{margin-left:18px;font-size:14px}
+
+  /* Schedule table */
+  table{
+    width:100%;border-collapse:collapse;margin-top:8px;
+    font-size:14px;
+  }
+  thead th{
+    background:var(--burgundy);color:var(--cream);
+    text-align:left;padding:10px 12px;
+    font-family:'Bebas Neue',sans-serif;letter-spacing:.08em;
+    font-size:13px;
+  }
+  tbody td{
+    padding:10px 12px;
+    border-bottom:1px solid var(--beige);
+    vertical-align:top;
+  }
+  tbody tr:nth-child(even){background:var(--cream)}
+  .pill{
+    display:inline-block;
+    font-size:11px;font-weight:600;
+    padding:2px 8px;border-radius:10px;
+    text-transform:uppercase;letter-spacing:.06em;
+    margin-right:4px;margin-bottom:2px;
+  }
+  .pill.ig{background:#fce4ec;color:#880e4f}
+  .pill.tt{background:#212121;color:#fff}
+  .pill.yt{background:#ffebee;color:#b71c1c}
+  .pill.all{background:var(--gold);color:var(--burgundy)}
+  .pill.fb{background:#1877f2;color:#fff;opacity:.85}
+  .pill.x{background:#000;color:#fff;opacity:.85}
+
+  .pillars{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:14px;
+  }
+  .pillar{
+    padding:16px;border-radius:6px;
+    background:var(--cream);
+    border-top:4px solid var(--burgundy);
+  }
+  .pillar h4{
+    font-family:'Bebas Neue',sans-serif;
+    font-size:18px;color:var(--burgundy);margin-bottom:6px;letter-spacing:.04em;
+  }
+  .pillar p{font-size:14px;color:var(--text);margin:0}
+
+  .kpi-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+    gap:12px;margin-top:8px;
+  }
+  .kpi{
+    background:var(--cream);padding:14px;border-radius:6px;
+    text-align:center;border:1px solid var(--beige);
+  }
+  .kpi .num{
+    font-family:'Bebas Neue',sans-serif;
+    font-size:26px;color:var(--burgundy);
+  }
+  .kpi .label{font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:.06em}
+
+  .callout{
+    background:var(--burgundy);color:var(--cream);
+    padding:24px 28px;border-radius:8px;margin-top:24px;
+  }
+  .callout h3{color:var(--gold);margin-top:0}
+  .callout p{margin:0;opacity:.92}
+
+  footer{
+    text-align:center;color:var(--muted);font-size:12px;
+    margin-top:24px;
+  }
+  @media print{
+    body{background:#fff;padding:0}
+    section,header{box-shadow:none;page-break-inside:avoid}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <div class="eyebrow">PR &amp; Social Media Plan</div>
+    <h1>March for Jesus Belfast — Final Push</h1>
+    <p>A coordinated three-front strategy: press outreach (133+ media outlets), vibrant social content, and conversion. All hands on deck to drive awareness &amp; attendance for Saturday 16 May 2026.</p>
+    <div class="stat-row">
+      <div class="stat"><strong id="daysLeft">—</strong><span>Days to march</span></div>
+      <div class="stat"><strong>133+</strong><span>Media outlets</span></div>
+      <div class="stat"><strong>16–20k</strong><span>Expected attendees</span></div>
+      <div class="stat"><strong>16 May</strong><span>Event day</span></div>
+    </div>
+  </header>
+
+  <section>
+    <h2>1. Objectives</h2>
+    <p>Last year, controversy drove media coverage. This year, it's been quiet — but social metrics are actually <strong>better than 2025.</strong> We must now <strong>create the story ourselves</strong> through press outreach + vibrant social content. The next 15 days are a coordinated three-front push:</p>
+    <div class="goals">
+      <div class="goal">
+        <div class="label">Front 1</div>
+        <div class="num">Press</div>
+        <p>133+ media outlets via Paul. Four releases (≤300 words each), sent twice over 14 days. Hook: traffic apology, no conflict with Palestinian parade, John's leadership, growth.</p>
+      </div>
+      <div class="goal">
+        <div class="label">Front 2</div>
+        <div class="num">Social</div>
+        <p>Vibrant, joyful, family-friendly content. Facebook = primary (local reach). Paul distributes graphics hourly. If it doesn't stop the scroll, it doesn't work.</p>
+      </div>
+      <div class="goal">
+        <div class="label">Front 3</div>
+        <div class="num">Conversion</div>
+        <p>Register · Steward · Attend. Warm, family-focused messaging. All channels point to Eventbrite, WhatsApp community, website logistics.</p>
+      </div>
+      <div class="goal">
+        <div class="label">Owner</div>
+        <div class="num">Leadership</div>
+        <p>Gianpaolo = strategy &amp; drafts. Naomi = visuals &amp; approval. Paul = distribution &amp; media. Ed = ad spend. John = organiser presence.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>2. Channels &amp; Roles (Revised Priority)</h2>
+    <p>Same brand voice everywhere — but <strong>Facebook is now critical for Belfast reach.</strong> Paul to distribute all graphics across Facebook, X, &amp; WhatsApp groups (some with 26,000+ members). Paid ads on Facebook &amp; YouTube coordinated by Ed.</p>
+    <div class="channels">
+      <div class="channel">
+        <div class="icon">FB</div>
+        <h4>Facebook</h4>
+        <div class="handle">March for Jesus Ireland</div>
+        <div class="role">Role: PRIMARY — local reach</div>
+        <ul>
+          <li>Where Belfast audience lives</li>
+          <li>Bright, joyful visuals stop the scroll</li>
+          <li>Paul distributes graphics hourly if needed</li>
+          <li>Paid ads via Ed (budget-driven)</li>
+          <li>Reshare across WhatsApp groups</li>
+        </ul>
+      </div>
+      <div class="channel">
+        <div class="icon">IG</div>
+        <h4>Instagram</h4>
+        <div class="handle">@marchforjesus</div>
+        <div class="role">Role: Younger audience, community</div>
+        <ul>
+          <li>Reels for reach (15–30s, vertical)</li>
+          <li>Stories daily — countdown sticker, polls</li>
+          <li>Vibrant, joyful aesthetic (no corporate)</li>
+          <li>Families, kids, ice cream, worship</li>
+        </ul>
+      </div>
+      <div class="channel">
+        <div class="icon">YT</div>
+        <h4>YouTube</h4>
+        <div class="handle">@marchforjesus</div>
+        <div class="role">Role: Long-form + event-day live</div>
+        <ul>
+          <li>Shorts mirroring FB &amp; IG content</li>
+          <li>1–2 long-form: 2025 recap + "What to expect"</li>
+          <li>Paid ads coordinated with Ed</li>
+          <li><strong>Live stream from City Hall 3–5 PM on event day</strong></li>
+        </ul>
+      </div>
+      <div class="channel">
+        <div class="icon">X</div>
+        <h4>X (Twitter)</h4>
+        <div class="handle">March for Jesus Ireland</div>
+        <div class="role">Role: Paul's media distribution</div>
+        <ul>
+          <li>Paul retweets/amplifies key messages</li>
+          <li>Reaches media, journalists, influencers</li>
+          <li>Complement to MailChimp press distribution</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>3. Content Pillars &amp; Visual Direction</h2>
+    <p><strong>MAJOR SHIFT:</strong> Move away from corporate branding. Go <strong>vibrant, joyful, family-friendly.</strong> Bright colours, no dark blues/greys. If it doesn't stop the scroll, it doesn't work.</p>
+    <div class="pillars">
+      <div class="pillar"><h4>Family &amp; Kids</h4><p>Ice cream, balloons, kids worship, summer vibes. Ormeau Park morning activities. Joyful.</p></div>
+      <div class="pillar"><h4>Worship &amp; Testimony</h4><p>Vibrant clips from prep events, worship leaders, prayer. Emotional, not corporate.</p></div>
+      <div class="pillar"><h4>2025 Throwback</h4><p>Bright, celebratory photos from Belfast &amp; Dublin. 8,000+ and 25,000+ marchers. Social proof &amp; energy.</p></div>
+      <div class="pillar"><h4>Logistics &amp; Practical</h4><p>Route, parking, timing. Still family-friendly tone. Make it easy &amp; inviting.</p></div>
+      <div class="pillar"><h4>Call to Action</h4><p>Register · Steward · Bring your family · Join WhatsApp. Warm, not corporate.</p></div>
+    </div>
+    <p style="margin-top:14px;"><strong>Visual guardrails:</strong> Warm, bright colours. No grey/corporate feel. Focus on people, smiles, summer energy. Naomi to redesign all visuals.</p>
+  </section>
+
+  <section>
+    <h2>5. Press &amp; Media Outreach (133 Outlets)</h2>
+    <p><strong>Strategy:</strong> Four targeted press releases, each ≤300 words, sent via MailChimp to 133+ media outlets (print, TV, radio) by Paul McMichael over two weeks. Last year's crisis coverage won't repeat — we're creating the story this year.</p>
+    <h3>Four Press Release Themes</h3>
+    <ol>
+      <li><strong>Traffic Disruption Apology</strong> — Lead with an advance apology for traffic impact. Emphasise careful planning &amp; minimal disruption. This hook attracts media interest. <a href="pr-1-traffic-apology.html" style="color:#4D0921;font-weight:600;text-decoration:underline;">→ View PR-1</a></li>
+      <li><strong>No Clash with Palestinian Parade</strong> — Explicit reassurance that both events have been coordinated &amp; won't conflict. De-escalating, professional tone. <a href="pr-2-coordination.html" style="color:#4D0921;font-weight:600;text-decoration:underline;">→ View PR-2</a></li>
+      <li><strong>Organiser Focus (John Ahern)</strong> — Highlight John as organiser. Expected attendance: 16–20,000. Reference 2025 success (8,000 Belfast + 25,000 Dublin). <a href="pr-3-growth.html" style="color:#4D0921;font-weight:600;text-decoration:underline;">→ View PR-3</a></li>
+      <li><strong>International Context</strong> — John's role as March for Jesus Europe coordinator. Link to larger movement. <a href="pr-4-european.html" style="color:#4D0921;font-weight:600;text-decoration:underline;">→ View PR-4</a></li>
+    </ol>
+    <h3>Distribution Plan</h3>
+    <ul>
+      <li><strong>Paul McMichael:</strong> Distributes all drafts via MailChimp to media database + personal TV/journalist contacts. Each release sent twice over 14 days (8 sends total).</li>
+      <li><strong>Include John's contact details</strong> (with consent) for media interview requests.</li>
+      <li><strong>Gianpaolo:</strong> Draft all four releases. Send to Naomi &amp; Paul for review/approval before distribution.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>6. Measuring Success</h2>
+    <p>Light-touch metrics — check weekly, not daily. The goal is the march, not the dashboard.</p>
+    <div class="kpi-grid">
+      <div class="kpi"><div class="num">↑ Reg.</div><div class="label">Eventbrite signups</div></div>
+      <div class="kpi"><div class="num">↑ Stewards</div><div class="label">Volunteer sign-ups</div></div>
+      <div class="kpi"><div class="num">↑ WhatsApp</div><div class="label">Community members</div></div>
+      <div class="kpi"><div class="num">Media</div><div class="label">Interview requests</div></div>
+      <div class="kpi"><div class="num">Reach</div><div class="label">FB/IG/YT/X views</div></div>
+      <div class="kpi"><div class="num">GA traffic</div><div class="label">marchforjesus.co.uk</div></div>
+    </div>
+    <p style="margin-top:14px;font-size:14px;color:var(--muted)">Win metric: Media coverage + social momentum build. Measure by engagement, not just reach. Saves &amp; shares > likes.</p>
+  </section>
+
+  <section>
+    <h2>6a. Media Distribution (Paul McMichael)</h2>
+    <p><strong>Role:</strong> Paul is the force multiplier. He has direct relationships with 133+ media outlets (print, TV, radio) and will distribute all content via MailChimp + personal contacts.</p>
+    <h3>Workflow</h3>
+    <ol>
+      <li>Gianpaolo drafts all <strong>4 press releases</strong> (≤300 words each)</li>
+      <li>Naomi &amp; Pastor Joanna review &amp; approve</li>
+      <li>Gianpaolo sends approved releases + graphics to Paul</li>
+      <li>Paul distributes via MailChimp to media database + personal TV/journalist contacts</li>
+      <li><strong>Each release sent twice</strong> over 14 days (8 sends total)</li>
+      <li>Paul amplifies on X/social; personal contacts for interviews</li>
+    </ol>
+    <h3>Parallel: Social Distribution</h3>
+    <ul>
+      <li>Gianpaolo sends all bright, joyful graphics &amp; videos to Paul</li>
+      <li>Paul distributes across Facebook, X, &amp; WhatsApp groups (rapid, hourly if needed)</li>
+      <li>Gianpaolo coordinates paid ads with Ed (Facebook &amp; YouTube budget allocation)</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>7. PR Messaging &amp; Context</h2>
+    <p>The media landscape has changed since 2025. Last year, controversy drove coverage. This year, we must create our own narrative. Three defensive/strategic angles establish credibility:</p>
+    <ul>
+      <li><strong>Traffic Apology (proactive):</strong> Lead with an advance apology for disruption. This paradoxically attracts media interest &amp; shows professionalism.</li>
+      <li><strong>No Conflict with Palestinian Parade (reassurance):</strong> Explicit, calm messaging that both events have been coordinated. De-escalates potential controversy pre-emptively.</li>
+      <li><strong>Growth &amp; John's Leadership:</strong> Emphasise 16–20,000 expected attendance (vs. 8,000 last year). John Ahern as organiser &amp; Europe coordinator. Reference Dublin's 25,000 to show scale.</li>
+    </ul>
+    <p style="margin-top:12px;"><strong>Key insight:</strong> Press releases are distribution. Social media is where we win — and that means vibrant, joyful, family-friendly content that stops the scroll. Institutional media (TV, radio, print) are follow-on; social drives momentum.</p>
+  </section>
+
+  <section>
+    <h2>8. Practical Notes</h2>
+    <h3>Production</h3>
+    <ul>
+      <li>Shoot vertical 9:16 by default. One clip can serve IG Reels, TT and YT Shorts.</li>
+      <li>Burn captions in — most people watch on mute.</li>
+      <li>Keep a shared Drive/Dropbox folder of approved b-roll, logo files, lower-third graphics.</li>
+    </ul>
+    <h3>Voice &amp; tone</h3>
+    <ul>
+      <li>Warm, family-friendly, non-political — same as the website.</li>
+      <li>Always include: date (16 May), location (Belfast), call to action (link in bio).</li>
+      <li>Hashtags: #MarchForJesus #MarchForJesusBelfast #Belfast2026 — keep it tight.</li>
+    </ul>
+    <h3>Approvals</h3>
+    <ul>
+      <li>One person owns the calendar &amp; final approval — avoid posting-by-committee.</li>
+      <li>Sensitive content (testimonies, minors) — written consent before posting.</li>
+    </ul>
+  </section>
+
+  <div class="callout">
+    <h3>The one rule</h3>
+    <p>If a post or release doesn't help someone <em>register, steward, attend or invite</em> — it doesn't go out this fortnight. Save it for after the march.</p>
+  </div>
+
+  <footer>
+    March for Jesus Belfast · 16 May 2026 · marchforjesus.co.uk
+  </footer>
+
+</div>
+
+<script>
+  function updateDaysLeft() {
+    const today = new Date(2026, 4, 1); // May 1, 2026
+    const eventDay = new Date(2026, 4, 16); // May 16, 2026
+    const daysLeft = Math.ceil((eventDay - today) / (1000 * 60 * 60 * 24));
+    document.getElementById('daysLeft').textContent = Math.max(0, daysLeft);
+  }
+  updateDaysLeft();
+</script>
+</body>
+</html>
