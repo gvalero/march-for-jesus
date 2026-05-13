@@ -99,7 +99,7 @@ export const MERCH_CATALOG = [
     priceGbp: 20,
     displayEur: 22,
     sizes: [
-      { id: 'mfj-cap-burgundy-one-size', label: 'One Size', stock: 25 }
+      { id: 'mfj-cap-burgundy-one-size', label: 'One Size', stock: 19 }
     ]
   },
   {

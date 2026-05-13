@@ -8,6 +8,26 @@ const ALLOWED_ORIGINS = [
   'http://localhost:5173'
 ];
 
+function isAllowedOrigin(origin) {
+  if (!origin) {
+    return false;
+  }
+
+  if (ALLOWED_ORIGINS.includes(origin)) {
+    return true;
+  }
+
+  if (/^http:\/\/localhost:\d+$/.test(origin)) {
+    return true;
+  }
+
+  if (/^https:\/\/[a-z0-9-]+-\d+\.app\.github\.dev$/i.test(origin)) {
+    return true;
+  }
+
+  return false;
+}
+
 const RESERVATION_TTL_SECONDS = 30 * 60;
 const ALERT_INTERVAL = 10;
 const EXPECTED_PROFILE = 'mfj-belfast-merch';
@@ -40,7 +60,7 @@ function jsonResponse(body, status = 200, origin = '') {
 
 function corsHeaders(origin) {
   return {
-    'Access-Control-Allow-Origin': ALLOWED_ORIGINS.includes(origin) ? origin : ALLOWED_ORIGINS[0],
+    'Access-Control-Allow-Origin': isAllowedOrigin(origin) ? origin : ALLOWED_ORIGINS[0],
     'Access-Control-Allow-Methods': 'GET, POST, OPTIONS',
     'Access-Control-Allow-Headers': 'Authorization, Content-Type, Stripe-Signature',
     'Access-Control-Max-Age': '86400'
@@ -392,7 +412,7 @@ async function createStripeCheckoutSession(env, reservationId, lines, customerEm
 
   appendFormValue(params, 'mode', 'payment');
   appendFormValue(params, 'success_url', `${siteUrl}/shop-success.html?session_id={CHECKOUT_SESSION_ID}`);
-  appendFormValue(params, 'cancel_url', `${siteUrl}/shop.html?checkout=cancelled`);
+  appendFormValue(params, 'cancel_url', `${siteUrl}/?checkout=cancelled`);
   appendFormValue(params, 'metadata[reservation_id]', reservationId);
   appendFormValue(params, 'metadata[channel]', 'mfj_belfast_merch');
   appendFormValue(params, 'payment_intent_data[metadata][reservation_id]', reservationId);
