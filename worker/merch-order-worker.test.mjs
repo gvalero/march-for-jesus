@@ -47,7 +47,7 @@ function graphPayload(lines) {
 
 test('catalog stock totals match the agreed merch allocation', () => {
   const totalStock = listVariants().reduce((sum, variant) => sum + variant.initialStock, 0);
-  assert.equal(totalStock, 366);
+  assert.equal(totalStock, 342);
 });
 
 test('checkout line normalisation merges duplicate variants', () => {

@@ -10,8 +10,8 @@ export const MERCH_CATALOG = [
     priceGbp: 20,
     displayEur: 22,
     sizes: [
-      { id: 'mfj-logo-tshirt-burgundy-s', label: 'S', stock: 10 },
-      { id: 'mfj-logo-tshirt-burgundy-m', label: 'M', stock: 30 },
+      { id: 'mfj-logo-tshirt-burgundy-s', label: 'S', stock: 8 },
+      { id: 'mfj-logo-tshirt-burgundy-m', label: 'M', stock: 29 },
       { id: 'mfj-logo-tshirt-burgundy-l', label: 'L', stock: 30 },
       { id: 'mfj-logo-tshirt-burgundy-xl', label: 'XL', stock: 10 },
       { id: 'mfj-logo-tshirt-burgundy-2xl', label: '2XL', stock: 10 },
@@ -30,9 +30,9 @@ export const MERCH_CATALOG = [
     displayEur: 22,
     sizes: [
       { id: 'mfj-logo-tshirt-cream-s', label: 'S', stock: 10 },
-      { id: 'mfj-logo-tshirt-cream-m', label: 'M', stock: 30 },
+      { id: 'mfj-logo-tshirt-cream-m', label: 'M', stock: 29 },
       { id: 'mfj-logo-tshirt-cream-l', label: 'L', stock: 30 },
-      { id: 'mfj-logo-tshirt-cream-xl', label: 'XL', stock: 10 },
+      { id: 'mfj-logo-tshirt-cream-xl', label: 'XL', stock: 11 },
       { id: 'mfj-logo-tshirt-cream-2xl', label: '2XL', stock: 10 },
       { id: 'mfj-logo-tshirt-cream-3xl', label: '3XL', stock: 10 }
     ]
@@ -48,10 +48,10 @@ export const MERCH_CATALOG = [
     priceGbp: 30,
     displayEur: 35,
     sizes: [
-      { id: 'globe-tshirt-oversized-burgundy-s', label: 'S', stock: 10 },
-      { id: 'globe-tshirt-oversized-burgundy-m', label: 'M', stock: 15 },
-      { id: 'globe-tshirt-oversized-burgundy-l', label: 'L', stock: 15 },
-      { id: 'globe-tshirt-oversized-burgundy-xl', label: 'XL', stock: 5 }
+      { id: 'globe-tshirt-oversized-burgundy-s', label: 'S', stock: 7 },
+      { id: 'globe-tshirt-oversized-burgundy-m', label: 'M', stock: 12 },
+      { id: 'globe-tshirt-oversized-burgundy-l', label: 'L', stock: 14 },
+      { id: 'globe-tshirt-oversized-burgundy-xl', label: 'XL', stock: 4 }
     ]
   },
   {
@@ -65,10 +65,10 @@ export const MERCH_CATALOG = [
     priceGbp: 30,
     displayEur: 35,
     sizes: [
-      { id: 'globe-tshirt-oversized-cream-s', label: 'S', stock: 10 },
-      { id: 'globe-tshirt-oversized-cream-m', label: 'M', stock: 10 },
-      { id: 'globe-tshirt-oversized-cream-l', label: 'L', stock: 10 },
-      { id: 'globe-tshirt-oversized-cream-xl', label: 'XL', stock: 5 }
+      { id: 'globe-tshirt-oversized-cream-s', label: 'S', stock: 8 },
+      { id: 'globe-tshirt-oversized-cream-m', label: 'M', stock: 12 },
+      { id: 'globe-tshirt-oversized-cream-l', label: 'L', stock: 8 },
+      { id: 'globe-tshirt-oversized-cream-xl', label: 'XL', stock: 4 }
     ]
   },
   {
@@ -82,9 +82,9 @@ export const MERCH_CATALOG = [
     priceGbp: 30,
     displayEur: 35,
     sizes: [
-      { id: 'matthew-2819-tshirt-oversized-cream-s', label: 'S', stock: 10 },
-      { id: 'matthew-2819-tshirt-oversized-cream-m', label: 'M', stock: 10 },
-      { id: 'matthew-2819-tshirt-oversized-cream-l', label: 'L', stock: 10 },
+      { id: 'matthew-2819-tshirt-oversized-cream-s', label: 'S', stock: 9 },
+      { id: 'matthew-2819-tshirt-oversized-cream-m', label: 'M', stock: 8 },
+      { id: 'matthew-2819-tshirt-oversized-cream-l', label: 'L', stock: 9 },
       { id: 'matthew-2819-tshirt-oversized-cream-xl', label: 'XL', stock: 5 }
     ]
   },
@@ -113,7 +113,7 @@ export const MERCH_CATALOG = [
     priceGbp: 20,
     displayEur: 22,
     sizes: [
-      { id: 'mfj-cap-cream-one-size', label: 'One Size', stock: 26 }
+      { id: 'mfj-cap-cream-one-size', label: 'One Size', stock: 20 }
     ]
   }
 ];
